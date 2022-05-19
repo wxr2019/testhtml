@@ -1,0 +1,746 @@
+<!doctype html>
+<html>
+<head>
+<meta charset='UTF-8'><meta name='viewport' content='width=device-width initial-scale=1'>
+
+<link href='https://fonts.loli.net/css?family=Open+Sans:400italic,700italic,700,400&subset=latin,latin-ext' rel='stylesheet' type='text/css' /><style type='text/css'>html {overflow-x: initial !important;}:root { --bg-color:#ffffff; --text-color:#333333; --select-text-bg-color:#B5D6FC; --select-text-font-color:auto; --monospace:"Lucida Console",Consolas,"Courier",monospace; --title-bar-height:20px; }
+.mac-os-11 { --title-bar-height:28px; }
+html { font-size: 14px; background-color: var(--bg-color); color: var(--text-color); font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; -webkit-font-smoothing: antialiased; }
+body { margin: 0px; padding: 0px; height: auto; inset: 0px; font-size: 1rem; line-height: 1.42857; overflow-x: hidden; background: inherit; tab-size: 4; }
+iframe { margin: auto; }
+a.url { word-break: break-all; }
+a:active, a:hover { outline: 0px; }
+.in-text-selection, ::selection { text-shadow: none; background: var(--select-text-bg-color); color: var(--select-text-font-color); }
+#write { margin: 0px auto; height: auto; width: inherit; word-break: normal; overflow-wrap: break-word; position: relative; white-space: normal; overflow-x: visible; padding-top: 36px; }
+#write.first-line-indent p { text-indent: 2em; }
+#write.first-line-indent li p, #write.first-line-indent p * { text-indent: 0px; }
+#write.first-line-indent li { margin-left: 2em; }
+.for-image #write { padding-left: 8px; padding-right: 8px; }
+body.typora-export { padding-left: 30px; padding-right: 30px; }
+.typora-export .footnote-line, .typora-export li, .typora-export p { white-space: pre-wrap; }
+.typora-export .task-list-item input { pointer-events: none; }
+@media screen and (max-width: 500px) {
+  body.typora-export { padding-left: 0px; padding-right: 0px; }
+  #write { padding-left: 20px; padding-right: 20px; }
+  .CodeMirror-sizer { margin-left: 0px !important; }
+  .CodeMirror-gutters { display: none !important; }
+}
+#write li > figure:last-child { margin-bottom: 0.5rem; }
+#write ol, #write ul { position: relative; }
+img { max-width: 100%; vertical-align: middle; image-orientation: from-image; }
+button, input, select, textarea { color: inherit; font: inherit; }
+input[type="checkbox"], input[type="radio"] { line-height: normal; padding: 0px; }
+*, ::after, ::before { box-sizing: border-box; }
+#write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p, #write pre { width: inherit; }
+#write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p { position: relative; }
+p { line-height: inherit; }
+h1, h2, h3, h4, h5, h6 { break-after: avoid-page; break-inside: avoid; orphans: 4; }
+p { orphans: 4; }
+h1 { font-size: 2rem; }
+h2 { font-size: 1.8rem; }
+h3 { font-size: 1.6rem; }
+h4 { font-size: 1.4rem; }
+h5 { font-size: 1.2rem; }
+h6 { font-size: 1rem; }
+.md-math-block, .md-rawblock, h1, h2, h3, h4, h5, h6, p { margin-top: 1rem; margin-bottom: 1rem; }
+.hidden { display: none; }
+.md-blockmeta { color: rgb(204, 204, 204); font-weight: 700; font-style: italic; }
+a { cursor: pointer; }
+sup.md-footnote { padding: 2px 4px; background-color: rgba(238, 238, 238, 0.7); color: rgb(85, 85, 85); border-radius: 4px; cursor: pointer; }
+sup.md-footnote a, sup.md-footnote a:hover { color: inherit; text-transform: inherit; text-decoration: inherit; }
+#write input[type="checkbox"] { cursor: pointer; width: inherit; height: inherit; }
+figure { overflow-x: auto; margin: 1.2em 0px; max-width: calc(100% + 16px); padding: 0px; }
+figure > table { margin: 0px; }
+tr { break-inside: avoid; break-after: auto; }
+thead { display: table-header-group; }
+table { border-collapse: collapse; border-spacing: 0px; width: 100%; overflow: auto; break-inside: auto; text-align: left; }
+table.md-table td { min-width: 32px; }
+.CodeMirror-gutters { border-right: 0px; background-color: inherit; }
+.CodeMirror-linenumber { user-select: none; }
+.CodeMirror { text-align: left; }
+.CodeMirror-placeholder { opacity: 0.3; }
+.CodeMirror pre { padding: 0px 4px; }
+.CodeMirror-lines { padding: 0px; }
+div.hr:focus { cursor: none; }
+#write pre { white-space: pre-wrap; }
+#write.fences-no-line-wrapping pre { white-space: pre; }
+#write pre.ty-contain-cm { white-space: normal; }
+.CodeMirror-gutters { margin-right: 4px; }
+.md-fences { font-size: 0.9rem; display: block; break-inside: avoid; text-align: left; overflow: visible; white-space: pre; background: inherit; position: relative !important; }
+.md-fences-adv-panel { width: 100%; margin-top: 10px; text-align: center; padding-top: 0px; padding-bottom: 8px; overflow-x: auto; }
+#write .md-fences.mock-cm { white-space: pre-wrap; }
+.md-fences.md-fences-with-lineno { padding-left: 0px; }
+#write.fences-no-line-wrapping .md-fences.mock-cm { white-space: pre; overflow-x: auto; }
+.md-fences.mock-cm.md-fences-with-lineno { padding-left: 8px; }
+.CodeMirror-line, twitterwidget { break-inside: avoid; }
+.footnotes { opacity: 0.8; font-size: 0.9rem; margin-top: 1em; margin-bottom: 1em; }
+.footnotes + .footnotes { margin-top: 0px; }
+.md-reset { margin: 0px; padding: 0px; border: 0px; outline: 0px; vertical-align: top; background: 0px 0px; text-decoration: none; text-shadow: none; float: none; position: static; width: auto; height: auto; white-space: nowrap; cursor: inherit; -webkit-tap-highlight-color: transparent; line-height: normal; font-weight: 400; text-align: left; box-sizing: content-box; direction: ltr; }
+li div { padding-top: 0px; }
+blockquote { margin: 1rem 0px; }
+li .mathjax-block, li p { margin: 0.5rem 0px; }
+li blockquote { margin: 1rem 0px; }
+li { margin: 0px; position: relative; }
+blockquote > :last-child { margin-bottom: 0px; }
+blockquote > :first-child, li > :first-child { margin-top: 0px; }
+.footnotes-area { color: rgb(136, 136, 136); margin-top: 0.714rem; padding-bottom: 0.143rem; white-space: normal; }
+#write .footnote-line { white-space: pre-wrap; }
+@media print {
+  body, html { border: 1px solid transparent; height: 99%; break-after: avoid; break-before: avoid; font-variant-ligatures: no-common-ligatures; }
+  #write { margin-top: 0px; padding-top: 0px; border-color: transparent !important; }
+  .typora-export * { -webkit-print-color-adjust: exact; }
+  .typora-export #write { break-after: avoid; }
+  .typora-export #write::after { height: 0px; }
+  .is-mac table { break-inside: avoid; }
+  .typora-export-show-outline .typora-export-sidebar { display: none; }
+}
+.footnote-line { margin-top: 0.714em; font-size: 0.7em; }
+a img, img a { cursor: pointer; }
+pre.md-meta-block { font-size: 0.8rem; min-height: 0.8rem; white-space: pre-wrap; background: rgb(204, 204, 204); display: block; overflow-x: hidden; }
+p > .md-image:only-child:not(.md-img-error) img, p > img:only-child { display: block; margin: auto; }
+#write.first-line-indent p > .md-image:only-child:not(.md-img-error) img { left: -2em; position: relative; }
+p > .md-image:only-child { display: inline-block; width: 100%; }
+#write .MathJax_Display { margin: 0.8em 0px 0px; }
+.md-math-block { width: 100%; }
+.md-math-block:not(:empty)::after { display: none; }
+.MathJax_ref { fill: currentcolor; }
+[contenteditable="true"]:active, [contenteditable="true"]:focus, [contenteditable="false"]:active, [contenteditable="false"]:focus { outline: 0px; box-shadow: none; }
+.md-task-list-item { position: relative; list-style-type: none; }
+.task-list-item.md-task-list-item { padding-left: 0px; }
+.md-task-list-item > input { position: absolute; top: 0px; left: 0px; margin-left: -1.2em; margin-top: calc(1em - 10px); border: none; }
+.math { font-size: 1rem; }
+.md-toc { min-height: 3.58rem; position: relative; font-size: 0.9rem; border-radius: 10px; }
+.md-toc-content { position: relative; margin-left: 0px; }
+.md-toc-content::after, .md-toc::after { display: none; }
+.md-toc-item { display: block; color: rgb(65, 131, 196); }
+.md-toc-item a { text-decoration: none; }
+.md-toc-inner:hover { text-decoration: underline; }
+.md-toc-inner { display: inline-block; cursor: pointer; }
+.md-toc-h1 .md-toc-inner { margin-left: 0px; font-weight: 700; }
+.md-toc-h2 .md-toc-inner { margin-left: 2em; }
+.md-toc-h3 .md-toc-inner { margin-left: 4em; }
+.md-toc-h4 .md-toc-inner { margin-left: 6em; }
+.md-toc-h5 .md-toc-inner { margin-left: 8em; }
+.md-toc-h6 .md-toc-inner { margin-left: 10em; }
+@media screen and (max-width: 48em) {
+  .md-toc-h3 .md-toc-inner { margin-left: 3.5em; }
+  .md-toc-h4 .md-toc-inner { margin-left: 5em; }
+  .md-toc-h5 .md-toc-inner { margin-left: 6.5em; }
+  .md-toc-h6 .md-toc-inner { margin-left: 8em; }
+}
+a.md-toc-inner { font-size: inherit; font-style: inherit; font-weight: inherit; line-height: inherit; }
+.footnote-line a:not(.reversefootnote) { color: inherit; }
+.md-attr { display: none; }
+.md-fn-count::after { content: "."; }
+code, pre, samp, tt { font-family: var(--monospace); }
+kbd { margin: 0px 0.1em; padding: 0.1em 0.6em; font-size: 0.8em; color: rgb(36, 39, 41); background: rgb(255, 255, 255); border: 1px solid rgb(173, 179, 185); border-radius: 3px; box-shadow: rgba(12, 13, 14, 0.2) 0px 1px 0px, rgb(255, 255, 255) 0px 0px 0px 2px inset; white-space: nowrap; vertical-align: middle; }
+.md-comment { color: rgb(162, 127, 3); opacity: 0.6; font-family: var(--monospace); }
+code { text-align: left; vertical-align: initial; }
+a.md-print-anchor { white-space: pre !important; border-width: initial !important; border-style: none !important; border-color: initial !important; display: inline-block !important; position: absolute !important; width: 1px !important; right: 0px !important; outline: 0px !important; background: 0px 0px !important; text-decoration: initial !important; text-shadow: initial !important; }
+.os-windows.monocolor-emoji .md-emoji { font-family: "Segoe UI Symbol", sans-serif; }
+.md-diagram-panel > svg { max-width: 100%; }
+[lang="flow"] svg, [lang="mermaid"] svg { max-width: 100%; height: auto; }
+[lang="mermaid"] .node text { font-size: 1rem; }
+table tr th { border-bottom: 0px; }
+video { max-width: 100%; display: block; margin: 0px auto; }
+iframe { max-width: 100%; width: 100%; border: none; }
+.highlight td, .highlight tr { border: 0px; }
+mark { background: rgb(255, 255, 0); color: rgb(0, 0, 0); }
+.md-html-inline .md-plain, .md-html-inline strong, mark .md-inline-math, mark strong { color: inherit; }
+.md-expand mark .md-meta { opacity: 0.3 !important; }
+mark .md-meta { color: rgb(0, 0, 0); }
+@media print {
+  .typora-export h1, .typora-export h2, .typora-export h3, .typora-export h4, .typora-export h5, .typora-export h6 { break-inside: avoid; }
+}
+.md-diagram-panel .messageText { stroke: none !important; }
+.md-diagram-panel .start-state { fill: var(--node-fill); }
+.md-diagram-panel .edgeLabel rect { opacity: 1 !important; }
+.md-fences.md-fences-math { font-size: 1em; }
+.md-fences-advanced:not(.md-focus) { padding: 0px; white-space: nowrap; border: 0px; }
+.md-fences-advanced:not(.md-focus) { background: inherit; }
+.typora-export-show-outline .typora-export-content { max-width: 1440px; margin: auto; display: flex; flex-direction: row; }
+.typora-export-sidebar { width: 300px; font-size: 0.8rem; margin-top: 80px; margin-right: 18px; }
+.typora-export-show-outline #write { --webkit-flex:2; flex: 2 1 0%; }
+.typora-export-sidebar .outline-content { position: fixed; top: 0px; max-height: 100%; overflow: hidden auto; padding-bottom: 30px; padding-top: 60px; width: 300px; }
+@media screen and (max-width: 1024px) {
+  .typora-export-sidebar, .typora-export-sidebar .outline-content { width: 240px; }
+}
+@media screen and (max-width: 800px) {
+  .typora-export-sidebar { display: none; }
+}
+.outline-content li, .outline-content ul { margin-left: 0px; margin-right: 0px; padding-left: 0px; padding-right: 0px; list-style: none; }
+.outline-content ul { margin-top: 0px; margin-bottom: 0px; }
+.outline-content strong { font-weight: 400; }
+.outline-expander { width: 1rem; height: 1.42857rem; position: relative; display: table-cell; vertical-align: middle; cursor: pointer; padding-left: 4px; }
+.outline-expander::before { content: ""; position: relative; font-family: Ionicons; display: inline-block; font-size: 8px; vertical-align: middle; }
+.outline-item { padding-top: 3px; padding-bottom: 3px; cursor: pointer; }
+.outline-expander:hover::before { content: ""; }
+.outline-h1 > .outline-item { padding-left: 0px; }
+.outline-h2 > .outline-item { padding-left: 1em; }
+.outline-h3 > .outline-item { padding-left: 2em; }
+.outline-h4 > .outline-item { padding-left: 3em; }
+.outline-h5 > .outline-item { padding-left: 4em; }
+.outline-h6 > .outline-item { padding-left: 5em; }
+.outline-label { cursor: pointer; display: table-cell; vertical-align: middle; text-decoration: none; color: inherit; }
+.outline-label:hover { text-decoration: underline; }
+.outline-item:hover { border-color: rgb(245, 245, 245); background-color: var(--item-hover-bg-color); }
+.outline-item:hover { margin-left: -28px; margin-right: -28px; border-left: 28px solid transparent; border-right: 28px solid transparent; }
+.outline-item-single .outline-expander::before, .outline-item-single .outline-expander:hover::before { display: none; }
+.outline-item-open > .outline-item > .outline-expander::before { content: ""; }
+.outline-children { display: none; }
+.info-panel-tab-wrapper { display: none; }
+.outline-item-open > .outline-children { display: block; }
+.typora-export .outline-item { padding-top: 1px; padding-bottom: 1px; }
+.typora-export .outline-item:hover { margin-right: -8px; border-right: 8px solid transparent; }
+.typora-export .outline-expander::before { content: "+"; font-family: inherit; top: -1px; }
+.typora-export .outline-expander:hover::before, .typora-export .outline-item-open > .outline-item > .outline-expander::before { content: "−"; }
+.typora-export-collapse-outline .outline-children { display: none; }
+.typora-export-collapse-outline .outline-item-open > .outline-children, .typora-export-no-collapse-outline .outline-children { display: block; }
+.typora-export-no-collapse-outline .outline-expander::before { content: "" !important; }
+.typora-export-show-outline .outline-item-active > .outline-item .outline-label { font-weight: 700; }
+.md-inline-math-container mjx-container { zoom: 0.95; }
+
+
+:root {
+    --side-bar-bg-color: #fafafa;
+    --control-text-color: #777;
+}
+
+@include-when-export url(https://fonts.loli.net/css?family=Open+Sans:400italic,700italic,700,400&subset=latin,latin-ext);
+
+/* open-sans-regular - latin-ext_latin */
+  /* open-sans-italic - latin-ext_latin */
+    /* open-sans-700 - latin-ext_latin */
+    /* open-sans-700italic - latin-ext_latin */
+  html {
+    font-size: 16px;
+    -webkit-font-smoothing: antialiased;
+}
+
+body {
+    font-family: "Open Sans","Clear Sans", "Helvetica Neue", Helvetica, Arial, 'Segoe UI Emoji', sans-serif;
+    color: rgb(51, 51, 51);
+    line-height: 1.6;
+}
+
+#write {
+    max-width: 860px;
+  	margin: 0 auto;
+  	padding: 30px;
+    padding-bottom: 100px;
+}
+
+@media only screen and (min-width: 1400px) {
+	#write {
+		max-width: 1024px;
+	}
+}
+
+@media only screen and (min-width: 1800px) {
+	#write {
+		max-width: 1200px;
+	}
+}
+
+#write > ul:first-child,
+#write > ol:first-child{
+    margin-top: 30px;
+}
+
+a {
+    color: #4183C4;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    position: relative;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    font-weight: bold;
+    line-height: 1.4;
+    cursor: text;
+}
+h1:hover a.anchor,
+h2:hover a.anchor,
+h3:hover a.anchor,
+h4:hover a.anchor,
+h5:hover a.anchor,
+h6:hover a.anchor {
+    text-decoration: none;
+}
+h1 tt,
+h1 code {
+    font-size: inherit;
+}
+h2 tt,
+h2 code {
+    font-size: inherit;
+}
+h3 tt,
+h3 code {
+    font-size: inherit;
+}
+h4 tt,
+h4 code {
+    font-size: inherit;
+}
+h5 tt,
+h5 code {
+    font-size: inherit;
+}
+h6 tt,
+h6 code {
+    font-size: inherit;
+}
+h1 {
+    font-size: 2.25em;
+    line-height: 1.2;
+    border-bottom: 1px solid #eee;
+}
+h2 {
+    font-size: 1.75em;
+    line-height: 1.225;
+    border-bottom: 1px solid #eee;
+}
+
+/*@media print {
+    .typora-export h1,
+    .typora-export h2 {
+        border-bottom: none;
+        padding-bottom: initial;
+    }
+
+    .typora-export h1::after,
+    .typora-export h2::after {
+        content: "";
+        display: block;
+        height: 100px;
+        margin-top: -96px;
+        border-top: 1px solid #eee;
+    }
+}*/
+
+h3 {
+    font-size: 1.5em;
+    line-height: 1.43;
+}
+h4 {
+    font-size: 1.25em;
+}
+h5 {
+    font-size: 1em;
+}
+h6 {
+   font-size: 1em;
+    color: #777;
+}
+p,
+blockquote,
+ul,
+ol,
+dl,
+table{
+    margin: 0.8em 0;
+}
+li>ol,
+li>ul {
+    margin: 0 0;
+}
+hr {
+    height: 2px;
+    padding: 0;
+    margin: 16px 0;
+    background-color: #e7e7e7;
+    border: 0 none;
+    overflow: hidden;
+    box-sizing: content-box;
+}
+
+li p.first {
+    display: inline-block;
+}
+ul,
+ol {
+    padding-left: 30px;
+}
+ul:first-child,
+ol:first-child {
+    margin-top: 0;
+}
+ul:last-child,
+ol:last-child {
+    margin-bottom: 0;
+}
+blockquote {
+    border-left: 4px solid #dfe2e5;
+    padding: 0 15px;
+    color: #777777;
+}
+blockquote blockquote {
+    padding-right: 0;
+}
+table {
+    padding: 0;
+    word-break: initial;
+}
+table tr {
+    border: 1px solid #dfe2e5;
+    margin: 0;
+    padding: 0;
+}
+table tr:nth-child(2n),
+thead {
+    background-color: #f8f8f8;
+}
+table th {
+    font-weight: bold;
+    border: 1px solid #dfe2e5;
+    border-bottom: 0;
+    margin: 0;
+    padding: 6px 13px;
+}
+table td {
+    border: 1px solid #dfe2e5;
+    margin: 0;
+    padding: 6px 13px;
+}
+table th:first-child,
+table td:first-child {
+    margin-top: 0;
+}
+table th:last-child,
+table td:last-child {
+    margin-bottom: 0;
+}
+
+.CodeMirror-lines {
+    padding-left: 4px;
+}
+
+.code-tooltip {
+    box-shadow: 0 1px 1px 0 rgba(0,28,36,.3);
+    border-top: 1px solid #eef2f2;
+}
+
+.md-fences,
+code,
+tt {
+    border: 1px solid #e7eaed;
+    background-color: #f8f8f8;
+    border-radius: 3px;
+    padding: 0;
+    padding: 2px 4px 0px 4px;
+    font-size: 0.9em;
+}
+
+code {
+    background-color: #f3f4f4;
+    padding: 0 2px 0 2px;
+}
+
+.md-fences {
+    margin-bottom: 15px;
+    margin-top: 15px;
+    padding-top: 8px;
+    padding-bottom: 6px;
+}
+
+
+.md-task-list-item > input {
+  margin-left: -1.3em;
+}
+
+@media print {
+    html {
+        font-size: 13px;
+    }
+    table,
+    pre {
+        page-break-inside: avoid;
+    }
+    pre {
+        word-wrap: break-word;
+    }
+}
+
+.md-fences {
+	background-color: #f8f8f8;
+}
+#write pre.md-meta-block {
+	padding: 1rem;
+    font-size: 85%;
+    line-height: 1.45;
+    background-color: #f7f7f7;
+    border: 0;
+    border-radius: 3px;
+    color: #777777;
+    margin-top: 0 !important;
+}
+
+.mathjax-block>.code-tooltip {
+	bottom: .375rem;
+}
+
+.md-mathjax-midline {
+    background: #fafafa;
+}
+
+#write>h3.md-focus:before{
+	left: -1.5625rem;
+	top: .375rem;
+}
+#write>h4.md-focus:before{
+	left: -1.5625rem;
+	top: .285714286rem;
+}
+#write>h5.md-focus:before{
+	left: -1.5625rem;
+	top: .285714286rem;
+}
+#write>h6.md-focus:before{
+	left: -1.5625rem;
+	top: .285714286rem;
+}
+.md-image>.md-meta {
+    /*border: 1px solid #ddd;*/
+    border-radius: 3px;
+    padding: 2px 0px 0px 4px;
+    font-size: 0.9em;
+    color: inherit;
+}
+
+.md-tag {
+    color: #a7a7a7;
+    opacity: 1;
+}
+
+.md-toc { 
+    margin-top:20px;
+    padding-bottom:20px;
+}
+
+.sidebar-tabs {
+    border-bottom: none;
+}
+
+#typora-quick-open {
+    border: 1px solid #ddd;
+    background-color: #f8f8f8;
+}
+
+#typora-quick-open-item {
+    background-color: #FAFAFA;
+    border-color: #FEFEFE #e5e5e5 #e5e5e5 #eee;
+    border-style: solid;
+    border-width: 1px;
+}
+
+/** focus mode */
+.on-focus-mode blockquote {
+    border-left-color: rgba(85, 85, 85, 0.12);
+}
+
+header, .context-menu, .megamenu-content, footer{
+    font-family: "Segoe UI", "Arial", sans-serif;
+}
+
+.file-node-content:hover .file-node-icon,
+.file-node-content:hover .file-node-open-state{
+    visibility: visible;
+}
+
+.mac-seamless-mode #typora-sidebar {
+    background-color: #fafafa;
+    background-color: var(--side-bar-bg-color);
+}
+
+.md-lang {
+    color: #b4654d;
+}
+
+/*.html-for-mac {
+    --item-hover-bg-color: #E6F0FE;
+}*/
+
+#md-notification .btn {
+    border: 0;
+}
+
+.dropdown-menu .divider {
+    border-color: #e5e5e5;
+    opacity: 0.4;
+}
+
+.ty-preferences .window-content {
+    background-color: #fafafa;
+}
+
+.ty-preferences .nav-group-item.active {
+    color: white;
+    background: #999;
+}
+
+.menu-item-container a.menu-style-btn {
+    background-color: #f5f8fa;
+    background-image: linear-gradient( 180deg , hsla(0, 0%, 100%, 0.8), hsla(0, 0%, 100%, 0)); 
+}
+
+
+
+mjx-container[jax="SVG"] {
+  direction: ltr;
+}
+
+mjx-container[jax="SVG"] > svg {
+  overflow: visible;
+  min-height: 1px;
+  min-width: 1px;
+}
+
+mjx-container[jax="SVG"] > svg a {
+  fill: blue;
+  stroke: blue;
+}
+
+mjx-assistive-mml {
+  position: absolute !important;
+  top: 0px;
+  left: 0px;
+  clip: rect(1px, 1px, 1px, 1px);
+  padding: 1px 0px 0px 0px !important;
+  border: 0px !important;
+  display: block !important;
+  width: auto !important;
+  overflow: hidden !important;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+mjx-assistive-mml[display="block"] {
+  width: 100% !important;
+}
+
+mjx-container[jax="SVG"][display="true"] {
+  display: block;
+  text-align: center;
+  margin: 1em 0;
+}
+
+mjx-container[jax="SVG"][display="true"][width="full"] {
+  display: flex;
+}
+
+mjx-container[jax="SVG"][justify="left"] {
+  text-align: left;
+}
+
+mjx-container[jax="SVG"][justify="right"] {
+  text-align: right;
+}
+
+g[data-mml-node="merror"] > g {
+  fill: red;
+  stroke: red;
+}
+
+g[data-mml-node="merror"] > rect[data-background] {
+  fill: yellow;
+  stroke: none;
+}
+
+g[data-mml-node="mtable"] > line[data-line], svg[data-table] > g > line[data-line] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > rect[data-frame], svg[data-table] > g > rect[data-frame] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > .mjx-dashed, svg[data-table] > g > .mjx-dashed {
+  stroke-dasharray: 140;
+}
+
+g[data-mml-node="mtable"] > .mjx-dotted, svg[data-table] > g > .mjx-dotted {
+  stroke-linecap: round;
+  stroke-dasharray: 0,140;
+}
+
+g[data-mml-node="mtable"] > g > svg {
+  overflow: visible;
+}
+
+[jax="SVG"] mjx-tool {
+  display: inline-block;
+  position: relative;
+  width: 0;
+  height: 0;
+}
+
+[jax="SVG"] mjx-tool > mjx-tip {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+mjx-tool > mjx-tip {
+  display: inline-block;
+  padding: .2em;
+  border: 1px solid #888;
+  font-size: 70%;
+  background-color: #F8F8F8;
+  color: black;
+  box-shadow: 2px 2px 5px #AAAAAA;
+}
+
+g[data-mml-node="maction"][data-toggle] {
+  cursor: pointer;
+}
+
+mjx-status {
+  display: block;
+  position: fixed;
+  left: 1em;
+  bottom: 1em;
+  min-width: 25%;
+  padding: .2em .4em;
+  border: 1px solid #888;
+  font-size: 90%;
+  background-color: #F8F8F8;
+  color: black;
+}
+
+foreignObject[data-mjx-xml] {
+  font-family: initial;
+  line-height: normal;
+  overflow: visible;
+}
+
+mjx-container[jax="SVG"] path[data-c], mjx-container[jax="SVG"] use[data-c] {
+  stroke-width: 3;
+}
+
+g[data-mml-node="xypic"] path {
+  stroke-width: inherit;
+}
+
+.MathJax g[data-mml-node="xypic"] path {
+  stroke-width: inherit;
+}
+mjx-container[jax="SVG"] path[data-c], mjx-container[jax="SVG"] use[data-c] {
+							stroke-width: 0;
+						}
+</style><title>第三章量子计算机硬件基础</title>
+</head>
+<body class='typora-export os-windows'><div class='typora-export-content'>
+<div id='write'  class=''><h1 id='第3章-量子计算机硬件基础'><span>第3章 量子计算机硬件基础</span></h1><blockquote><p><span>3.1 量子芯片</span></p><p><span>3.2 量子计算机硬件</span></p><p><span>3.3 量子计算机</span></p></blockquote><p>&nbsp;</p><h2 id='31-量子芯片'><span>3.1 量子芯片</span></h2><h3 id='311-超导量子芯片'><span>3.1.1 超导量子芯片</span></h3><p>&emsp;&emsp;<span>超导量子计算是基于超导电路的量子计算方案，其核心器件是超导约瑟夫森结。超导量子电路在设计、制备和测量等方面，与现有的集成电路技术具有较高的兼容性，对量子比特的能级与耦合可以实现非常灵活的设计与控制，极具规模化的潜力。</span></p><p>&emsp;&emsp;<span>由于近年来的迅速发展，超导量子计算已成为目前最有希望实现通用量子计算的候选方案之一。</span></p><p>&emsp;&emsp;<span>如图3.1.1（a），超导电路类似于传统的电子谐振电路，这种谐振电路产生了谐振子的能级。超导约瑟夫森效应使得超导电路在不发生损耗和退相干的情况下产生非线性，非线性导致谐振子的能级间隔不再等同，其中最低的两个能级可以用来实现量子比特的操控，如图3.1.1（b）所示。与经典谐振电路不同的是，超导电路还含有由约瑟夫森结带来的电感Lj这一项，改变这一项和电感L、电容C的比值，物理学家提出了多种基于超导线路的比特形式，如图3.1.1（c）</span><sup><span>[6]</span></sup><span>。</span></p><p><img src="picture\3.1.1.png" width=600 ></p><p><span>																			</span><span>图3.1.1超导电路构成量子比特</span><sup><span>[6]</span></sup></p><div align="center">（a）超导量子比特的等效电路模型（b）超导量子比特的能级（c）不同种类的超导量子比特（Quantronium/ fluxonium/ transmon：一种量子比特装置）</div><p>&emsp;&emsp;<span>超导量子计算的研究始于20世纪90年代，后来在美国耶鲁大学Schoelkopf和Devoret研究组的推动下，将超导比特和微波腔进行耦合，实现了量子比特高保真度的读出和纠缠，加速了超导量子比特的研究。微波腔是一种容纳微波光子的谐振腔，比特的两个能级会对微波腔的光子产生扰动，这一信号的扰动就可以用来实现比特信号的读出。比特和比特之间还可以通过微波腔相连，当两个比特和腔是强耦合状态的时候，两个比特就会通过腔发生相互作用，物理学家通过这一相互作用实现了两比特操作。在2009年，基于超导比特和腔的耦合，实现了两比特的高保真度量子算法，使得超导量子计算得到了世界的广泛关注</span><sup><span>[7]</span></sup><span>。</span></p><p>&emsp;&emsp;<span>从2010年开始，美国企业界开始关注超导量子比特的研究，并加入了研究的大潮中。2014年9月，美国Google公司与美国加州大学圣芭芭拉分校合作研究超导量子比特，使用X-mon形式的超导量子比特，如图3.1.2（a）所示为一个9比特芯片，这个超导芯片的单比特和两比特保真度均可以超过99%，在X-mon结构中，近邻的两个比特（两个十字）可以直接发生相互作用</span><sup><span>[8]</span></sup><span>。2016年基于这个芯片实现了对氢分子能量的模拟</span><sup><span>[9]</span></sup><span>。</span></p><p>&emsp;&emsp;<span>2017年，Google发布了实现量子计算机对经典计算机的超越——“量子霸权”的发展蓝图</span><sup><span>[10]</span></sup><span>。2018年年初，其设计了72比特的量子芯片，并着手进行制备和测量，这是向实现量子霸权迈出的第一步。在Google公司加入量子计算大战的同时，美国国际商用机器有限公司（IBM）于2016年5月在云平台上发布了他们的5比特量子芯片，如图3.1.2（b）所示，这种比特形式叫做Transmon，Transmon的单比特保真度可以超过99%，两比特保真度可以超过95%，在Transmon的结构中，比特和比特之间仍然用腔连接。  </span></p><p>&emsp;&emsp;<span>2017年，IBM制备了20比特的芯片，并展示了用于50比特芯片的测量设备，同时也公布了对BeH</span><sub><span>2</span></sub><span>分子能量的模拟</span><sup><span>[11]</span></sup><span>，不仅如此，IBM还发布了Qiskit的量子软件包，促进了人们通过经典编程语言实现对量子计算机的操控。</span></p><p><img src="picture\3.1.2.png" width=600 ></p><div align="center">图3.1.2不同公司的超导量子芯片</div><p><span>（a）Google的九比特芯片（b）IBM的五比特芯片 （c）Rigetti公司的19比特芯片（d）本源量子公司的6比特芯片</span><sup><span>[8,11,12]</span></sup></p><p><span>	</span>&emsp;<span>除了美国Google公司和IBM公司外，美国Intel公司和荷兰代尔夫特理工大学也合作设计了17比特和49比特超导量子芯片，并在2018年的CES大会上发布，不过具体的性能参数还有待测试；美国初创公司Rigetti发布了19比特超导量子芯片，并演示了无人监督的机器学习算法，使人们见到了利用量子计算机加速机器学习的曙光</span><sup><span>[12]</span></sup><span>，如图3.1.2（c）所示。美国微软公司开发了Quantum Development Kit量子计算软件包，通过传统的软件产品Visual Studio就可以进行量子程序的编写。</span></p><p>&emsp;&emsp;<span>在国内，2017年，中国科学技术大学潘建伟研究组实现了多达十个超导比特的纠缠</span><sup><span>[13]</span></sup><span>，2018年年初，中科院和阿里云联合发布了11位量子比特芯片，保真度和Google的芯片不相上下，表明了我国在超导量子计算方面也不甘落后，并迎头赶上，同时，合肥本源量子公司也研发出6比特高保真度量子芯片，如图3.1.2（d）所示。南京大学和浙江大学也对超导量子比特进行了卓有成效的研究 </span><sup><span>[14,15]</span></sup><span>。在超导量子计算方面，可谓是国内国外百花齐放，百家争鸣。</span></p><h3 id='312-半导体量子芯片'><span>3.1.2 半导体量子芯片</span></h3><p>&emsp;&emsp;<span>由于经典计算机主要基于半导体技术，基于半导体开发量子计算也是物理学家研究的重点领域。相比超导量子计算微米级别的比特大小，量子点量子比特所占的空间是纳米级别，类似于大规模集成电路一样，更有希望实现大规模的量子芯片。现在的主要方法是在硅或者砷化镓等半导体材料上制备门控量子点来编码量子比特。编码量子比特的方案多种多样，在半导体系统中主要是通过对电子的电荷或者自旋量子态的控制实现。</span></p><p>&emsp;&emsp;<span>基于电荷位置的量子比特如图3.1.3所示，这是中国科学技术大学郭国平研究组利用GaAs/AlGaAs异质结制备的三电荷量子比特的样品，图中Q1、Q2和Q3作为探测器可以探测由U、L电极形成的量子点中电荷的状态，六个圆圈代表六个量子点，每种颜色代表一个电荷量子比特。以两个黄圈为例，当电子处于右边量子点中时，它处于量子比特的基态，代表0；当电子处于左边量子点时，它处于量子比特的激发态，代表1。这三个比特的相互作用可以通过量子点之间的电极调节，因而可以用来形成三比特控制操作</span><sup><span>[16]</span></sup><span>，不过这种三比特操作的保真度较低，提高保真度需要进一步抑制电荷噪声。</span></p><p><img src="picture\3.1.3.png" width=600 ></p><p><span>							</span><span>图3.1.3 中国科学技术大学郭国平研究组研制的三电荷量子比特半导体芯片</span><sup><span>[16]</span></sup></p><p>&emsp;&emsp;<span>基于自旋的量子比特如图3.1.4（a）所示，这是美国普林斯顿大学Petta研究组基于Si/SiGe异质结制备的两自旋量子比特芯片，图3.1.4(a)中带箭头的圆圈代表不同自旋方向的电子，自旋在磁场下劈裂产生的两个能级可以用于编码量子比特。这两个量子比特之间的耦合可以通过中间的电极M进行控制，实现两比特操作</span><sup><span>[17]</span></sup><span>。由于对电荷噪声有较高的免疫效果，自旋量子比特的退相干时间非常长，2014年，澳大利亚新南威尔士大学Morello研究组的实验结果显示自旋的退相干时间可以长达30秒，可以用来制备超高保真度的量子比特</span><sup><span>[18]</span></sup><span>。截止到2018年年初，已经有包括澳大利亚新南威尔士大学Dzurak组、美国普林斯顿大学Petta组和荷兰代尔夫特大学Vandersypen组实现了半导体自旋量子比特的两比特操控 </span><sup><span>[17,19-20]</span></sup><span> ，其单量子比特操控保真度已经可以超过99%，两比特操控保真度可以达到80%左右。2017年，日本Tarucha研究组报道了保真度达到99.9%的单量子比特，证明了自旋量子比特的超高保真度</span><sup><span>[21]</span></sup><span>。</span></p><p><img src="picture\3.1.4.png" width=600 ></p><div align="center">图3.1.4 不同研究组的两自旋量子比特半导体芯片</div><p><span>（a）美国普林斯顿大学Petta研究组（b）澳大利亚新南威尔士大学Dzurak组（c）荷兰代尔夫特理工大学Vandersypen组</span><sup><span>[12，14-15]</span></sup></p><p>&emsp;&emsp;<span>与超导量子计算类似，半导体量子计算也正在从科研界转向工业界，2016年，美国芯片巨头Intel公司开始投资代尔夫特理工大学的硅基量子计算研究，目标是在五年内制备出第一个二维表面码结构下的逻辑量子比特；2017年，澳大利亚也组建了硅量子计算公司，目标是五年内制备出第一台10比特硅基量子计算机。</span></p><p>&emsp;&emsp;<span>在国内，中国科学技术大学的郭国平研究组在传统的GaAs基量子比特方面积累了成熟的技术，实现了多达3个电荷量子比特的操控和读出，并基于电荷量子比特制备了品质因子更高的杂化量子比特</span><sup><span>[16,22-24]</span></sup><span>，同时，该组从2016年开启了硅基量子比特计划，计划五年内制备出硅基高保真度的两比特量子逻辑门，实现对国际水平的追赶，并为进一步的超越做准备。</span></p><h3 id='313-其他类型体系的量子计算体系'><span>3.1.3 其他类型体系的量子计算体系</span></h3><p><strong><span>1.</span></strong><span> </span><strong><span>离子阱量子计算</span></strong></p><p>&emsp;&emsp;<span>离子阱量子计算在影响范围方面仅次于超导量子计算。早在2003年，基于离子阱就可以演示两比特量子算法</span><sup><span>[25]</span></sup><span>。离子阱编码量子比特主要是利用真空腔中的电场囚禁少数离子，并通过激光冷却这些囚禁的离子</span><sup><span>[26]</span></sup><span>。以囚禁</span><mjx-container class="MathJax" jax="SVG" style="position: relative;"><svg xmlns="http://www.w3.org/2000/svg" width="4.457ex" height="1.756ex" role="img" focusable="false" viewBox="0 -694 1970 776" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" style="vertical-align: -0.186ex;"><defs><path id="MJX-10-TEX-I-1D44C" d="M66 637Q54 637 49 637T39 638T32 641T30 647T33 664T42 682Q44 683 56 683Q104 680 165 680Q288 680 306 683H316Q322 677 322 674T320 656Q316 643 310 637H298Q242 637 242 624Q242 619 292 477T343 333L346 336Q350 340 358 349T379 373T411 410T454 461Q546 568 561 587T577 618Q577 634 545 637Q528 637 528 647Q528 649 530 661Q533 676 535 679T549 683Q551 683 578 682T657 680Q684 680 713 681T746 682Q763 682 763 673Q763 669 760 657T755 643Q753 637 734 637Q662 632 617 587Q608 578 477 424L348 273L322 169Q295 62 295 57Q295 46 363 46Q379 46 384 45T390 35Q390 33 388 23Q384 6 382 4T366 1Q361 1 324 1T232 2Q170 2 138 2T102 1Q84 1 84 9Q84 14 87 24Q88 27 89 30T90 35T91 39T93 42T96 44T101 45T107 45T116 46T129 46Q168 47 180 50T198 63Q201 68 227 171L252 274L129 623Q128 624 127 625T125 627T122 629T118 631T113 633T105 634T96 635T83 636T66 637Z"></path><path id="MJX-10-TEX-I-1D44F" d="M73 647Q73 657 77 670T89 683Q90 683 161 688T234 694Q246 694 246 685T212 542Q204 508 195 472T180 418L176 399Q176 396 182 402Q231 442 283 442Q345 442 383 396T422 280Q422 169 343 79T173 -11Q123 -11 82 27T40 150V159Q40 180 48 217T97 414Q147 611 147 623T109 637Q104 637 101 637H96Q86 637 83 637T76 640T73 647ZM336 325V331Q336 405 275 405Q258 405 240 397T207 376T181 352T163 330L157 322L136 236Q114 150 114 114Q114 66 138 42Q154 26 178 26Q211 26 245 58Q270 81 285 114T318 219Q336 291 336 325Z"></path><path id="MJX-10-TEX-N-2B" d="M56 237T56 250T70 270H369V420L370 570Q380 583 389 583Q402 583 409 568V270H707Q722 262 722 250T707 230H409V-68Q401 -82 391 -82H389H387Q375 -82 369 -68V230H70Q56 237 56 250Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mi"><use data-c="1D44C" xlink:href="#MJX-10-TEX-I-1D44C"></use></g><g data-mml-node="mi" transform="translate(763,0)"><use data-c="1D44F" xlink:href="#MJX-10-TEX-I-1D44F"></use></g><g data-mml-node="mo" transform="translate(1192,0)"><use data-c="2B" xlink:href="#MJX-10-TEX-N-2B"></use></g></g></g></svg><mjx-assistive-mml unselectable="on" display="inline"><math xmlns="http://www.w3.org/1998/Math/MathML"><mi>Y</mi><mi>b</mi><mo>+</mo></math></mjx-assistive-mml></mjx-container><script type="math/tex">Yb+</script><span>为例，图3.1.5（a）是离子阱装置图，20个</span><mjx-container class="MathJax" jax="SVG" style="position: relative;"><svg xmlns="http://www.w3.org/2000/svg" width="4.457ex" height="1.756ex" role="img" focusable="false" viewBox="0 -694 1970 776" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" style="vertical-align: -0.186ex;"><defs><path id="MJX-10-TEX-I-1D44C" d="M66 637Q54 637 49 637T39 638T32 641T30 647T33 664T42 682Q44 683 56 683Q104 680 165 680Q288 680 306 683H316Q322 677 322 674T320 656Q316 643 310 637H298Q242 637 242 624Q242 619 292 477T343 333L346 336Q350 340 358 349T379 373T411 410T454 461Q546 568 561 587T577 618Q577 634 545 637Q528 637 528 647Q528 649 530 661Q533 676 535 679T549 683Q551 683 578 682T657 680Q684 680 713 681T746 682Q763 682 763 673Q763 669 760 657T755 643Q753 637 734 637Q662 632 617 587Q608 578 477 424L348 273L322 169Q295 62 295 57Q295 46 363 46Q379 46 384 45T390 35Q390 33 388 23Q384 6 382 4T366 1Q361 1 324 1T232 2Q170 2 138 2T102 1Q84 1 84 9Q84 14 87 24Q88 27 89 30T90 35T91 39T93 42T96 44T101 45T107 45T116 46T129 46Q168 47 180 50T198 63Q201 68 227 171L252 274L129 623Q128 624 127 625T125 627T122 629T118 631T113 633T105 634T96 635T83 636T66 637Z"></path><path id="MJX-10-TEX-I-1D44F" d="M73 647Q73 657 77 670T89 683Q90 683 161 688T234 694Q246 694 246 685T212 542Q204 508 195 472T180 418L176 399Q176 396 182 402Q231 442 283 442Q345 442 383 396T422 280Q422 169 343 79T173 -11Q123 -11 82 27T40 150V159Q40 180 48 217T97 414Q147 611 147 623T109 637Q104 637 101 637H96Q86 637 83 637T76 640T73 647ZM336 325V331Q336 405 275 405Q258 405 240 397T207 376T181 352T163 330L157 322L136 236Q114 150 114 114Q114 66 138 42Q154 26 178 26Q211 26 245 58Q270 81 285 114T318 219Q336 291 336 325Z"></path><path id="MJX-10-TEX-N-2B" d="M56 237T56 250T70 270H369V420L370 570Q380 583 389 583Q402 583 409 568V270H707Q722 262 722 250T707 230H409V-68Q401 -82 391 -82H389H387Q375 -82 369 -68V230H70Q56 237 56 250Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mi"><use data-c="1D44C" xlink:href="#MJX-10-TEX-I-1D44C"></use></g><g data-mml-node="mi" transform="translate(763,0)"><use data-c="1D44F" xlink:href="#MJX-10-TEX-I-1D44F"></use></g><g data-mml-node="mo" transform="translate(1192,0)"><use data-c="2B" xlink:href="#MJX-10-TEX-N-2B"></use></g></g></g></svg><mjx-assistive-mml unselectable="on" display="inline"><math xmlns="http://www.w3.org/1998/Math/MathML"><mi>Y</mi><mi>b</mi><mo>+</mo></math></mjx-assistive-mml></mjx-container><script type="math/tex">Yb+</script><span>连成一排，每一个离子在超精细相互作用下产生的两个能级作为量子比特的两个能级，标记为</span><mjx-container class="MathJax" jax="SVG" style="position: relative;"><svg xmlns="http://www.w3.org/2000/svg" width="3.52ex" height="2.26ex" role="img" focusable="false" viewBox="0 -749.5 1556 999" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" style="vertical-align: -0.564ex;"><defs><path id="MJX-13-TEX-N-7C" d="M139 -249H137Q125 -249 119 -235V251L120 737Q130 750 139 750Q152 750 159 735V-235Q151 -249 141 -249H139Z"></path><path id="MJX-13-TEX-N-2191" d="M27 414Q17 414 17 433Q17 437 17 439T17 444T19 447T20 450T22 452T26 453T30 454T36 456Q80 467 120 494T180 549Q227 607 238 678Q240 694 251 694Q259 694 261 684Q261 677 265 659T284 608T320 549Q340 525 363 507T405 479T440 463T467 455T479 451Q483 447 483 433Q483 413 472 413Q467 413 458 416Q342 448 277 545L270 555V-179Q262 -193 252 -193H250H248Q236 -193 230 -179V555L223 545Q192 499 146 467T70 424T27 414Z"></path><path id="MJX-13-TEX-N-3E" d="M84 520Q84 528 88 533T96 539L99 540Q106 540 253 471T544 334L687 265Q694 260 694 250T687 235Q685 233 395 96L107 -40H101Q83 -38 83 -20Q83 -19 83 -17Q82 -10 98 -1Q117 9 248 71Q326 108 378 132L626 250L378 368Q90 504 86 509Q84 513 84 520Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mo" transform="translate(0 -0.5)"><use data-c="7C" xlink:href="#MJX-13-TEX-N-7C"></use></g><g data-mml-node="mo" transform="translate(278,0)"><use data-c="2191" xlink:href="#MJX-13-TEX-N-2191"></use><use data-c="3E" xlink:href="#MJX-13-TEX-N-3E" transform="translate(500,0)"></use></g></g></g></svg><mjx-assistive-mml unselectable="on" display="inline"><math xmlns="http://www.w3.org/1998/Math/MathML"><mo stretchy="false">|</mo><mo stretchy="false">↑&gt;</mo></math></mjx-assistive-mml></mjx-container><script type="math/tex">|↑></script><span>和</span><mjx-container class="MathJax" jax="SVG" style="position: relative;"><svg xmlns="http://www.w3.org/2000/svg" width="3.52ex" height="2.26ex" role="img" focusable="false" viewBox="0 -749.5 1556 999" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" style="vertical-align: -0.564ex;"><defs><path id="MJX-12-TEX-N-7C" d="M139 -249H137Q125 -249 119 -235V251L120 737Q130 750 139 750Q152 750 159 735V-235Q151 -249 141 -249H139Z"></path><path id="MJX-12-TEX-N-2193" d="M473 86Q483 86 483 67Q483 63 483 61T483 56T481 53T480 50T478 48T474 47T470 46T464 44Q428 35 391 14T316 -55T264 -168Q264 -170 263 -173T262 -180T261 -184Q259 -194 251 -194Q242 -194 238 -176T221 -121T180 -49Q169 -34 155 -21T125 2T95 20T67 33T44 42T27 47L21 49Q17 53 17 67Q17 87 28 87Q33 87 42 84Q158 52 223 -45L230 -55V312Q230 391 230 482T229 591Q229 662 231 676T243 693Q244 694 251 694Q264 692 270 679V-55L277 -45Q307 1 353 33T430 76T473 86Z"></path><path id="MJX-12-TEX-N-3E" d="M84 520Q84 528 88 533T96 539L99 540Q106 540 253 471T544 334L687 265Q694 260 694 250T687 235Q685 233 395 96L107 -40H101Q83 -38 83 -20Q83 -19 83 -17Q82 -10 98 -1Q117 9 248 71Q326 108 378 132L626 250L378 368Q90 504 86 509Q84 513 84 520Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mo" transform="translate(0 -0.5)"><use data-c="7C" xlink:href="#MJX-12-TEX-N-7C"></use></g><g data-mml-node="mo" transform="translate(278,0)"><use data-c="2193" xlink:href="#MJX-12-TEX-N-2193"></use><use data-c="3E" xlink:href="#MJX-12-TEX-N-3E" transform="translate(500,0)"></use></g></g></g></svg><mjx-assistive-mml unselectable="on" display="inline"><math xmlns="http://www.w3.org/1998/Math/MathML"><mo stretchy="false">|</mo><mo stretchy="false">↓&gt;</mo></math></mjx-assistive-mml></mjx-container><script type="math/tex">|↓></script><span>。图3.1.5（b）表示通过合适的激光可以将离子调节到基态，然后图3.1.5（c）表示可以通过观察荧光来探测比特是否处于</span><mjx-container class="MathJax" jax="SVG" style="position: relative;"><svg xmlns="http://www.w3.org/2000/svg" width="3.52ex" height="2.26ex" role="img" focusable="false" viewBox="0 -749.5 1556 999" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" style="vertical-align: -0.564ex;"><defs><path id="MJX-13-TEX-N-7C" d="M139 -249H137Q125 -249 119 -235V251L120 737Q130 750 139 750Q152 750 159 735V-235Q151 -249 141 -249H139Z"></path><path id="MJX-13-TEX-N-2191" d="M27 414Q17 414 17 433Q17 437 17 439T17 444T19 447T20 450T22 452T26 453T30 454T36 456Q80 467 120 494T180 549Q227 607 238 678Q240 694 251 694Q259 694 261 684Q261 677 265 659T284 608T320 549Q340 525 363 507T405 479T440 463T467 455T479 451Q483 447 483 433Q483 413 472 413Q467 413 458 416Q342 448 277 545L270 555V-179Q262 -193 252 -193H250H248Q236 -193 230 -179V555L223 545Q192 499 146 467T70 424T27 414Z"></path><path id="MJX-13-TEX-N-3E" d="M84 520Q84 528 88 533T96 539L99 540Q106 540 253 471T544 334L687 265Q694 260 694 250T687 235Q685 233 395 96L107 -40H101Q83 -38 83 -20Q83 -19 83 -17Q82 -10 98 -1Q117 9 248 71Q326 108 378 132L626 250L378 368Q90 504 86 509Q84 513 84 520Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mo" transform="translate(0 -0.5)"><use data-c="7C" xlink:href="#MJX-13-TEX-N-7C"></use></g><g data-mml-node="mo" transform="translate(278,0)"><use data-c="2191" xlink:href="#MJX-13-TEX-N-2191"></use><use data-c="3E" xlink:href="#MJX-13-TEX-N-3E" transform="translate(500,0)"></use></g></g></g></svg><mjx-assistive-mml unselectable="on" display="inline"><math xmlns="http://www.w3.org/1998/Math/MathML"><mo stretchy="false">|</mo><mo stretchy="false">↑&gt;</mo></math></mjx-assistive-mml></mjx-container><script type="math/tex">|↑></script><span>。离子阱的读出和初始化效率可以接近100%，这是它超过前两种比特形式的优势。单比特的操控可以通过加入满足比特两个能级差的频率的激光实现，两比特操控可以通过调节离子之间的库伦相互作用实现。</span></p><p><img src="picture\3.1.5.png" width=600 ></p><p><span>							</span><span>图3.1.5 （a）离子阱装置（b）比特初始化（c）通过荧光探测测量比特状态</span><sup><span>[23]</span></sup></p><p>&emsp;&emsp;<span>2016年，美国马里兰大学C. Monroe组基于离子阱制备了五比特可编程量子计算机，其单比特和两比特的操作保真度平均可以达到98%，运行Deutsch–Jozsa算法的保真度可以达到95%</span><sup><span>[27]</span></sup><span>。他们还进一步将离子阱的五比特量子芯片和IBM的五比特超导芯片在性能方面进行了比较，发现离子阱量子计算的保真度和比特的相干时间更长，而超导芯片的速度更快。在比特扩展方面，两者都有一定的难度，不过在20-100个比特这个数目内，两者现在可能都有一定的突破</span><sup><span>[28]</span></sup><span>。除了量子计算，离子阱也同样用来进行量子模拟，如图3.1.6所示。2017年，C. Monroe组使用了53个离子实现了多体相互作用相位跃迁的观测，读出效率高达99%，是迄今为止比特数目最多的高读出效率量子模拟器</span><sup><span>[29]</span></sup><span>。虽然不能单独控制单个比特的操作，但是这也证明了离子阱量子计算的巨大潜力。</span></p><p><img src="picture\3.1.6.png" width=600 ></p><p><span>																	</span><span>图3.1.6 利用53个离子实现多体相互作用观测的量子模拟器示意图</span><sup><span>[29]</span></sup></p><p>&emsp;&emsp;<span>对于两比特操控速度问题，这一直是限制离子阱量子计算发展的主要因素。两比特门操作速度最快也需要100 us，远远高于超导量子比特和半导体量子比特的200 ns。2018年，牛津大学的Lucas组通过改进激光脉冲，达到了最快480 ns的操作速度，展现了离子阱量子计算的丰富前景</span><sup><span>[30]</span></sup><span>。</span></p><p>&emsp;&emsp;<span>2015年，马里兰大学和杜克大学联合成立了IonQ量子计算公司，2017年7月，该公司获得两千万美元的融资，计划在2018年将自己的量子计算机推向市场，这是继超导量子计算之后第二个能够面向公众的商用量子计算体系。</span></p><p>&emsp;&emsp;<span>国内的离子阱量子计算也于近几年发展起来。清华大学的金奇奂研究组和中国科学技术大学的李传锋、黄运峰研究组已经实现了对一个离子的操控，做了一些量子模拟方面的工作</span><sup><span>[31,32]</span></sup><span>。清华大学计划在五年内实现单个离子阱中15-20个离子的相干操控，演示量子算法，说明中国也已经加入到了离子阱量子计算的竞赛中。</span></p><p><strong><span>2</span></strong><span>.</span><strong><span>原子量子计算</span></strong></p><p>&emsp;&emsp;<span>除了利用离子，较早的方法还包括直接利用原子来进行量子计算。不同于离子，原子不带电，原子之间没有库伦相互作用，因此可以非常紧密地连在一起而不相互影响。原子可以通过磁场或者光场来囚禁，用后者可以形成一维、二维甚至三维的原子阵列，如图3.1.7所示</span><sup><span>[33]</span></sup><span>。</span></p><p><img src="picture\3.1.7.png" width=600 ></p><p><span> </span></p><p><span>							</span><span>图3.1.7 用光场囚禁的多原子阵列（a）一维阵列（b）二维阵列（c）三维阵列</span><sup><span>[33]</span></sup></p><p>&emsp;&emsp;<span>原子可以通过边带冷却的方式冷却到基态，然后同样可以通过激光对比特进行操控，比特的读出也类似于离子阱的方法。由于没有库伦相互作用，两比特操控在原子中较难实现，它们必须首先被激发到里德堡态，原子的能量升高，波函数展宽，再通过里德堡阻塞机制实现两比特操控。尽管迄今为止，原子量子比特的两比特纠缠的保真度只有75%，还远远落后于离子阱和超导比特，但是2016年一篇论文中，通过理论计算，经过波形修饰的两个原子量子比特的纠缠保真度可以达到99.99%</span><sup><span>[34]</span></sup><span>。</span></p><p>&emsp;&emsp;<span>除了传统的基于量子逻辑门进行量子计算的方法，还有一种实现量子计算的方式是对不同拓扑结构的量子纠缠态进行测量，这两种方法在解决问题的范围上是等价的。在这方面，中国科学技术大学的潘建伟研究组进行了卓有成果的研究，2016年实现了600对量子比特的纠缠，纠缠保真度在79%左右</span><sup><span>[35]</span></sup><span>，根据下一步计划，将基于成对的量子比特纠缠实现约百个量子比特集体的纠缠，开展基于测量的量子计算方法。</span></p><p>&emsp;&emsp;<span>基于原子的量子模拟可能比量子计算更加受到科研界的关注。利用光晶格中的原子，可以研究强关联多体系统中的诸多物理问题，比如玻色子的超流态到Mott绝缘体的相变和费米子的Fermi-Hubbard模型，经典磁性（铁磁、反铁磁和自旋阻挫），拓扑结构或者自旋依赖的能带结构以及BCS-BEC交叉等问题。现在聚焦的主要是量子磁性问题、量子力学中的非平衡演化问题和无序问题</span><sup><span>[36]</span></sup><span>。在基于原子的量子模拟方面，2017年哈佛大学Lukin组甚至利用51个原子对多体相互作用的动态相变进行了模拟</span><sup><span>[37]</span></sup><span>。我国在2016年，中国科学技术大学的潘建伟研究组对玻色-爱因斯坦凝聚态的二维自旋-轨道耦合进行了模拟，为研究新奇的量子相打开了大门</span><sup><span>[38]</span></sup><span>。</span></p><p><strong><span>3</span></strong><span>.</span><strong><span>核自旋量子计算</span></strong></p><p>&emsp;&emsp;<span>1997年，斯坦福大学的Chuang等人提出利用核磁共振来进行量子计算的实验</span><sup><span>[39]</span></sup><span>，之后，基于核自旋的量子计算迅速发展，Grover搜索算法</span><sup><span>[40]</span></sup><span>和七比特Shor算法</span><sup><span>[41]</span></sup><span>相继在核自旋上实现。迄今为止，它的单比特和两比特保真度可以分别达到99.97%和99.5%</span><sup><span>[42]</span></sup><span>。</span></p><p>&emsp;&emsp;<span>这种方法一般是利用液体中分子的核自旋进行实验，由于分子内部电子间复杂的排斥作用，不同的核自旋具有不同的共振频率，因而可以被单独操控；不同的核自旋通过电子间接发生相互作用，可以进行两比特操作。下图是一种用于核磁共振实验的分子，里面的两个C原子用13C标记，加上外面5个F原子，它们7个构成实验用的7个比特，表中是比特频率、相干时间和相互作用能。</span></p><p><img src="picture\3.1.8.png" width=600 ></p><p><span>											</span><span>图3.1.8 用于Shor算法的核磁共振实验的分子结构及相关参数</span><sup><span>[41]</span></sup></p><p>&emsp;&emsp;<span>不过这种量子计算方式依赖于分子结构，难以扩展；而且是利用多个分子的集体效应进行操控，初始化比较有难度，该方向还有待进一步的突破。国内从事核自旋量子计算实验的主要有清华大学的龙桂鲁课题组，2017年，该课题组将核自旋量子计算连接到云端，向公众开放使用，该云服务包含四个量子比特，比特保真度超过98%。</span></p><p><strong><span>4</span></strong><span>.</span><strong><span>拓扑量子计算</span></strong></p><p>&emsp;&emsp;<span>拓扑量子计算是一种被认为对噪声有极大免疫的量子计算形式，它利用的是一种叫做非阿贝尔任意子的准粒子</span><sup><span>[43]</span></sup><span>。为了实现量子计算，首先要在某种系统中创造出一系列任意子-反任意子，然后将这些任意子的两种熔接（fusion）结果作为量子比特的两个能级，再利用编织（braiding）进行量子比特的操控，最后通过测量任意子的熔接结果得到比特的末态。这一系列操作对噪声和退相干都有极大地免疫，因为唯一改变量子态的机制就是随机产生的任意子-反任意子对干扰了比特的编织过程，但这种情况在低温下是非常罕见的，噪声和其他量子比特系统常见的电荷等相比，影响是非常小的。</span></p><p>&emsp;&emsp;<span>现在国际上进行拓扑量子计算研究的实验组主要是荷兰代尔夫特理工大学的Kouwenhoven研究组和丹麦哥本哈根大学的Marcus研究组。研究组在实验中获得任意子的方法就是得到马约拉纳费米子，当s波超导体和一条具有强烈自旋-轨道耦合效应的半导体纳米线耦合在一起时，在纳米线的两端就可以产生马约拉纳费米子，实验中可以观察到马约拉纳费米子引起的电导尖峰，当这些纳米线可以很好地外延生长成阵列时，就可以进行比特实验。从2012年首次在半导体-超导体异质结中观察到马约拉纳零模的特征开始</span><sup><span>[44]</span></sup><span>，到2018年观察到量子化的电导平台</span><sup><span>[45]</span></sup><span>，Kouwenhoven研究组的实验已经让大多数科学家认同了可以在这种体系中产生马约拉纳费米子，不仅如此，进行拓扑量子计算的Al-InSb和Al-InP两种半导体-超导体耦合的纳米线阵列已经先后在实验中实现</span><sup><span>[46,47]</span></sup><span>。未来将尝试进行编织实验，实现世界上第一个拓扑量子比特。</span></p><p><img src="picture\3.1.9.png" width=600 ></p><p><span>图3.1.9（a）观察马约拉纳费米子的器件结构（b）实验观察到的量子化电导平台（c）InSb纳米线阵列（d）Al-InSb异质结</span><sup><span>[45,46]</span></sup></p><p>&emsp;&emsp;<span>除了利用半导体-超导体异质结可以得到马约拉纳费米子，其他获得的方式还包括量子霍尔效应、分数量子霍尔效应、二维无自旋超导体和超导体上的铁磁原子链。最近在量子反常霍尔绝缘体-超导结构中发现的一维马约拉纳模式也被认为可以用于拓扑量子计算</span><sup><span>[48]</span></sup><span>，但是基于马约拉纳费米子进行的拓扑量子计算仍然不能满足单比特任意的旋转，它仍然需要和其他形式的量子比特互补或者通过某种方法进行近似的量子操作，不过，对高质量量子比特的追求仍然推动着科学家研究拓扑量子比特。</span></p><p>&emsp;&emsp;<span>不同于其他美国巨头公司，微软公司在量子计算方面押注在拓扑量子计算，认为现在量子比特的噪声仍然太大，发明一种保真度更高的量子比特将有助于量子比特的高质量扩展，进而更容易实现量子计算。其与荷兰代尔夫特理工大学、丹麦哥本哈根大学、瑞士苏黎世理工大学、美国加州大学圣芭芭拉分校、普渡大学和马里兰大学在实验和理论上展开了广泛的合作，目标是五年内制备出世界上第一个拓扑量子比特，其拓扑保护的时间可长达一秒。中国在拓扑量子计算方面也开始发力，2017年12月1日，中国科学院拓扑量子计算卓越创新中心在中国科学院大学启动筹建，国科大卡弗里理论科学研究所所长张富春任中心负责人。未来几年可能是中国拓扑量子计算的高速发展期。</span></p><p>&emsp;&emsp;<span>从目前量子计算的发展脉络来看，各种体系有先有后，有的量子计算方式现在已经让其他方式望尘莫及；有的量子计算方式还有关键技术亟待突破；也有的量子计算方式正在萌芽之中。就像群雄逐鹿中原，鹿死谁手，尚未可知。有观点认为，未来量子计算机的实现可能是多种途径混合的，比如利用半导体量子比特的长相干时间做量子存储，超导量子比特的高保真操控和快速读出做计算等等；也有观点认为，根据不同的量子计算用途，可能使用不同的量子计算方法，就像CPU更适合任务多而数据少的日常处理，而GPU更适合图像处理这种单一任务但数据量大的处理。无论未来的量子计算发展情况如何，中国在各个量子计算方式上都进行了跟随式研究，这是我国现有的技术发展水平和国家实力的体现。随着国家对相关科研的进一步投入，相信未来在量子计算的实现方面，也可以领先于世界其他国家，实现弯道超车。</span></p><h2 id='32-量子计算机硬件'><span>3.2 量子计算机硬件</span></h2><p>&emsp;&emsp;<span>由上一章节知道，量子计算机的核心——量子芯片，具有多种不同的呈现形式。绝大多数量子芯片，名副其实地，是一块芯片，由集成在基片表面的电路结构构建出包含各类量子比特的量子电路。但量子芯片不等同于量子计算机，它仅仅是量子计算机中的一个核心结构。</span></p><p>&emsp;&emsp;<span>量子计算机，是建立在量子芯片基础上的运算机器。其中最关键的两点是：如何将运算任务转化为对量子芯片中量子比特的控制指令；以及如何从量子芯片上量子比特的量子态中提取出运算结果。除此以外，更加基础地，量子计算机需要提供能维持量子芯片运行的基本环境。以上这些都需要特殊的硬件系统来实现，它们实现了量子计算机软件层到量子计算机芯片层的交互。</span></p><p>&emsp;&emsp;<span>量子计算机硬件，主要包含两个部分，一个是量子芯片基础环境，用于提供量子芯片所必需的运行环境；另一个是量子计算机控制系统，用于实现对量子芯片的控制，以完成运算过程并获得运算结果。鉴于目前国际主流量子计算研发团队主要聚焦超导量子芯片与半导体量子芯片这两种体系，同时它们的量子计算机硬件有相当多的共性，因此以下将具体展开介绍这两种体系适用的量子计算机硬件。</span></p><h3 id='321-量子芯片支持系统'><span>3.2.1 量子芯片支持系统</span></h3><p>&emsp;&emsp;<span>超导量子芯片和半导体量子芯片对运行环境的需求类似，最基本的需求均为接近绝对零度的极低温环境。其主要原因在于两种体系的量子比特的能级接近，基本上都在GHz频段。该频段内的热噪声对应的噪声温度约在300 mK以上。为了抑制环境噪声，必须使量子芯片工作在远低于其能级对应的热噪声温度。稀释制冷机能够提供量子芯片所需的工作温度和环境。利用3He/4He混合气实现稀释致冷，稀释制冷机能够将量子芯片冷却到10 mK以下的极低温。在2018年IBM&#39;s inaugural Index 开发者大会上，IBM展示的“50位量子计算机原型机”，实际上就是维持50位量子芯片运行的稀释制冷机以及其内部的线路构造。</span></p><p><img src="picture\3.2.1.png" width=300 ></p><div align="center">图3.2.1 IBM的稀释制冷机，用于容纳50位量子芯片</div><p>&emsp;&emsp;<span>图3.2.1展示了IBM的稀释制冷机。除了稀释制冷机本身以外，量子计算研究人员需要花费大量精力设计、改造、优化稀释制冷机内部的控制线路与屏蔽装置，以全面地抑制可能造成量子芯片性能下降的噪声因素。其中最主要的三点是热噪声、环境电磁辐射噪声以及控制线路带来的噪声。</span></p><p>&emsp;&emsp;<span>抑制热噪声的主要方式，是在稀释制冷机的基础上，为量子芯片设计能迅速带走热量的热沉装置，该装置需要兼容量子芯片的封装。图3.2.2是包含多种热沉结构的量子芯片封装照片，包含半导体量子芯片以及超导量子芯片，其中热沉主要使用了无氧紫铜材料。 </span></p><p><img src="picture\3.2.2.png"  width="600" /></p><p><span>																			</span><span>图3.2.2 量子芯片的热沉与封装</span><sup><span>[49]</span></sup></p><p>&emsp;&emsp;<span>环境电磁辐射噪声是较难控制的环境干扰，其中又可以分为电场辐射以及磁场辐射。电场辐射主要产生来源是稀释制冷机中更高温层的红外辐射，其频段和量子比特的能级相仿，因此会加速量子比特的弛豫过程，从而降低量子芯片的性能。磁场辐射来源复杂，诸如地磁场、带磁元件的剩磁、控制电流引发的磁场等，它们会干扰量子比特的能级，破坏量子芯片的相干时间。可工作于极低温环境的电磁屏蔽技术，一直是伴着量子计算研究人员的需求发展的。图3.2.3展示了伯克利大学Sidiqqi研究组使用的一种红外辐射屏蔽技术。他们设计了用于包裹量子芯片的屏蔽桶，并在桶的内壁使用了一种黑色的特殊涂层，用于增强对红外辐射的吸收。</span></p><p><img src="picture\3.2.3.png" width=300 ></p><div align="center">图3.2.3 红外辐射屏蔽装置</div><p>&emsp;&emsp;<span>控制线路携带的噪声，主要也是由热效应引起的。由于量子芯片工作环境的特殊性，从量子计算机控制系统发出的控制信号，要从稀释制冷机接入，经过漫长的低温线路，最后到达量子芯片。而热噪声近似和温度成正比，可想而知，从室温（约300 K）传入的噪声，相比前面所说的量子比特能级对应的噪声温度（月300 mK）相差了近1000倍。这么大的噪声如果直接到达维持在10 mK温度的量子芯片，则会直接破坏量子比特的量子相干性。解决办法是尽可能地抑制从室温传入的信号，使从室温传入的噪声降至和量子芯片的工作温度一个级别。同时，我们还要设法将除了控制信号以外的其他所有频段的无关信号一并滤除，而这，则是通过各类特种低温滤波器实现的。图3.2.4是适用于超导量子芯片的量子芯片支持系统中极低温控制线路的设置。</span></p><p><img src="picture\3.2.4.png" width="600" /></p><p><span>													</span><span>图 3.2.4 量子芯片支持系统中极低温控制线路的设置</span><sup><span>[49]</span></sup><span> </span></p><h3 id='322-量子计算机控制系统'><span>3.2.2 量子计算机控制系统</span></h3><p>&emsp;&emsp;<span>量子计算机控制系统提供的是以下两个关键问题的解决方案：如何将运算任务转化为对量子芯片中量子比特的控制指令；以及如何从量子芯片上量子比特的量子态中提取出运算结果。其背后的基础是，如何实施量子逻辑门操作，以及如何实施量子比特读取。</span></p><p><img src="picture\3.2.5.png" width="600" /></p><div align="center">图3.2.5 量子计算机控制系统工作原理</div><p>&emsp;&emsp;<span>量子逻辑门操作的本质是使一组量子比特经过指定的受控量子演化过程。例如，使得量子比特从基态（或者称</span><mjx-container class="MathJax" jax="SVG" style="position: relative;"><svg xmlns="http://www.w3.org/2000/svg" width="2.64ex" height="2.262ex" role="img" focusable="false" viewBox="0 -750 1167 1000" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" style="vertical-align: -0.566ex;"><defs><path id="MJX-14-TEX-N-7C" d="M139 -249H137Q125 -249 119 -235V251L120 737Q130 750 139 750Q152 750 159 735V-235Q151 -249 141 -249H139Z"></path><path id="MJX-14-TEX-N-30" d="M96 585Q152 666 249 666Q297 666 345 640T423 548Q460 465 460 320Q460 165 417 83Q397 41 362 16T301 -15T250 -22Q224 -22 198 -16T137 16T82 83Q39 165 39 320Q39 494 96 585ZM321 597Q291 629 250 629Q208 629 178 597Q153 571 145 525T137 333Q137 175 145 125T181 46Q209 16 250 16Q290 16 318 46Q347 76 354 130T362 333Q362 478 354 524T321 597Z"></path><path id="MJX-14-TEX-N-27E9" d="M55 732Q56 739 61 744T75 750Q85 750 92 740Q95 733 186 494T278 250T187 6T92 -240Q85 -250 75 -250Q67 -250 62 -245T55 -232Q55 -227 145 11Q236 248 236 250T145 489Q55 727 55 732Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mo" transform="translate(0 -0.5)"><use data-c="7C" xlink:href="#MJX-14-TEX-N-7C"></use></g><g data-mml-node="mn" transform="translate(278,0)"><use data-c="30" xlink:href="#MJX-14-TEX-N-30"></use></g><g data-mml-node="mo" transform="translate(778,0)"><use data-c="27E9" xlink:href="#MJX-14-TEX-N-27E9"></use></g></g></g></svg><mjx-assistive-mml unselectable="on" display="inline"><math xmlns="http://www.w3.org/1998/Math/MathML"><mo stretchy="false">|</mo><mn>0</mn><mo fence="false" stretchy="false">⟩</mo></math></mjx-assistive-mml></mjx-container><script type="math/tex">|0 \rangle</script><span>态）到激发态（或者称</span><mjx-container class="MathJax" jax="SVG" style="position: relative;"><svg xmlns="http://www.w3.org/2000/svg" width="2.64ex" height="2.262ex" role="img" focusable="false" viewBox="0 -750 1167 1000" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" style="vertical-align: -0.566ex;"><defs><path id="MJX-15-TEX-N-7C" d="M139 -249H137Q125 -249 119 -235V251L120 737Q130 750 139 750Q152 750 159 735V-235Q151 -249 141 -249H139Z"></path><path id="MJX-15-TEX-N-31" d="M213 578L200 573Q186 568 160 563T102 556H83V602H102Q149 604 189 617T245 641T273 663Q275 666 285 666Q294 666 302 660V361L303 61Q310 54 315 52T339 48T401 46H427V0H416Q395 3 257 3Q121 3 100 0H88V46H114Q136 46 152 46T177 47T193 50T201 52T207 57T213 61V578Z"></path><path id="MJX-15-TEX-N-27E9" d="M55 732Q56 739 61 744T75 750Q85 750 92 740Q95 733 186 494T278 250T187 6T92 -240Q85 -250 75 -250Q67 -250 62 -245T55 -232Q55 -227 145 11Q236 248 236 250T145 489Q55 727 55 732Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mo" transform="translate(0 -0.5)"><use data-c="7C" xlink:href="#MJX-15-TEX-N-7C"></use></g><g data-mml-node="mn" transform="translate(278,0)"><use data-c="31" xlink:href="#MJX-15-TEX-N-31"></use></g><g data-mml-node="mo" transform="translate(778,0)"><use data-c="27E9" xlink:href="#MJX-15-TEX-N-27E9"></use></g></g></g></svg><mjx-assistive-mml unselectable="on" display="inline"><math xmlns="http://www.w3.org/1998/Math/MathML"><mo stretchy="false">|</mo><mn>1</mn><mo fence="false" stretchy="false">⟩</mo></math></mjx-assistive-mml></mjx-container><script type="math/tex">|1 \rangle</script><span>态)，可以借助一个单量子比特 </span><mjx-container class="MathJax" jax="SVG" style="position: relative;"><svg xmlns="http://www.w3.org/2000/svg" width="1.29ex" height="1ex" role="img" focusable="false" viewBox="0 -431 570 442" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" style="vertical-align: -0.025ex;"><defs><path id="MJX-16-TEX-I-1D70B" d="M132 -11Q98 -11 98 22V33L111 61Q186 219 220 334L228 358H196Q158 358 142 355T103 336Q92 329 81 318T62 297T53 285Q51 284 38 284Q19 284 19 294Q19 300 38 329T93 391T164 429Q171 431 389 431Q549 431 553 430Q573 423 573 402Q573 371 541 360Q535 358 472 358H408L405 341Q393 269 393 222Q393 170 402 129T421 65T431 37Q431 20 417 5T381 -10Q370 -10 363 -7T347 17T331 77Q330 86 330 121Q330 170 339 226T357 318T367 358H269L268 354Q268 351 249 275T206 114T175 17Q164 -11 132 -11Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mi"><use data-c="1D70B" xlink:href="#MJX-16-TEX-I-1D70B"></use></g></g></g></svg><mjx-assistive-mml unselectable="on" display="inline"><math xmlns="http://www.w3.org/1998/Math/MathML"><mi>π</mi></math></mjx-assistive-mml></mjx-container><script type="math/tex">π</script><span> 门来实现。实施这样的受控量子演化过程，需要借助精密的脉冲信号，通常可以使用高速任意波形发生器、商用微波源、混频线路等的组合来实现。当然，通过对光场、磁场甚至机械声波的调控，也可以在某些量子芯片体系中实现量子逻辑门操作。商用设备的性能越高，越容易实现高保真度的量子逻辑门操作，当然，前提是量子比特的质量可靠。图3.2.6显示了商用仪器的相噪指标对操作保真度的影响。</span></p><p><img src="picture\3.2.6.png" width="400" /></p><p><span>															</span><span>图3.2.6 微波源相位噪声对操作保真度的影响</span><sup><span>[50]</span></sup></p><p>&emsp;&emsp;<span>量子态的读取有多种方式，但考虑到需要读取量子芯片中某个或者某组量子比特的量子态，必须要使用一种称之为非破坏性测量的方式，以消除因测量导致的反作用。通常的方法是在量子比特结构旁边额外设计一个对量子态敏感的探测器，间接地通过探测探测器的响应来推测量子比特的量子态。图3.2.7是一个半导体量子芯片以及其探测器结构，该探测器为一个RF探测器，通过该探测器的指定频率的微波信号会随着半导体量子芯片中电子状态变化，进而能从RF探测器的信号中计算出量子比特的量子态变化。捕获RF探测器的信号的装置通常为网络分析仪或者高速数字采集卡。</span></p><p><img src="picture\3.2.7.png" width="350" /></p><div align="center">图3.2.7 半导体量子芯片以及RF探测器（QPC-量子点接触，量子比特的电学测量通道，Nb-铌，Bias-tee-一种名为bias-tee的电学器件，L/LP/C/RP/R/N-图中各个电极的编号，Dc-直流，L-电感，Cp-下标为p的电容）</div><p>&emsp;&emsp;<span>随着量子芯片集成度的提高，纯粹采用商用仪器搭建量子芯片的控制与读取系统的方法的弊端越来越大。商用仪器成本昂贵，功能冗余，兼容性差，难以集成，并不满足未来量子计算机的发展需要。为量子计算机专门设计并研制适用的量子计算机控制系统，是明智的选择。目前，量子计算机控制系统的研究刚刚起步不久。2016年，苏黎世仪器公司与代尔夫特理工大学研究团队成立的QuTech公司合作，研制了一套可用于7位超导量子芯片工作的集成量子芯片测控系统，包含最高可扩展至64通道的AWG以及同步的高速ADC采集通道。2017年底，是德科技自主研发了一套100通道的量子芯片测控系统，具备百ps级系统同步性能与百ns级量子芯片信号实时处理能力，最高可用于20位超导量子芯片完整运行。2018年，合肥本源量子计算科技有限责任公司也研制出40通道的量子芯片测控系统，可以应用于8位超导量子芯片或者2位半导体量子芯片，这是国内第一套完整的量子计算机控制系统。除此之外，加州大学-圣塔芭芭拉分校、苏黎世理工学院、中国科学技术大学合肥微尺度物质科学国家实验室、Raytheon BBN Technologies公司等都有自主研发的量子计算机控制系统或者模块。为了降低功耗，提高信号质量，代尔夫特理工大学和悉尼大学的研究团队开展了 4K 到 100mK 温度的极低温量子计算机控制系统的研究。</span></p><p><img src="picture\3.2.8.png" width="400" /></p><div align="center">图3.2.8  本源量子研制的量子计算机控制系统</div><p><img src="picture\3.2.9.png" width="600" /></p><p><span>															</span><span>图3.2.9 极低温量子计算机控制系统设计概念图</span><sup><span>[51]</span></sup></p><p>&nbsp;</p><h2 id='33-量子计算机'><span>3.3 量子计算机</span></h2><h3 id='331-量子计算机整体架构'><strong><span>3.3.1 量子计算机整体架构</span></strong></h3><p><strong><span>1.量子计算的定位：异构计算</span></strong></p><p>&emsp;&emsp;<span>量子计算领域属于一个新兴高速发展的领域，在近二十年间，不论是量子算法的研究，还是量子芯片的研发均取得了巨大的进展。由于量子计算的理论研究有限，目前所说的量子计算机并非是一个可独立完成计算任务的设备，而是一个可以对特定问题有指数级别加速的协处理器。相应的，目前所说的量子计算，如图3.3.1所示，本质上来说是一种异构运算，即在经典计算机执行计算任务的同时，将需要加速的程序在量子芯片上执行。</span></p><p><img src="picture\3.3.1.png" width=500 ></p><div align="center">图3.3.1 量子计算流程图</div><p>&nbsp;</p><p><strong><span>2.量子程序代码构成：宿主代码+设备代码</span></strong></p><p>&emsp;&emsp;<span>因此，量子计算的程序代码实际执行中分为两种，一种是运行在CPU上的宿主代码（Host code），主要用于执行不需要加速的任务，并为需要加速的任务提供需要的数据；一种是运行在量子芯片上的设备代码（Device code），主要用于描述量子线路，控制量子程序在量子芯片上的执行顺序，以及数据的传输。不同类型的代码由于其运行的物理位置不同，编译方式和访问的资源均不同，这跟英伟达公司推出的用GPU解决复杂的计算问题的并行计算架构CUDA非常类似。如表3.3.1所示，以下所提及的量子程序，指的是Device code。</span></p><div align="center">表3.3.1 CUDA与量子计算架构的对比</div><figure><table><thead><tr><th style='text-align:center;' ><span>区别</span></th><th style='text-align:center;' ><span>量子计算架构</span></th><th style='text-align:center;' ><span>CUDA并行运算架构</span></th></tr></thead><tbody><tr><td style='text-align:center;' ><span>加速的问题</span></td><td style='text-align:center;' ><span>QAOA，质数分解</span></td><td style='text-align:center;' ><span>大规模并行计算</span></td></tr><tr><td style='text-align:center;' ><span>描述语言</span></td><td style='text-align:center;' ><span>C + 量子高级语言</span></td><td style='text-align:center;' ><span>C/MATLAB + CUDA</span></td></tr><tr><td style='text-align:center;' ><span>执行设备</span></td><td style='text-align:center;' ><span>量子芯片</span></td><td style='text-align:center;' ><span>GPU</span></td></tr></tbody></table></figure><p>&nbsp;</p><h3 id='332-量子程序架构设备代码的架构）'><span>3.3.2 量子程序架构（设备代码的架构）</span></h3><p><strong><span>1.量子高级语言</span></strong></p><p>&emsp;&emsp;<span>与经典计算机语言类似，描述量子程序的语言也有高级语言与低级语言之分。量子高级语言，类似于经典计算机语言中C++。在描述量子线路时，不需要考虑量子芯片的底层物理实现，包括可执行量子逻辑门的种类，量子比特的连通性等，这就像一个经典的程序设计师并不需要考虑底层的执行芯片是x86架构，还是RISC架构一样。QPanda,QRunes均属于量子高级语言。量子高级语言主要用于描述量子线路的逻辑门构成，量子程序段之间的执行顺序，如Qif,QWhile等，以及内存之间的通信。</span></p><p><strong><span>2.量子汇编语言的编译原则</span></strong></p><p>&emsp;&emsp;<span>量子高级语言会根据底层芯片的特点，通过量子程序编译器，编译为量子汇编语言。量子程序编译器一般会考虑两个方面：量子芯片可执行的量子逻辑门种类和量子比特的连通性。</span></p><p><strong><span>3.不可直接执行的量子比特逻辑门拆分</span></strong></p><p>&emsp;&emsp;<span>根据量子计算的原理，任意的单量子比特逻辑门可以拆分为绕X轴旋转的量子逻辑门和绕Y轴旋转量子逻辑门的序列；任意的两量子比特逻辑门可以拆分为由CNOT/CZ门和单量子比特逻辑门的序列。量子芯片提供的可直接执行的逻辑门是完备的，即可以表征所有的量子比特逻辑门，因此，如果量子高级语言描述的量子程序中包含了量子芯片不可直接执行的量子逻辑门，量子程序编译器会根据量子芯片提供的量子逻辑门将其转化为可执行量子逻辑门构成的序列。</span></p><p><strong><span>4.量子比特连通性与不连通门的转换</span></strong></p><p>&emsp;&emsp;<span>相同数量的量子比特对于不同的量子芯片结构，可执行两量子比特逻辑门的量子比特对可能完全不同。目前常见的量子芯片结构有链式结构，十字结构，以及全连通结构。对于链式结构，量子比特成链状排布，每个量子比特只能与其相邻的两个量子比特执行两量子比特逻辑门；对于十字结构，量子比特成方阵装排布，每个量子比特能与其相邻的四个量子比特执行两量子比特逻辑门；对于全连通结构，每个量子比特可以与其他所有量子比特执行两量子比特逻辑门。如果量子高级语言描述的量子程序中包含量子芯片不可直接执行的两量子比特逻辑门，量子程序编译器会根据量子芯片的连通性，利用交换门和可执行的两比特门的序列，取代量子程序中的两量子比特逻辑门。</span></p><p>&emsp;&emsp;<span>例如图3.3.2，一个三量子比特的链式结构量子芯片，可执行两量子比特逻辑门的量子比特对有{ {1,2},{2,3} }，CNOT 1,3 对于此量子芯片是不可执行的逻辑门，可以用SWAP1,2、CNOT2,3、SWAP1,2构成的量子逻辑门序列取代CNOT1,3。</span></p><p><img src="picture\3.3.2.png" width="700" /></p><div align="center">图3.3.2 三量子比特的链式结构量子芯片</div><p><strong><span>5.量子程序的可执行文件</span></strong></p><p>&emsp;&emsp;<span>对于经典程序来说，汇编语言转化为计算机可直接执行二进制文件，即可被经典计算机执行；而量子芯片可直接执行的文件并非一串01组合的二进制文件，而是由测控设备产生的精密的脉冲模拟信号，因此对于量子汇编语言，应该转化成测控设备所能执行文件。此文件中不仅包含着每个量子比特逻辑门的脉冲波形，还需要包含波形的执行顺序，根据波形执行顺序的表征形式不同，量子计算硬件架构可细分为两类。</span></p><p><strong><span>1）传统量子体系结构</span></strong></p><p><span>（1）顺序执行的传统量子体系结构的可执行文件：量子程序的整段波形文件</span></p><p>&emsp;&emsp;<span>在传统的量子体系结构中，波形执行顺序体现在波形文件中，即编译器将量子汇编程序中的量子比特逻辑门的波形，按照执行顺序拼接为一个整体的波形，并将此波形以二进制文件的形式存放至测控设备的内存中。波形文件本身包含着量子逻辑门的执行顺序，测控设备通过执行波形文件，输出测控波形。此量子体系结构对应的硬件架构为上位机-测控设备-量子芯片架构。</span></p><p><span>（2）顺序执行的传统量子体系结构优缺点</span></p><p>&emsp;&emsp;<span>这种架构的优势在于，测控设备可以从内存中直接读取波形，并施加到量子芯片上，延时极短，执行效率很高，但由于上位机与测控设备之间的通信时间很长，远大于量子比特的退相干时间，即在量子比特完成测量发送至上位机，以及上位机根据测量结果将后续要执行的波形文件发送至测控设备内存的期间，量子比特已经退相干，无法继续执行量子比特逻辑门。因此，这种架构只能运行顺序执行的上位机发送的波形文件，在执行期间不可改变波形的执行顺序，进而无法执行包含基于测量结果的跳转量子程序。</span></p><p><span>（3）顺序执行的传统量子体系结构的改进</span></p><p>&emsp;&emsp;<span>改进方案是将量子程序中可能执行的量子程序段的波形，全部上传至测控设备的内存中，当测量设备得到量子比特的测量结果时，根据测量结果决定接下来输出的波形在内存中的地址，且整个反馈过程的延时远小于量子比特的退相干时间。因此，此方案可以实现基于量子比特测量结果的反馈控制，但此方法需要将可能执行的量子程序段的波形全部存储在测控设备的内存中，随着量子比特数量和量子程序波形长度的增长，该架构对内存的开销极大，可扩展性较低。</span></p><p><strong><span>2）增强扩展性的新量子体系结构</span></strong></p><p><span>（1）增强扩展性的新量子体系结构的可执行文件构成：所有逻辑门的波形文件+微处理器程序</span></p><p>&emsp;&emsp;<span>为了降低任意波形发生器的内存开销，增加系统的可扩展性，目前已有科研团队提出另一种量子计算机架构：上位机-微处理器-测控设备-量子芯片架构：该架构下，波形执行顺序通过微处理器发送的指令控制，虽然上位机与测控设备之间的通信速度很慢，但FPGA可以与测控设备高速通信，因此采用FPGA搭建的微处理器控制测控设备按顺序执行波形。编译器将量子汇编程序中的每个量子比特逻辑门的波形以二进制文件的形式存放至测控设备的内存中，并生成微处理器可执行的微处理器程序，微处理器通过执行该程序，在特定的时间向测控设备发送控制指令触发对应的测控波形，同时，该微处理器可以接收测控设备发送的量子比特的测量结果，并通过执行微处理器程序，决定测控设备执行的波形。</span></p><p><span>（2）增强扩展性的新量子体系结构的优缺点</span></p><p>&emsp;&emsp;<span>优点是：测控设备无需存放量子程序对应的所有波形，大大减少了内存开销；但缺点在于，通过执行微处理器程序控制测控设备，对微处理器的执行速度要求较高。如果微处理器将微处理器程序转化为测控设备的控制指令的时间大于量子芯片执行波形的时间，则会导致量子芯片在退相干时间内执行的有效的量子比特逻辑门数量降低；另一方面，微处理器向测控设备发送控制指令存在延时，如果顺序执行量子程序，则该延迟无任何影响，但如果要执行基于测量结果跳转的量子程序，则每次反馈控制都会产生两倍延时时间的空泡，影响量子芯片的执行效率。</span></p><p>&nbsp;</p></div></div>
+</body>
+</html>

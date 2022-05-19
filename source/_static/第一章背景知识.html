@@ -1,0 +1,746 @@
+<!doctype html>
+<html>
+<head>
+<meta charset='UTF-8'><meta name='viewport' content='width=device-width initial-scale=1'>
+
+<link href='https://fonts.loli.net/css?family=Open+Sans:400italic,700italic,700,400&subset=latin,latin-ext' rel='stylesheet' type='text/css' /><style type='text/css'>html {overflow-x: initial !important;}:root { --bg-color:#ffffff; --text-color:#333333; --select-text-bg-color:#B5D6FC; --select-text-font-color:auto; --monospace:"Lucida Console",Consolas,"Courier",monospace; --title-bar-height:20px; }
+.mac-os-11 { --title-bar-height:28px; }
+html { font-size: 14px; background-color: var(--bg-color); color: var(--text-color); font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; -webkit-font-smoothing: antialiased; }
+body { margin: 0px; padding: 0px; height: auto; inset: 0px; font-size: 1rem; line-height: 1.42857; overflow-x: hidden; background: inherit; tab-size: 4; }
+iframe { margin: auto; }
+a.url { word-break: break-all; }
+a:active, a:hover { outline: 0px; }
+.in-text-selection, ::selection { text-shadow: none; background: var(--select-text-bg-color); color: var(--select-text-font-color); }
+#write { margin: 0px auto; height: auto; width: inherit; word-break: normal; overflow-wrap: break-word; position: relative; white-space: normal; overflow-x: visible; padding-top: 36px; }
+#write.first-line-indent p { text-indent: 2em; }
+#write.first-line-indent li p, #write.first-line-indent p * { text-indent: 0px; }
+#write.first-line-indent li { margin-left: 2em; }
+.for-image #write { padding-left: 8px; padding-right: 8px; }
+body.typora-export { padding-left: 30px; padding-right: 30px; }
+.typora-export .footnote-line, .typora-export li, .typora-export p { white-space: pre-wrap; }
+.typora-export .task-list-item input { pointer-events: none; }
+@media screen and (max-width: 500px) {
+  body.typora-export { padding-left: 0px; padding-right: 0px; }
+  #write { padding-left: 20px; padding-right: 20px; }
+  .CodeMirror-sizer { margin-left: 0px !important; }
+  .CodeMirror-gutters { display: none !important; }
+}
+#write li > figure:last-child { margin-bottom: 0.5rem; }
+#write ol, #write ul { position: relative; }
+img { max-width: 100%; vertical-align: middle; image-orientation: from-image; }
+button, input, select, textarea { color: inherit; font: inherit; }
+input[type="checkbox"], input[type="radio"] { line-height: normal; padding: 0px; }
+*, ::after, ::before { box-sizing: border-box; }
+#write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p, #write pre { width: inherit; }
+#write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p { position: relative; }
+p { line-height: inherit; }
+h1, h2, h3, h4, h5, h6 { break-after: avoid-page; break-inside: avoid; orphans: 4; }
+p { orphans: 4; }
+h1 { font-size: 2rem; }
+h2 { font-size: 1.8rem; }
+h3 { font-size: 1.6rem; }
+h4 { font-size: 1.4rem; }
+h5 { font-size: 1.2rem; }
+h6 { font-size: 1rem; }
+.md-math-block, .md-rawblock, h1, h2, h3, h4, h5, h6, p { margin-top: 1rem; margin-bottom: 1rem; }
+.hidden { display: none; }
+.md-blockmeta { color: rgb(204, 204, 204); font-weight: 700; font-style: italic; }
+a { cursor: pointer; }
+sup.md-footnote { padding: 2px 4px; background-color: rgba(238, 238, 238, 0.7); color: rgb(85, 85, 85); border-radius: 4px; cursor: pointer; }
+sup.md-footnote a, sup.md-footnote a:hover { color: inherit; text-transform: inherit; text-decoration: inherit; }
+#write input[type="checkbox"] { cursor: pointer; width: inherit; height: inherit; }
+figure { overflow-x: auto; margin: 1.2em 0px; max-width: calc(100% + 16px); padding: 0px; }
+figure > table { margin: 0px; }
+tr { break-inside: avoid; break-after: auto; }
+thead { display: table-header-group; }
+table { border-collapse: collapse; border-spacing: 0px; width: 100%; overflow: auto; break-inside: auto; text-align: left; }
+table.md-table td { min-width: 32px; }
+.CodeMirror-gutters { border-right: 0px; background-color: inherit; }
+.CodeMirror-linenumber { user-select: none; }
+.CodeMirror { text-align: left; }
+.CodeMirror-placeholder { opacity: 0.3; }
+.CodeMirror pre { padding: 0px 4px; }
+.CodeMirror-lines { padding: 0px; }
+div.hr:focus { cursor: none; }
+#write pre { white-space: pre-wrap; }
+#write.fences-no-line-wrapping pre { white-space: pre; }
+#write pre.ty-contain-cm { white-space: normal; }
+.CodeMirror-gutters { margin-right: 4px; }
+.md-fences { font-size: 0.9rem; display: block; break-inside: avoid; text-align: left; overflow: visible; white-space: pre; background: inherit; position: relative !important; }
+.md-fences-adv-panel { width: 100%; margin-top: 10px; text-align: center; padding-top: 0px; padding-bottom: 8px; overflow-x: auto; }
+#write .md-fences.mock-cm { white-space: pre-wrap; }
+.md-fences.md-fences-with-lineno { padding-left: 0px; }
+#write.fences-no-line-wrapping .md-fences.mock-cm { white-space: pre; overflow-x: auto; }
+.md-fences.mock-cm.md-fences-with-lineno { padding-left: 8px; }
+.CodeMirror-line, twitterwidget { break-inside: avoid; }
+.footnotes { opacity: 0.8; font-size: 0.9rem; margin-top: 1em; margin-bottom: 1em; }
+.footnotes + .footnotes { margin-top: 0px; }
+.md-reset { margin: 0px; padding: 0px; border: 0px; outline: 0px; vertical-align: top; background: 0px 0px; text-decoration: none; text-shadow: none; float: none; position: static; width: auto; height: auto; white-space: nowrap; cursor: inherit; -webkit-tap-highlight-color: transparent; line-height: normal; font-weight: 400; text-align: left; box-sizing: content-box; direction: ltr; }
+li div { padding-top: 0px; }
+blockquote { margin: 1rem 0px; }
+li .mathjax-block, li p { margin: 0.5rem 0px; }
+li blockquote { margin: 1rem 0px; }
+li { margin: 0px; position: relative; }
+blockquote > :last-child { margin-bottom: 0px; }
+blockquote > :first-child, li > :first-child { margin-top: 0px; }
+.footnotes-area { color: rgb(136, 136, 136); margin-top: 0.714rem; padding-bottom: 0.143rem; white-space: normal; }
+#write .footnote-line { white-space: pre-wrap; }
+@media print {
+  body, html { border: 1px solid transparent; height: 99%; break-after: avoid; break-before: avoid; font-variant-ligatures: no-common-ligatures; }
+  #write { margin-top: 0px; padding-top: 0px; border-color: transparent !important; }
+  .typora-export * { -webkit-print-color-adjust: exact; }
+  .typora-export #write { break-after: avoid; }
+  .typora-export #write::after { height: 0px; }
+  .is-mac table { break-inside: avoid; }
+  .typora-export-show-outline .typora-export-sidebar { display: none; }
+}
+.footnote-line { margin-top: 0.714em; font-size: 0.7em; }
+a img, img a { cursor: pointer; }
+pre.md-meta-block { font-size: 0.8rem; min-height: 0.8rem; white-space: pre-wrap; background: rgb(204, 204, 204); display: block; overflow-x: hidden; }
+p > .md-image:only-child:not(.md-img-error) img, p > img:only-child { display: block; margin: auto; }
+#write.first-line-indent p > .md-image:only-child:not(.md-img-error) img { left: -2em; position: relative; }
+p > .md-image:only-child { display: inline-block; width: 100%; }
+#write .MathJax_Display { margin: 0.8em 0px 0px; }
+.md-math-block { width: 100%; }
+.md-math-block:not(:empty)::after { display: none; }
+.MathJax_ref { fill: currentcolor; }
+[contenteditable="true"]:active, [contenteditable="true"]:focus, [contenteditable="false"]:active, [contenteditable="false"]:focus { outline: 0px; box-shadow: none; }
+.md-task-list-item { position: relative; list-style-type: none; }
+.task-list-item.md-task-list-item { padding-left: 0px; }
+.md-task-list-item > input { position: absolute; top: 0px; left: 0px; margin-left: -1.2em; margin-top: calc(1em - 10px); border: none; }
+.math { font-size: 1rem; }
+.md-toc { min-height: 3.58rem; position: relative; font-size: 0.9rem; border-radius: 10px; }
+.md-toc-content { position: relative; margin-left: 0px; }
+.md-toc-content::after, .md-toc::after { display: none; }
+.md-toc-item { display: block; color: rgb(65, 131, 196); }
+.md-toc-item a { text-decoration: none; }
+.md-toc-inner:hover { text-decoration: underline; }
+.md-toc-inner { display: inline-block; cursor: pointer; }
+.md-toc-h1 .md-toc-inner { margin-left: 0px; font-weight: 700; }
+.md-toc-h2 .md-toc-inner { margin-left: 2em; }
+.md-toc-h3 .md-toc-inner { margin-left: 4em; }
+.md-toc-h4 .md-toc-inner { margin-left: 6em; }
+.md-toc-h5 .md-toc-inner { margin-left: 8em; }
+.md-toc-h6 .md-toc-inner { margin-left: 10em; }
+@media screen and (max-width: 48em) {
+  .md-toc-h3 .md-toc-inner { margin-left: 3.5em; }
+  .md-toc-h4 .md-toc-inner { margin-left: 5em; }
+  .md-toc-h5 .md-toc-inner { margin-left: 6.5em; }
+  .md-toc-h6 .md-toc-inner { margin-left: 8em; }
+}
+a.md-toc-inner { font-size: inherit; font-style: inherit; font-weight: inherit; line-height: inherit; }
+.footnote-line a:not(.reversefootnote) { color: inherit; }
+.md-attr { display: none; }
+.md-fn-count::after { content: "."; }
+code, pre, samp, tt { font-family: var(--monospace); }
+kbd { margin: 0px 0.1em; padding: 0.1em 0.6em; font-size: 0.8em; color: rgb(36, 39, 41); background: rgb(255, 255, 255); border: 1px solid rgb(173, 179, 185); border-radius: 3px; box-shadow: rgba(12, 13, 14, 0.2) 0px 1px 0px, rgb(255, 255, 255) 0px 0px 0px 2px inset; white-space: nowrap; vertical-align: middle; }
+.md-comment { color: rgb(162, 127, 3); opacity: 0.6; font-family: var(--monospace); }
+code { text-align: left; vertical-align: initial; }
+a.md-print-anchor { white-space: pre !important; border-width: initial !important; border-style: none !important; border-color: initial !important; display: inline-block !important; position: absolute !important; width: 1px !important; right: 0px !important; outline: 0px !important; background: 0px 0px !important; text-decoration: initial !important; text-shadow: initial !important; }
+.os-windows.monocolor-emoji .md-emoji { font-family: "Segoe UI Symbol", sans-serif; }
+.md-diagram-panel > svg { max-width: 100%; }
+[lang="flow"] svg, [lang="mermaid"] svg { max-width: 100%; height: auto; }
+[lang="mermaid"] .node text { font-size: 1rem; }
+table tr th { border-bottom: 0px; }
+video { max-width: 100%; display: block; margin: 0px auto; }
+iframe { max-width: 100%; width: 100%; border: none; }
+.highlight td, .highlight tr { border: 0px; }
+mark { background: rgb(255, 255, 0); color: rgb(0, 0, 0); }
+.md-html-inline .md-plain, .md-html-inline strong, mark .md-inline-math, mark strong { color: inherit; }
+.md-expand mark .md-meta { opacity: 0.3 !important; }
+mark .md-meta { color: rgb(0, 0, 0); }
+@media print {
+  .typora-export h1, .typora-export h2, .typora-export h3, .typora-export h4, .typora-export h5, .typora-export h6 { break-inside: avoid; }
+}
+.md-diagram-panel .messageText { stroke: none !important; }
+.md-diagram-panel .start-state { fill: var(--node-fill); }
+.md-diagram-panel .edgeLabel rect { opacity: 1 !important; }
+.md-fences.md-fences-math { font-size: 1em; }
+.md-fences-advanced:not(.md-focus) { padding: 0px; white-space: nowrap; border: 0px; }
+.md-fences-advanced:not(.md-focus) { background: inherit; }
+.typora-export-show-outline .typora-export-content { max-width: 1440px; margin: auto; display: flex; flex-direction: row; }
+.typora-export-sidebar { width: 300px; font-size: 0.8rem; margin-top: 80px; margin-right: 18px; }
+.typora-export-show-outline #write { --webkit-flex:2; flex: 2 1 0%; }
+.typora-export-sidebar .outline-content { position: fixed; top: 0px; max-height: 100%; overflow: hidden auto; padding-bottom: 30px; padding-top: 60px; width: 300px; }
+@media screen and (max-width: 1024px) {
+  .typora-export-sidebar, .typora-export-sidebar .outline-content { width: 240px; }
+}
+@media screen and (max-width: 800px) {
+  .typora-export-sidebar { display: none; }
+}
+.outline-content li, .outline-content ul { margin-left: 0px; margin-right: 0px; padding-left: 0px; padding-right: 0px; list-style: none; }
+.outline-content ul { margin-top: 0px; margin-bottom: 0px; }
+.outline-content strong { font-weight: 400; }
+.outline-expander { width: 1rem; height: 1.42857rem; position: relative; display: table-cell; vertical-align: middle; cursor: pointer; padding-left: 4px; }
+.outline-expander::before { content: ""; position: relative; font-family: Ionicons; display: inline-block; font-size: 8px; vertical-align: middle; }
+.outline-item { padding-top: 3px; padding-bottom: 3px; cursor: pointer; }
+.outline-expander:hover::before { content: ""; }
+.outline-h1 > .outline-item { padding-left: 0px; }
+.outline-h2 > .outline-item { padding-left: 1em; }
+.outline-h3 > .outline-item { padding-left: 2em; }
+.outline-h4 > .outline-item { padding-left: 3em; }
+.outline-h5 > .outline-item { padding-left: 4em; }
+.outline-h6 > .outline-item { padding-left: 5em; }
+.outline-label { cursor: pointer; display: table-cell; vertical-align: middle; text-decoration: none; color: inherit; }
+.outline-label:hover { text-decoration: underline; }
+.outline-item:hover { border-color: rgb(245, 245, 245); background-color: var(--item-hover-bg-color); }
+.outline-item:hover { margin-left: -28px; margin-right: -28px; border-left: 28px solid transparent; border-right: 28px solid transparent; }
+.outline-item-single .outline-expander::before, .outline-item-single .outline-expander:hover::before { display: none; }
+.outline-item-open > .outline-item > .outline-expander::before { content: ""; }
+.outline-children { display: none; }
+.info-panel-tab-wrapper { display: none; }
+.outline-item-open > .outline-children { display: block; }
+.typora-export .outline-item { padding-top: 1px; padding-bottom: 1px; }
+.typora-export .outline-item:hover { margin-right: -8px; border-right: 8px solid transparent; }
+.typora-export .outline-expander::before { content: "+"; font-family: inherit; top: -1px; }
+.typora-export .outline-expander:hover::before, .typora-export .outline-item-open > .outline-item > .outline-expander::before { content: "−"; }
+.typora-export-collapse-outline .outline-children { display: none; }
+.typora-export-collapse-outline .outline-item-open > .outline-children, .typora-export-no-collapse-outline .outline-children { display: block; }
+.typora-export-no-collapse-outline .outline-expander::before { content: "" !important; }
+.typora-export-show-outline .outline-item-active > .outline-item .outline-label { font-weight: 700; }
+.md-inline-math-container mjx-container { zoom: 0.95; }
+
+
+:root {
+    --side-bar-bg-color: #fafafa;
+    --control-text-color: #777;
+}
+
+@include-when-export url(https://fonts.loli.net/css?family=Open+Sans:400italic,700italic,700,400&subset=latin,latin-ext);
+
+/* open-sans-regular - latin-ext_latin */
+  /* open-sans-italic - latin-ext_latin */
+    /* open-sans-700 - latin-ext_latin */
+    /* open-sans-700italic - latin-ext_latin */
+  html {
+    font-size: 16px;
+    -webkit-font-smoothing: antialiased;
+}
+
+body {
+    font-family: "Open Sans","Clear Sans", "Helvetica Neue", Helvetica, Arial, 'Segoe UI Emoji', sans-serif;
+    color: rgb(51, 51, 51);
+    line-height: 1.6;
+}
+
+#write {
+    max-width: 860px;
+  	margin: 0 auto;
+  	padding: 30px;
+    padding-bottom: 100px;
+}
+
+@media only screen and (min-width: 1400px) {
+	#write {
+		max-width: 1024px;
+	}
+}
+
+@media only screen and (min-width: 1800px) {
+	#write {
+		max-width: 1200px;
+	}
+}
+
+#write > ul:first-child,
+#write > ol:first-child{
+    margin-top: 30px;
+}
+
+a {
+    color: #4183C4;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    position: relative;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    font-weight: bold;
+    line-height: 1.4;
+    cursor: text;
+}
+h1:hover a.anchor,
+h2:hover a.anchor,
+h3:hover a.anchor,
+h4:hover a.anchor,
+h5:hover a.anchor,
+h6:hover a.anchor {
+    text-decoration: none;
+}
+h1 tt,
+h1 code {
+    font-size: inherit;
+}
+h2 tt,
+h2 code {
+    font-size: inherit;
+}
+h3 tt,
+h3 code {
+    font-size: inherit;
+}
+h4 tt,
+h4 code {
+    font-size: inherit;
+}
+h5 tt,
+h5 code {
+    font-size: inherit;
+}
+h6 tt,
+h6 code {
+    font-size: inherit;
+}
+h1 {
+    font-size: 2.25em;
+    line-height: 1.2;
+    border-bottom: 1px solid #eee;
+}
+h2 {
+    font-size: 1.75em;
+    line-height: 1.225;
+    border-bottom: 1px solid #eee;
+}
+
+/*@media print {
+    .typora-export h1,
+    .typora-export h2 {
+        border-bottom: none;
+        padding-bottom: initial;
+    }
+
+    .typora-export h1::after,
+    .typora-export h2::after {
+        content: "";
+        display: block;
+        height: 100px;
+        margin-top: -96px;
+        border-top: 1px solid #eee;
+    }
+}*/
+
+h3 {
+    font-size: 1.5em;
+    line-height: 1.43;
+}
+h4 {
+    font-size: 1.25em;
+}
+h5 {
+    font-size: 1em;
+}
+h6 {
+   font-size: 1em;
+    color: #777;
+}
+p,
+blockquote,
+ul,
+ol,
+dl,
+table{
+    margin: 0.8em 0;
+}
+li>ol,
+li>ul {
+    margin: 0 0;
+}
+hr {
+    height: 2px;
+    padding: 0;
+    margin: 16px 0;
+    background-color: #e7e7e7;
+    border: 0 none;
+    overflow: hidden;
+    box-sizing: content-box;
+}
+
+li p.first {
+    display: inline-block;
+}
+ul,
+ol {
+    padding-left: 30px;
+}
+ul:first-child,
+ol:first-child {
+    margin-top: 0;
+}
+ul:last-child,
+ol:last-child {
+    margin-bottom: 0;
+}
+blockquote {
+    border-left: 4px solid #dfe2e5;
+    padding: 0 15px;
+    color: #777777;
+}
+blockquote blockquote {
+    padding-right: 0;
+}
+table {
+    padding: 0;
+    word-break: initial;
+}
+table tr {
+    border: 1px solid #dfe2e5;
+    margin: 0;
+    padding: 0;
+}
+table tr:nth-child(2n),
+thead {
+    background-color: #f8f8f8;
+}
+table th {
+    font-weight: bold;
+    border: 1px solid #dfe2e5;
+    border-bottom: 0;
+    margin: 0;
+    padding: 6px 13px;
+}
+table td {
+    border: 1px solid #dfe2e5;
+    margin: 0;
+    padding: 6px 13px;
+}
+table th:first-child,
+table td:first-child {
+    margin-top: 0;
+}
+table th:last-child,
+table td:last-child {
+    margin-bottom: 0;
+}
+
+.CodeMirror-lines {
+    padding-left: 4px;
+}
+
+.code-tooltip {
+    box-shadow: 0 1px 1px 0 rgba(0,28,36,.3);
+    border-top: 1px solid #eef2f2;
+}
+
+.md-fences,
+code,
+tt {
+    border: 1px solid #e7eaed;
+    background-color: #f8f8f8;
+    border-radius: 3px;
+    padding: 0;
+    padding: 2px 4px 0px 4px;
+    font-size: 0.9em;
+}
+
+code {
+    background-color: #f3f4f4;
+    padding: 0 2px 0 2px;
+}
+
+.md-fences {
+    margin-bottom: 15px;
+    margin-top: 15px;
+    padding-top: 8px;
+    padding-bottom: 6px;
+}
+
+
+.md-task-list-item > input {
+  margin-left: -1.3em;
+}
+
+@media print {
+    html {
+        font-size: 13px;
+    }
+    table,
+    pre {
+        page-break-inside: avoid;
+    }
+    pre {
+        word-wrap: break-word;
+    }
+}
+
+.md-fences {
+	background-color: #f8f8f8;
+}
+#write pre.md-meta-block {
+	padding: 1rem;
+    font-size: 85%;
+    line-height: 1.45;
+    background-color: #f7f7f7;
+    border: 0;
+    border-radius: 3px;
+    color: #777777;
+    margin-top: 0 !important;
+}
+
+.mathjax-block>.code-tooltip {
+	bottom: .375rem;
+}
+
+.md-mathjax-midline {
+    background: #fafafa;
+}
+
+#write>h3.md-focus:before{
+	left: -1.5625rem;
+	top: .375rem;
+}
+#write>h4.md-focus:before{
+	left: -1.5625rem;
+	top: .285714286rem;
+}
+#write>h5.md-focus:before{
+	left: -1.5625rem;
+	top: .285714286rem;
+}
+#write>h6.md-focus:before{
+	left: -1.5625rem;
+	top: .285714286rem;
+}
+.md-image>.md-meta {
+    /*border: 1px solid #ddd;*/
+    border-radius: 3px;
+    padding: 2px 0px 0px 4px;
+    font-size: 0.9em;
+    color: inherit;
+}
+
+.md-tag {
+    color: #a7a7a7;
+    opacity: 1;
+}
+
+.md-toc { 
+    margin-top:20px;
+    padding-bottom:20px;
+}
+
+.sidebar-tabs {
+    border-bottom: none;
+}
+
+#typora-quick-open {
+    border: 1px solid #ddd;
+    background-color: #f8f8f8;
+}
+
+#typora-quick-open-item {
+    background-color: #FAFAFA;
+    border-color: #FEFEFE #e5e5e5 #e5e5e5 #eee;
+    border-style: solid;
+    border-width: 1px;
+}
+
+/** focus mode */
+.on-focus-mode blockquote {
+    border-left-color: rgba(85, 85, 85, 0.12);
+}
+
+header, .context-menu, .megamenu-content, footer{
+    font-family: "Segoe UI", "Arial", sans-serif;
+}
+
+.file-node-content:hover .file-node-icon,
+.file-node-content:hover .file-node-open-state{
+    visibility: visible;
+}
+
+.mac-seamless-mode #typora-sidebar {
+    background-color: #fafafa;
+    background-color: var(--side-bar-bg-color);
+}
+
+.md-lang {
+    color: #b4654d;
+}
+
+/*.html-for-mac {
+    --item-hover-bg-color: #E6F0FE;
+}*/
+
+#md-notification .btn {
+    border: 0;
+}
+
+.dropdown-menu .divider {
+    border-color: #e5e5e5;
+    opacity: 0.4;
+}
+
+.ty-preferences .window-content {
+    background-color: #fafafa;
+}
+
+.ty-preferences .nav-group-item.active {
+    color: white;
+    background: #999;
+}
+
+.menu-item-container a.menu-style-btn {
+    background-color: #f5f8fa;
+    background-image: linear-gradient( 180deg , hsla(0, 0%, 100%, 0.8), hsla(0, 0%, 100%, 0)); 
+}
+
+
+
+mjx-container[jax="SVG"] {
+  direction: ltr;
+}
+
+mjx-container[jax="SVG"] > svg {
+  overflow: visible;
+  min-height: 1px;
+  min-width: 1px;
+}
+
+mjx-container[jax="SVG"] > svg a {
+  fill: blue;
+  stroke: blue;
+}
+
+mjx-assistive-mml {
+  position: absolute !important;
+  top: 0px;
+  left: 0px;
+  clip: rect(1px, 1px, 1px, 1px);
+  padding: 1px 0px 0px 0px !important;
+  border: 0px !important;
+  display: block !important;
+  width: auto !important;
+  overflow: hidden !important;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+mjx-assistive-mml[display="block"] {
+  width: 100% !important;
+}
+
+mjx-container[jax="SVG"][display="true"] {
+  display: block;
+  text-align: center;
+  margin: 1em 0;
+}
+
+mjx-container[jax="SVG"][display="true"][width="full"] {
+  display: flex;
+}
+
+mjx-container[jax="SVG"][justify="left"] {
+  text-align: left;
+}
+
+mjx-container[jax="SVG"][justify="right"] {
+  text-align: right;
+}
+
+g[data-mml-node="merror"] > g {
+  fill: red;
+  stroke: red;
+}
+
+g[data-mml-node="merror"] > rect[data-background] {
+  fill: yellow;
+  stroke: none;
+}
+
+g[data-mml-node="mtable"] > line[data-line], svg[data-table] > g > line[data-line] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > rect[data-frame], svg[data-table] > g > rect[data-frame] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > .mjx-dashed, svg[data-table] > g > .mjx-dashed {
+  stroke-dasharray: 140;
+}
+
+g[data-mml-node="mtable"] > .mjx-dotted, svg[data-table] > g > .mjx-dotted {
+  stroke-linecap: round;
+  stroke-dasharray: 0,140;
+}
+
+g[data-mml-node="mtable"] > g > svg {
+  overflow: visible;
+}
+
+[jax="SVG"] mjx-tool {
+  display: inline-block;
+  position: relative;
+  width: 0;
+  height: 0;
+}
+
+[jax="SVG"] mjx-tool > mjx-tip {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+mjx-tool > mjx-tip {
+  display: inline-block;
+  padding: .2em;
+  border: 1px solid #888;
+  font-size: 70%;
+  background-color: #F8F8F8;
+  color: black;
+  box-shadow: 2px 2px 5px #AAAAAA;
+}
+
+g[data-mml-node="maction"][data-toggle] {
+  cursor: pointer;
+}
+
+mjx-status {
+  display: block;
+  position: fixed;
+  left: 1em;
+  bottom: 1em;
+  min-width: 25%;
+  padding: .2em .4em;
+  border: 1px solid #888;
+  font-size: 90%;
+  background-color: #F8F8F8;
+  color: black;
+}
+
+foreignObject[data-mjx-xml] {
+  font-family: initial;
+  line-height: normal;
+  overflow: visible;
+}
+
+mjx-container[jax="SVG"] path[data-c], mjx-container[jax="SVG"] use[data-c] {
+  stroke-width: 3;
+}
+
+g[data-mml-node="xypic"] path {
+  stroke-width: inherit;
+}
+
+.MathJax g[data-mml-node="xypic"] path {
+  stroke-width: inherit;
+}
+mjx-container[jax="SVG"] path[data-c], mjx-container[jax="SVG"] use[data-c] {
+							stroke-width: 0;
+						}
+</style><title>第一章背景知识</title>
+</head>
+<body class='typora-export os-windows'><div class='typora-export-content'>
+<div id='write'  class=''><h1 id='第1章-背景知识'><span>第1章 背景知识</span></h1><blockquote><p><span>1.1 三问量子计算</span></p><p><span>1.2 量子计算的发展历史</span></p><p><span>1.3 量子计算软件介绍</span></p></blockquote><p>&nbsp;</p><h2 id='11-三问量子计算'><span>1.1 三问量子计算</span></h2><h3 id='111-什么是量子计算'><span>1.1.1 什么是量子计算</span></h3><p>&nbsp;</p><p><span>		</span><span>量子计算是一种遵循量子力学规律调控量子信息单元进行计算的新型计算模式。在理解量子计算的概念时，通常将它和经典计算相比较。如图1.1.1，经典计算使用2进制的数字电子方式进行运算，而二进制总是处于0或1的确定状态。量子计算和现有的计算模式完全不同，它借助量子力学的叠加特性，能够实现计算状态的叠加，它不仅包含0和1，还包含0和1同时存在的叠加态（Superposition）。</span></p><p><img src="picture\1.1.1.png" width=500 ></p><center>图1.1.1  经典计算与量子计算的区别</center><p><span>		</span><span>普通计算机中的2位寄存器在某一时间仅能存储4个二进制数（00、01、10、11）中的一个，而量子计算机中的2位量子位（qubit）寄存器可同时存储这四种状态的叠加状态。随着量子比特数目的递增，对于n个量子比特而言，量子信息可以处于2种可能状态的叠加，配合量子力学演化的并行性，可以展现比传统计算机更快的处理速度；加上量子纠缠（Entanglement）等特性，理论上，量子计算机相较于当前使用最强算法的经典计算机，在一些具体问题上，有更快的处理速度和更强的处理能力。</span></p><h3 id='112-为什么我们需要量子计算'><span>1.1.2 为什么我们需要量子计算</span></h3><p><span>		</span><span>根据摩尔定律，集成电路上可容纳的晶体管数目每隔约18-24个月增加一倍，性能也相应增加一倍。例如当前智能手机的CPU芯片，业内已经能够达到 5nm 的工艺节点，但是随着芯片元件集成度的不断提高，芯片内部单位体积内散热也相应增加，再由于现有材料散热速度有限，就会因“热耗效应”产生计算上限；另一方面，元器件尺寸的不断缩小，在纳米甚至更小尺度下经典计算世界的物理规律将不再适用，产生“尺寸效应”。受到来自这两个方面的阻碍，再加之信息化社会的计算数据每日都在海量剧增，人类必须另觅他途，寻找新的计算方式，而量子计算可能是一个答案。</span></p><p><img src="picture\1.1.2.png" width=350 ></p><center>图1.1.2 寻找新的计算方式</center><p><span>		</span><span>量子计算的基本思想是利用量子力学的规则和思想来处理问题和信息，遵循这样的思维导向可以轻易了解到量子计算的优势所在。在传统的计算机中，每当输入对应数量的信息，电脑即会相应地输出对应的数据；而如今将量子力学应用在计算机硬件设备中并且输入信息，就不仅是有序提供一些输入和读出数据那么简单，利用量子叠加态定律可实现一键式处理多个输入的强并行性；与传统的程序相比，这是一个指数级的加速和飞跃。除了理论意义上的计算速度的增长，量子计算还具有在不同领域发挥作用的现实可能性。</span></p><p><strong><span>1.大数据检索</span></strong></p><p><span>		</span><span>在当前的大数据和人工智能时代，量子计算可以解决海量的数据检索问题、以及当前令人束手无策的物流优化问题，实现成本节省和减少碳排放等。在海量信息充斥和庞杂的时代，强大的数据分析和梳理工具无疑对人们的生活和工作有着很大帮助。</span></p><p><img src="picture\1.1.3.png" width=350 ></p><center>图1.1.3 大数据检索</center><p><strong><span>2.量子模拟</span></strong></p><p><span>		</span><span>在量子模拟方面，特别是生化制药中，量子模拟有望利用相应的量子算法在更长的时间范围内准确地进行分子模拟，从而实现当前技术水平无法做到的精确建模，这有助于加速寻找能够挽救生命的新型药物，并显著地缩短药物的开发周期。在这方面的一个领域特别有希望，模拟化学刺激对大量亚原子粒子的影响，称为量子化学。</span></p><p><img src="picture\1.1.4.png" width=350 ></p><center>图1.1.4  量子化学</center><p><span>		</span><span>量子计算机可以帮助加快对比不同药物对一系列疾病的相互作用和影响的过程，来确定最佳药物。此外，量子计算还可以带来真正的个性化医疗，利用基因组学的先进技术为每个病人量身定制治疗计划；基因组测序产生了大量的数据，整条DNA链的表达需要强大的计算能力和存储容量。一些公司正在迅速降低人类基因组测序所需的成本和资源。从理论上来说，量子计算机将使基因组测序更加高效，更容易在全球范围内扩展。</span></p><p><span>		</span><span>利用量子计算机，还能够分析全世界范围内的DNA 数据模式，以便在更深层次上了解基因组成，并有可能发现以前未知的疾病模式。</span></p><p><strong><span>3.金融服务</span></strong></p><p><span>		</span><span>金融分析师工作中通常依赖由市场和投资组合表现的概率和假设组成的算法。量子计算可以帮助消除数据盲点，防止毫无根据的金融假设造成损失。</span></p><p><span>		</span><span>具体来说，量子计算影响金融服务行业的方式是解决复杂的优化问题，如投资组合风险优化和欺诈检测。量子计算可以更好地确定有吸引力的投资组合，因为有成千上万的资产具有相互关联的依赖性，并且可以更有效地识别关键的欺诈模式。</span></p><p><img src="picture\1.1.5.png" width=350 ></p><center>图1.1.5  金融服务</center><p><strong><span>4.人工智能</span></strong></p><p><span>		</span><span>在人工智能方面，量子计算能有效提高机器学习的深度和速度，突破人工智能发展的瓶颈。量子机器学习可以帮助人工智能以类似人类的方式，更有效地执行复杂的任务，例如，使人形机器人能够在不可预知的情况下实时做出优化决策。在量子计算机上训练人工智能可以提高计算机视觉识别、模式识别、语音识别、机器翻译等性能。</span></p><p><img src="picture\1.1.6.png" width=350 ></p><center>图1.1.6  人工智能</center><p><strong><span>5.现代农业</span></strong></p><p><span>		</span><span>量子计算机可以更有效地制造肥料。几乎所有的肥料都是由氨制成，提高生产氨(或替代物)的能力则意味着更便宜、更低能耗的肥料；高质量的肥料将有利于环境，并有助于养活地球上不断增长的人口；但由于催化剂组合数量是无限的，所以在改进制造或替代氨的工艺方面进展甚微。</span></p><p><img src="picture\1.1.7.png" width=350 ></p><center>图1.1.7 现代农业</center><p><span>		</span><span>从本质上讲，如果没有1900年代被称为Haber-Bosch Process的工业技术，则无法人工模拟这一过程， 因为它需要极高的热量和压力将氮、氢和铁转化成氨。如果用今天的超级计算机进行数字化测试，找出合适的催化剂组合来制造氨，那么则需要几个世纪的时间；但是，量子计算机能够快速分析化学催化过程，并提出最佳的催化剂组合来产生氨。</span></p><p><strong><span>6.云计算</span></strong></p><p><span>		</span><span>量子云计算正在成为富有前景的领域。量子云平台可以简化编程，并提供对量子计算机的低成本访问。IBM、谷歌和阿里巴巴在内的大公司均在部署量子云计算项目，本源量子的云平台早在2017年就已上线，不断迭代更新的强大功能为量子编程和量子计算提供了全新的视角和可能性。</span></p><p><img src="picture\1.1.8.png" width=350 ></p><center>图1.1.8 量子云计算</center><p><strong><span>7.网络安全</span></strong></p><p><span>		</span><span>量子计算机可以用来破解保护敏感数据和电子通信安全的密码，同时，量子计算机也可以用来保护数据免受量子黑客攻击，这需要一种被称为量子加密的技术。量子加密是一种将纠缠光子(entangled photons)通过量子密钥分配(QKD)进行远距离传输的想法，目的是保护敏感的通信；最重要的一点是，如果量子加密通信被人截获，加密方案将立即显示中断迹象，并显示通信不安全。这依赖于测量量子系统的行为会破坏系统的原理，被称之为“测量效应”。</span></p><p><img src="picture\1.1.9.png" width=350 ></p><center>图1.1.9  量子加密</center><p><span>		</span><span>随着量子计算资源成本的下降以及量子基础知识的普及，更多的相关行业者将会出现，量子计算将会在各个行业中有越来越多的应用，特别是在那些传统计算机效率低下的领域，量子计算机的作用将会愈发明显。</span></p><h3 id='113什么样的机构参与量子计算的研发'><span>1.1.3什么样的机构参与量子计算的研发</span></h3><p><span>		</span><span>近年来，世界各个科技强国都高度重视量子计算研究，纷纷发布自己的量子信息科技战略，企图抢占下一轮科技发展的制高点，争取早日实现“量子霸权”。其中，D-Wave、谷歌、Rigetti Computing、1Qbit、IBM等都是研发量子计算的世界领军机构。</span></p><p><img src="picture\1.1.10.png" width=350 ></p><center>图1.1.10 量子计算的研发机构</center><p><strong><span>1.D-Wave</span></strong></p><p><span>		</span><span>D-Wave Systems，总部位于加拿大，致力于量子计算机的研发和探索。于2011年5月11日正式发布了全球第一款商用型量子计算机“D-Wave One”。该机器采用了128-qubit（量子比特）的处理器，理论运算速度已经远远超越现有任何超级电子计算机，不过严格来说，这还算不上真正意义的通用量子计算机，只是借助一些量子力学方法解决特殊问题的机器。通用任务方面还远不是传统硅处理器的对手，而且编程方面也需要重新学习，此外，为尽可能降低qubit的能级，需要利用低温超导状态下的铌产生qubit，D-Wave 的工作温度需保持在绝对零度附近（20 mK）。</span></p><p><span>		</span><span>2017年1月，D-Wave公司推出D-Wave 2000Q，其声称该系统由2000个qubit构成，可以用于求解最优化、网络安全、机器学习和采样等问题。对于测试一些基准问题，如最优化问题和基于机器学习的采样问题，D-Wave 2000Q胜过当前高度专业化的算法1000到10000倍。</span></p><p><strong><span>2.谷歌</span></strong></p><p><span>		</span><span>全球最大的搜索引擎公司也在量子计算方面有所涉足和进展。2016年，谷歌与加州大学合作布局超导量子计算，报道了9位超导量子比特的高精度操控，并购买了初创企业D-Wave公司的量子退火机，探索人工智能领域。</span></p><p><strong><span>3.微软</span></strong></p><p><span>		</span><span>微软在2018年宣布，争取在五年内造出第一台拥有100个拓扑量子比特的量子计算机，并且将其整合到Azure云业务当中。</span></p><p><span>		</span><span>微软的量子技术采用“拓扑量子比特（Topological qubit）”进行计算，而不是普通的“逻辑量子比特（logical qubit）”。拓扑量子比特通过基本粒子的拓扑位置和拓扑运动来处理信息，无论外界如何干扰基本粒子的运动路径，从拓扑角度来看，只要它还是连续变化，两个对换位置的基本粒子都是完全等价的；也即是说，用拓扑量子比特进行计算，对于外界的干扰有极强的容错能力，这样一来基于拓扑量子比特的计算机就可以把规模做得很大，能力做得很强。</span></p><p><strong><span>4.英特尔</span></strong></p><p><span>		</span><span>在CES 2018（国际消费类电子产品展览会），英特尔正式展示了49量子比特的超导量子计算芯片，这块49量子比特的量子计算芯片大小与消费级x86 CPU相当。与传统计算芯片一样，量子计算芯片在计算单元数量增加、密度增大的情况下，会产生一定的干扰。而现阶段量子计算对于内部、外部干扰极其敏感，以致于只能在超低温超导条件下运行。英特尔将49量子比特芯片做到这种密度和大小，具有里程碑式的意义。</span></p><p><strong><span>5.IBM</span></strong></p><p><span>		</span><span>IBM在CES 2019正式亮相了Q System One，将其宣传为”世界上为商用和科研打造的首个全面集成化的通用量子计算系统”，拥有20个量子位的计算力。IBM 表示，它的主要成就是将一个实验性的量子计算机在可靠性（和外观）上与大型量子计算机更接近。量子计算需要极其精细的环境，量子芯片需要保持在绝对零度，并且受到的电波动或物理振动干扰要尽可能最小。IBM 表示，Q System One 可以最大限度地减少这些问题。</span></p><p><strong><span>6.阿里巴巴</span></strong></p><p><span>		</span><span>2015年，阿里巴巴与中科院联合成立了量子计算机实验室，主攻量子计算机难题。</span></p><p><span>		</span><span>2018年5月8日，阿里巴巴宣布已经研制出世界上运算最快的量子电路模拟器“太章”，并已成功模拟了81（9x9）比特40层基准的谷歌随机量子电路。</span></p><p><span>		</span><span>对于阿里巴巴的核心业务在线购物平台而言，量子计算机处理电商平台的搜索、购买、交易等海量数据的效率将提高数十倍。阿里早已布局云计算领域，目前阿里的云计算已经服务全球超18个国家与地区，在阿里巴巴2018财年（从2017年4月1日至2018年3月31日），云计算业务收入已到133.90亿元。量子计算机的出现将会极大地提高阿里云计算的能力，并能够更加高效精准的利用大数据。</span></p><p><strong><span>7.百度</span></strong></p><p><span>		</span><span>2018年3月8日上午，百度宣布成立量子计算研究所，开展量子计算软件和信息技术应用业务研究。百度全力推动“百度量子、量子百度”的研究规划，计划五年时间里组建世界一流的量子计算研究所，并在之后的五年将量子计算逐渐融入百度的业务中来。</span></p><p><strong><span>8.本源量子</span></strong></p><p><span>		</span><span>2017年9月11日，本源量子计算科技有限责任公司成立。作为国内首家以量子计算为主营业务的新势力公司，以量子芯片、量子测控、量子软件、量子云、量子计算机以及未来的量子人工智能等为核心业务，目前已研制出量子比特处理器玄微XW B2-100、量子测控一体机 OriginQ Quantum AIO，并且上线了本源量子计算云平台、发布了完全自主的高级量子编程语言QRunes、量子编程软件开发工具QPanda等产品。通过与中国科学院量子信息重点实验室的强强联合，本源量子的未来发展不可限量。</span></p><p><img src="picture\1.1.11.png" width=350 ></p><center>图1.1.11 本源量子</center><h2 id='12-量子计算的发展历史'><span>1.2 量子计算的发展历史</span></h2><h3 id='121-量子力学的发展'><strong><span>1.2.1 量子力学的发展</span></strong></h3><p><span>		</span><span>理想黑体可以吸收所有照射到它表面的电磁辐射，并将这些辐射转化为热辐射，其光谱特征仅与该黑体的温度有关，与黑体的材质无关，黑体也是理想的发射体。1859年，古斯塔夫·基尔霍夫(Gustav Kirchhoff) 证明了黑体辐射发射能量 </span><mjx-container class="MathJax" jax="SVG" style="position: relative;"><svg xmlns="http://www.w3.org/2000/svg" width="1.729ex" height="1.538ex" role="img" focusable="false" viewBox="0 -680 764 680" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" style="vertical-align: 0px;"><defs><path id="MJX-36-TEX-I-1D438" d="M492 213Q472 213 472 226Q472 230 477 250T482 285Q482 316 461 323T364 330H312Q311 328 277 192T243 52Q243 48 254 48T334 46Q428 46 458 48T518 61Q567 77 599 117T670 248Q680 270 683 272Q690 274 698 274Q718 274 718 261Q613 7 608 2Q605 0 322 0H133Q31 0 31 11Q31 13 34 25Q38 41 42 43T65 46Q92 46 125 49Q139 52 144 61Q146 66 215 342T285 622Q285 629 281 629Q273 632 228 634H197Q191 640 191 642T193 659Q197 676 203 680H757Q764 676 764 669Q764 664 751 557T737 447Q735 440 717 440H705Q698 445 698 453L701 476Q704 500 704 528Q704 558 697 578T678 609T643 625T596 632T532 634H485Q397 633 392 631Q388 629 386 622Q385 619 355 499T324 377Q347 376 372 376H398Q464 376 489 391T534 472Q538 488 540 490T557 493Q562 493 565 493T570 492T572 491T574 487T577 483L544 351Q511 218 508 216Q505 213 492 213Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mi"><use data-c="1D438" xlink:href="#MJX-36-TEX-I-1D438"></use></g></g></g></svg><mjx-assistive-mml unselectable="on" display="inline"><math xmlns="http://www.w3.org/1998/Math/MathML"><mi>E</mi></math></mjx-assistive-mml></mjx-container><script type="math/tex">E</script><span>只取决于温度</span><mjx-container class="MathJax" jax="SVG" style="position: relative;"><svg xmlns="http://www.w3.org/2000/svg" width="1.593ex" height="1.532ex" role="img" focusable="false" viewBox="0 -677 704 677" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" style="vertical-align: 0px;"><defs><path id="MJX-37-TEX-I-1D447" d="M40 437Q21 437 21 445Q21 450 37 501T71 602L88 651Q93 669 101 677H569H659Q691 677 697 676T704 667Q704 661 687 553T668 444Q668 437 649 437Q640 437 637 437T631 442L629 445Q629 451 635 490T641 551Q641 586 628 604T573 629Q568 630 515 631Q469 631 457 630T439 622Q438 621 368 343T298 60Q298 48 386 46Q418 46 427 45T436 36Q436 31 433 22Q429 4 424 1L422 0Q419 0 415 0Q410 0 363 1T228 2Q99 2 64 0H49Q43 6 43 9T45 27Q49 40 55 46H83H94Q174 46 189 55Q190 56 191 56Q196 59 201 76T241 233Q258 301 269 344Q339 619 339 625Q339 630 310 630H279Q212 630 191 624Q146 614 121 583T67 467Q60 445 57 441T43 437H40Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mi"><use data-c="1D447" xlink:href="#MJX-37-TEX-I-1D447"></use></g></g></g></svg><mjx-assistive-mml unselectable="on" display="inline"><math xmlns="http://www.w3.org/1998/Math/MathML"><mi>T</mi></math></mjx-assistive-mml></mjx-container><script type="math/tex">T</script><span> 和频率 </span><mjx-container class="MathJax" jax="SVG" style="position: relative;"><svg xmlns="http://www.w3.org/2000/svg" width="1.097ex" height="1.027ex" role="img" focusable="false" viewBox="0 -443 485 454" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" style="vertical-align: -0.025ex;"><defs><path id="MJX-44-TEX-I-1D463" d="M173 380Q173 405 154 405Q130 405 104 376T61 287Q60 286 59 284T58 281T56 279T53 278T49 278T41 278H27Q21 284 21 287Q21 294 29 316T53 368T97 419T160 441Q202 441 225 417T249 361Q249 344 246 335Q246 329 231 291T200 202T182 113Q182 86 187 69Q200 26 250 26Q287 26 319 60T369 139T398 222T409 277Q409 300 401 317T383 343T365 361T357 383Q357 405 376 424T417 443Q436 443 451 425T467 367Q467 340 455 284T418 159T347 40T241 -11Q177 -11 139 22Q102 54 102 117Q102 148 110 181T151 298Q173 362 173 380Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mi"><use data-c="1D463" xlink:href="#MJX-44-TEX-I-1D463"></use></g></g></g></svg><mjx-assistive-mml unselectable="on" display="inline"><math xmlns="http://www.w3.org/1998/Math/MathML"><mi>v</mi></math></mjx-assistive-mml></mjx-container><script type="math/tex">v</script><span> ，即</span><mjx-container class="MathJax" jax="SVG" style="position: relative;"><svg xmlns="http://www.w3.org/2000/svg" width="11.634ex" height="2.262ex" role="img" focusable="false" viewBox="0 -750 5142.2 1000" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" style="vertical-align: -0.566ex;"><defs><path id="MJX-39-TEX-I-1D438" d="M492 213Q472 213 472 226Q472 230 477 250T482 285Q482 316 461 323T364 330H312Q311 328 277 192T243 52Q243 48 254 48T334 46Q428 46 458 48T518 61Q567 77 599 117T670 248Q680 270 683 272Q690 274 698 274Q718 274 718 261Q613 7 608 2Q605 0 322 0H133Q31 0 31 11Q31 13 34 25Q38 41 42 43T65 46Q92 46 125 49Q139 52 144 61Q146 66 215 342T285 622Q285 629 281 629Q273 632 228 634H197Q191 640 191 642T193 659Q197 676 203 680H757Q764 676 764 669Q764 664 751 557T737 447Q735 440 717 440H705Q698 445 698 453L701 476Q704 500 704 528Q704 558 697 578T678 609T643 625T596 632T532 634H485Q397 633 392 631Q388 629 386 622Q385 619 355 499T324 377Q347 376 372 376H398Q464 376 489 391T534 472Q538 488 540 490T557 493Q562 493 565 493T570 492T572 491T574 487T577 483L544 351Q511 218 508 216Q505 213 492 213Z"></path><path id="MJX-39-TEX-N-3D" d="M56 347Q56 360 70 367H707Q722 359 722 347Q722 336 708 328L390 327H72Q56 332 56 347ZM56 153Q56 168 72 173H708Q722 163 722 153Q722 140 707 133H70Q56 140 56 153Z"></path><path id="MJX-39-TEX-I-1D43D" d="M447 625Q447 637 354 637H329Q323 642 323 645T325 664Q329 677 335 683H352Q393 681 498 681Q541 681 568 681T605 682T619 682Q633 682 633 672Q633 670 630 658Q626 642 623 640T604 637Q552 637 545 623Q541 610 483 376Q420 128 419 127Q397 64 333 21T195 -22Q137 -22 97 8T57 88Q57 130 80 152T132 174Q177 174 182 130Q182 98 164 80T123 56Q115 54 115 53T122 44Q148 15 197 15Q235 15 271 47T324 130Q328 142 387 380T447 625Z"></path><path id="MJX-39-TEX-N-28" d="M94 250Q94 319 104 381T127 488T164 576T202 643T244 695T277 729T302 750H315H319Q333 750 333 741Q333 738 316 720T275 667T226 581T184 443T167 250T184 58T225 -81T274 -167T316 -220T333 -241Q333 -250 318 -250H315H302L274 -226Q180 -141 137 -14T94 250Z"></path><path id="MJX-39-TEX-I-1D447" d="M40 437Q21 437 21 445Q21 450 37 501T71 602L88 651Q93 669 101 677H569H659Q691 677 697 676T704 667Q704 661 687 553T668 444Q668 437 649 437Q640 437 637 437T631 442L629 445Q629 451 635 490T641 551Q641 586 628 604T573 629Q568 630 515 631Q469 631 457 630T439 622Q438 621 368 343T298 60Q298 48 386 46Q418 46 427 45T436 36Q436 31 433 22Q429 4 424 1L422 0Q419 0 415 0Q410 0 363 1T228 2Q99 2 64 0H49Q43 6 43 9T45 27Q49 40 55 46H83H94Q174 46 189 55Q190 56 191 56Q196 59 201 76T241 233Q258 301 269 344Q339 619 339 625Q339 630 310 630H279Q212 630 191 624Q146 614 121 583T67 467Q60 445 57 441T43 437H40Z"></path><path id="MJX-39-TEX-N-2C" d="M78 35T78 60T94 103T137 121Q165 121 187 96T210 8Q210 -27 201 -60T180 -117T154 -158T130 -185T117 -194Q113 -194 104 -185T95 -172Q95 -168 106 -156T131 -126T157 -76T173 -3V9L172 8Q170 7 167 6T161 3T152 1T140 0Q113 0 96 17Z"></path><path id="MJX-39-TEX-I-1D463" d="M173 380Q173 405 154 405Q130 405 104 376T61 287Q60 286 59 284T58 281T56 279T53 278T49 278T41 278H27Q21 284 21 287Q21 294 29 316T53 368T97 419T160 441Q202 441 225 417T249 361Q249 344 246 335Q246 329 231 291T200 202T182 113Q182 86 187 69Q200 26 250 26Q287 26 319 60T369 139T398 222T409 277Q409 300 401 317T383 343T365 361T357 383Q357 405 376 424T417 443Q436 443 451 425T467 367Q467 340 455 284T418 159T347 40T241 -11Q177 -11 139 22Q102 54 102 117Q102 148 110 181T151 298Q173 362 173 380Z"></path><path id="MJX-39-TEX-N-29" d="M60 749L64 750Q69 750 74 750H86L114 726Q208 641 251 514T294 250Q294 182 284 119T261 12T224 -76T186 -143T145 -194T113 -227T90 -246Q87 -249 86 -250H74Q66 -250 63 -250T58 -247T55 -238Q56 -237 66 -225Q221 -64 221 250T66 725Q56 737 55 738Q55 746 60 749Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mi"><use data-c="1D438" xlink:href="#MJX-39-TEX-I-1D438"></use></g><g data-mml-node="mo" transform="translate(1041.8,0)"><use data-c="3D" xlink:href="#MJX-39-TEX-N-3D"></use></g><g data-mml-node="mi" transform="translate(2097.6,0)"><use data-c="1D43D" xlink:href="#MJX-39-TEX-I-1D43D"></use></g><g data-mml-node="mo" transform="translate(2730.6,0)"><use data-c="28" xlink:href="#MJX-39-TEX-N-28"></use></g><g data-mml-node="mi" transform="translate(3119.6,0)"><use data-c="1D447" xlink:href="#MJX-39-TEX-I-1D447"></use></g><g data-mml-node="mo" transform="translate(3823.6,0)"><use data-c="2C" xlink:href="#MJX-39-TEX-N-2C"></use></g><g data-mml-node="mi" transform="translate(4268.2,0)"><use data-c="1D463" xlink:href="#MJX-39-TEX-I-1D463"></use></g><g data-mml-node="mo" transform="translate(4753.2,0)"><use data-c="29" xlink:href="#MJX-39-TEX-N-29"></use></g></g></g></svg><mjx-assistive-mml unselectable="on" display="inline"><math xmlns="http://www.w3.org/1998/Math/MathML"><mi>E</mi><mo>=</mo><mi>J</mi><mo stretchy="false">(</mo><mi>T</mi><mo>,</mo><mi>v</mi><mo stretchy="false">)</mo></math></mjx-assistive-mml></mjx-container><script type="math/tex">E = J ( T,v )</script><span>，然而这个公式中的函数</span><mjx-container class="MathJax" jax="SVG" style="position: relative;"><svg xmlns="http://www.w3.org/2000/svg" width="1.432ex" height="1.595ex" role="img" focusable="false" viewBox="0 -683 633 705" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" style="vertical-align: -0.05ex;"><defs><path id="MJX-40-TEX-I-1D43D" d="M447 625Q447 637 354 637H329Q323 642 323 645T325 664Q329 677 335 683H352Q393 681 498 681Q541 681 568 681T605 682T619 682Q633 682 633 672Q633 670 630 658Q626 642 623 640T604 637Q552 637 545 623Q541 610 483 376Q420 128 419 127Q397 64 333 21T195 -22Q137 -22 97 8T57 88Q57 130 80 152T132 174Q177 174 182 130Q182 98 164 80T123 56Q115 54 115 53T122 44Q148 15 197 15Q235 15 271 47T324 130Q328 142 387 380T447 625Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mi"><use data-c="1D43D" xlink:href="#MJX-40-TEX-I-1D43D"></use></g></g></g></svg><mjx-assistive-mml unselectable="on" display="inline"><math xmlns="http://www.w3.org/1998/Math/MathML"><mi>J</mi></math></mjx-assistive-mml></mjx-container><script type="math/tex">J</script><span>却成为了一个物理挑战。</span><sup><span>[1]</span></sup></p><p><img src="picture\1.2.1.jpg" width=250 ></p><center>图1.2.1 古斯塔夫·基尔霍夫</center><p><img src="picture\图1.2.2.png" width=400></p><center>图1.2.2 黑体辐射</center><p>&nbsp;</p><p><span>		</span><span>1879年，约瑟夫·斯特凡(Josef Stefan)通过实验提出，热物体释放的总能量与温度的四次方成正比。1884年，路德维希·玻尔兹曼(Ludwig Boltzmann)对黑体辐射得出了同样的结论，由于这一结论基于热力学和麦克斯韦电磁理论的理论，后被称为斯特凡-玻尔兹曼（Stefan-Boltzmann）定律。</span><sup><span>[1]</span></sup></p><p><img src="picture\1.2.3.jpg" width=250 ></p><center>图1.2.3  约瑟夫·斯特凡</center><p><img src="picture\1.2.4.jpg" width=250 ></p><center>图1.2.4  路德维希·玻尔兹曼</center><p><span>		</span><span>1896年，德国物理学家威廉·维恩（Wilhelm Wien）提出了基尔霍夫挑战的解决方案。尽管他的解决方案与实验观察结果非常接近，但是这个公式只有在短波（高频）、温度较低时才与实验结果相符，在长波区域完全不适用。</span><sup><span>[1]</span></sup><span> </span></p><p><img src="picture\1.2.5.jpg" width=250 ></p><center>图1.2.5  威廉·维恩</center><p><span>		</span><span>1900年，为了解决威廉·维恩提出的维恩近似公式在长波范围内偏差较大的问题，普朗克（Max Planck）应用玻尔兹曼（Boltzmann）的将连续能量分为单元的技术，提出固定单元大小使指正比于振动频率，这样可以导出精确的黑体辐射光谱，量子化的概念就此诞生。</span><sup><span>[1]</span></sup></p><p><img src="picture\1.2.6.jpg" width=250 ></p><center>图1.2.6  普朗克</center><p><img src="picture\1.2.7.png" width=250 ></p><center>图1.2.7  量子化</center><p><span>		</span><span>1901年，里奇和列维-西维塔（Levi-Civita,Tullio）出版了《绝对微分学》（Absolute differential calculus）。1869年，克里斯托费尔(Christoffel)发现了“协变微分”，这让里奇将张量分析理论扩展到</span><mjx-container class="MathJax" jax="SVG" style="position: relative;"><svg xmlns="http://www.w3.org/2000/svg" width="1.357ex" height="1.025ex" role="img" focusable="false" viewBox="0 -442 600 453" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" style="vertical-align: -0.025ex;"><defs><path id="MJX-41-TEX-I-1D45B" d="M21 287Q22 293 24 303T36 341T56 388T89 425T135 442Q171 442 195 424T225 390T231 369Q231 367 232 367L243 378Q304 442 382 442Q436 442 469 415T503 336T465 179T427 52Q427 26 444 26Q450 26 453 27Q482 32 505 65T540 145Q542 153 560 153Q580 153 580 145Q580 144 576 130Q568 101 554 73T508 17T439 -10Q392 -10 371 17T350 73Q350 92 386 193T423 345Q423 404 379 404H374Q288 404 229 303L222 291L189 157Q156 26 151 16Q138 -11 108 -11Q95 -11 87 -5T76 7T74 17Q74 30 112 180T152 343Q153 348 153 366Q153 405 129 405Q91 405 66 305Q60 285 60 284Q58 278 41 278H27Q21 284 21 287Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mi"><use data-c="1D45B" xlink:href="#MJX-41-TEX-I-1D45B"></use></g></g></g></svg><mjx-assistive-mml unselectable="on" display="inline"><math xmlns="http://www.w3.org/1998/Math/MathML"><mi>n</mi></math></mjx-assistive-mml></mjx-container><script type="math/tex">n</script><span>维黎曼空间。里奇和列维-西维塔（Levi-Civita,Tullio）的定义被认为是张量最一般的形式，这项工作并不是用量子理论来完成的，但正如经常发生的那样，体现物理理论所必需的数学恰好在正确的时刻出现了。</span><sup><span>[1]</span></sup></p><p><img src="picture\1.2.8.jpg" width=250 ></p><center>图1.2.8 里奇和列维-西维塔</center><p><img src="picture\1.2.9.jpg" width=250 ></p><center>图1.2.9 克里斯托费尔</center><p><img src="picture\1.2.10.jpg" width=250 ></p><center>图1.2.10  张量分析</center><p><span>		</span><span>1905年，爱因斯坦（ Einstein）研究了光电效应（photoelectric effect）。光电效应是在光的作用下，某些金属或半导体释放出电子。但是光的电磁理论给出的结果与实验证据不符，为此爱因斯坦提出了光量子理论来解决这个难题。到1906年，爱因斯坦已经正确地推测出，能量的变化发生在量子材料振荡器的跳跃变化中，跳跃变化是</span><mjx-container class="MathJax" jax="SVG" style="position: relative;"><svg xmlns="http://www.w3.org/2000/svg" width="2.4ex" height="1.595ex" role="img" focusable="false" viewBox="0 -694 1061 705" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" style="vertical-align: -0.025ex;"><defs><path id="MJX-42-TEX-I-210E" d="M137 683Q138 683 209 688T282 694Q294 694 294 685Q294 674 258 534Q220 386 220 383Q220 381 227 388Q288 442 357 442Q411 442 444 415T478 336Q478 285 440 178T402 50Q403 36 407 31T422 26Q450 26 474 56T513 138Q516 149 519 151T535 153Q555 153 555 145Q555 144 551 130Q535 71 500 33Q466 -10 419 -10H414Q367 -10 346 17T325 74Q325 90 361 192T398 345Q398 404 354 404H349Q266 404 205 306L198 293L164 158Q132 28 127 16Q114 -11 83 -11Q69 -11 59 -2T48 16Q48 30 121 320L195 616Q195 629 188 632T149 637H128Q122 643 122 645T124 664Q129 683 137 683Z"></path><path id="MJX-42-TEX-I-1D463" d="M173 380Q173 405 154 405Q130 405 104 376T61 287Q60 286 59 284T58 281T56 279T53 278T49 278T41 278H27Q21 284 21 287Q21 294 29 316T53 368T97 419T160 441Q202 441 225 417T249 361Q249 344 246 335Q246 329 231 291T200 202T182 113Q182 86 187 69Q200 26 250 26Q287 26 319 60T369 139T398 222T409 277Q409 300 401 317T383 343T365 361T357 383Q357 405 376 424T417 443Q436 443 451 425T467 367Q467 340 455 284T418 159T347 40T241 -11Q177 -11 139 22Q102 54 102 117Q102 148 110 181T151 298Q173 362 173 380Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mi"><use data-c="210E" xlink:href="#MJX-42-TEX-I-210E"></use></g><g data-mml-node="TeXAtom" data-mjx-texclass="ORD" transform="translate(576,0)"><g data-mml-node="mi"><use data-c="1D463" xlink:href="#MJX-42-TEX-I-1D463"></use></g></g></g></g></svg><mjx-assistive-mml unselectable="on" display="inline"><math xmlns="http://www.w3.org/1998/Math/MathML"><mi>h</mi><mrow data-mjx-texclass="ORD"><mi>v</mi></mrow></math></mjx-assistive-mml></mjx-container><script type="math/tex">h{v}</script><span>的倍数，其中</span><mjx-container class="MathJax" jax="SVG" style="position: relative;"><svg xmlns="http://www.w3.org/2000/svg" width="1.303ex" height="1.595ex" role="img" focusable="false" viewBox="0 -694 576 705" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" style="vertical-align: -0.025ex;"><defs><path id="MJX-43-TEX-I-210E" d="M137 683Q138 683 209 688T282 694Q294 694 294 685Q294 674 258 534Q220 386 220 383Q220 381 227 388Q288 442 357 442Q411 442 444 415T478 336Q478 285 440 178T402 50Q403 36 407 31T422 26Q450 26 474 56T513 138Q516 149 519 151T535 153Q555 153 555 145Q555 144 551 130Q535 71 500 33Q466 -10 419 -10H414Q367 -10 346 17T325 74Q325 90 361 192T398 345Q398 404 354 404H349Q266 404 205 306L198 293L164 158Q132 28 127 16Q114 -11 83 -11Q69 -11 59 -2T48 16Q48 30 121 320L195 616Q195 629 188 632T149 637H128Q122 643 122 645T124 664Q129 683 137 683Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mi"><use data-c="210E" xlink:href="#MJX-43-TEX-I-210E"></use></g></g></g></svg><mjx-assistive-mml unselectable="on" display="inline"><math xmlns="http://www.w3.org/1998/Math/MathML"><mi>h</mi></math></mjx-assistive-mml></mjx-container><script type="math/tex">h</script><span>普朗克常数，</span><mjx-container class="MathJax" jax="SVG" style="position: relative;"><svg xmlns="http://www.w3.org/2000/svg" width="1.097ex" height="1.027ex" role="img" focusable="false" viewBox="0 -443 485 454" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" style="vertical-align: -0.025ex;"><defs><path id="MJX-44-TEX-I-1D463" d="M173 380Q173 405 154 405Q130 405 104 376T61 287Q60 286 59 284T58 281T56 279T53 278T49 278T41 278H27Q21 284 21 287Q21 294 29 316T53 368T97 419T160 441Q202 441 225 417T249 361Q249 344 246 335Q246 329 231 291T200 202T182 113Q182 86 187 69Q200 26 250 26Q287 26 319 60T369 139T398 222T409 277Q409 300 401 317T383 343T365 361T357 383Q357 405 376 424T417 443Q436 443 451 425T467 367Q467 340 455 284T418 159T347 40T241 -11Q177 -11 139 22Q102 54 102 117Q102 148 110 181T151 298Q173 362 173 380Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mi"><use data-c="1D463" xlink:href="#MJX-44-TEX-I-1D463"></use></g></g></g></svg><mjx-assistive-mml unselectable="on" display="inline"><math xmlns="http://www.w3.org/1998/Math/MathML"><mi>v</mi></math></mjx-assistive-mml></mjx-container><script type="math/tex">v</script><span>是频率。</span><sup><span>[2]</span></sup><span>  </span></p><div contenteditable="false" spellcheck="false" class="mathjax-block md-end-block md-math-block md-rawblock" id="mathjax-n128" cid="n128" mdtype="math_block" data-math-tag-before="0" data-math-tag-after="0" data-math-labels="[]"><div class="md-rawblock-container md-math-container" tabindex="-1"><mjx-container class="MathJax" jax="SVG" display="true" style="position: relative;"><svg xmlns="http://www.w3.org/2000/svg" width="7.146ex" height="1.756ex" role="img" focusable="false" viewBox="0 -694 3158.6 776" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" style="vertical-align: -0.186ex;"><defs><path id="MJX-35-TEX-I-1D438" d="M492 213Q472 213 472 226Q472 230 477 250T482 285Q482 316 461 323T364 330H312Q311 328 277 192T243 52Q243 48 254 48T334 46Q428 46 458 48T518 61Q567 77 599 117T670 248Q680 270 683 272Q690 274 698 274Q718 274 718 261Q613 7 608 2Q605 0 322 0H133Q31 0 31 11Q31 13 34 25Q38 41 42 43T65 46Q92 46 125 49Q139 52 144 61Q146 66 215 342T285 622Q285 629 281 629Q273 632 228 634H197Q191 640 191 642T193 659Q197 676 203 680H757Q764 676 764 669Q764 664 751 557T737 447Q735 440 717 440H705Q698 445 698 453L701 476Q704 500 704 528Q704 558 697 578T678 609T643 625T596 632T532 634H485Q397 633 392 631Q388 629 386 622Q385 619 355 499T324 377Q347 376 372 376H398Q464 376 489 391T534 472Q538 488 540 490T557 493Q562 493 565 493T570 492T572 491T574 487T577 483L544 351Q511 218 508 216Q505 213 492 213Z"></path><path id="MJX-35-TEX-N-3D" d="M56 347Q56 360 70 367H707Q722 359 722 347Q722 336 708 328L390 327H72Q56 332 56 347ZM56 153Q56 168 72 173H708Q722 163 722 153Q722 140 707 133H70Q56 140 56 153Z"></path><path id="MJX-35-TEX-I-210E" d="M137 683Q138 683 209 688T282 694Q294 694 294 685Q294 674 258 534Q220 386 220 383Q220 381 227 388Q288 442 357 442Q411 442 444 415T478 336Q478 285 440 178T402 50Q403 36 407 31T422 26Q450 26 474 56T513 138Q516 149 519 151T535 153Q555 153 555 145Q555 144 551 130Q535 71 500 33Q466 -10 419 -10H414Q367 -10 346 17T325 74Q325 90 361 192T398 345Q398 404 354 404H349Q266 404 205 306L198 293L164 158Q132 28 127 16Q114 -11 83 -11Q69 -11 59 -2T48 16Q48 30 121 320L195 616Q195 629 188 632T149 637H128Q122 643 122 645T124 664Q129 683 137 683Z"></path><path id="MJX-35-TEX-I-1D463" d="M173 380Q173 405 154 405Q130 405 104 376T61 287Q60 286 59 284T58 281T56 279T53 278T49 278T41 278H27Q21 284 21 287Q21 294 29 316T53 368T97 419T160 441Q202 441 225 417T249 361Q249 344 246 335Q246 329 231 291T200 202T182 113Q182 86 187 69Q200 26 250 26Q287 26 319 60T369 139T398 222T409 277Q409 300 401 317T383 343T365 361T357 383Q357 405 376 424T417 443Q436 443 451 425T467 367Q467 340 455 284T418 159T347 40T241 -11Q177 -11 139 22Q102 54 102 117Q102 148 110 181T151 298Q173 362 173 380Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mi"><use data-c="1D438" xlink:href="#MJX-35-TEX-I-1D438"></use></g><g data-mml-node="mo" transform="translate(1041.8,0)"><use data-c="3D" xlink:href="#MJX-35-TEX-N-3D"></use></g><g data-mml-node="mi" transform="translate(2097.6,0)"><use data-c="210E" xlink:href="#MJX-35-TEX-I-210E"></use></g><g data-mml-node="mi" transform="translate(2673.6,0)"><use data-c="1D463" xlink:href="#MJX-35-TEX-I-1D463"></use></g></g></g></svg><mjx-assistive-mml unselectable="on" display="block"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><mi>E</mi><mo>=</mo><mi>h</mi><mi>v</mi></math></mjx-assistive-mml></mjx-container></div></div><p><img src="picture\1.2.11.png" width=250 ></p><center>图1.2.11  爱因斯坦</center><p><span>		</span><span>1913年，尼尔斯·波尔（Niels Henrik David Bohr）发表了一篇关于氢原子的革命性论文，他发现了光谱线的主要规律。阿瑟·康普顿（Arthur Compton）在1923年从静止的电子行为导出了光子(光量子)散射的相对论运动学。</span><sup><span>[2]</span></sup></p><p><img src="picture\1.2.12.jpg" width=250 ></p><center>图1.2.12  尼尔斯·波尔</center><p><img src="picture\1.2.13.jpg" width=250 ></p><center>图1.2.13  阿瑟·康普顿</center><p><span>		</span><span>1924年玻色（SatyendraNath Bose）发表了一篇基础论文，为光子提出了不同的状态，他还提出光子的数量没有守恒的概念。玻色假设这时不考虑粒子的统计独立性，将粒子放入多个单元中，只需要谈论单元的统计独立性，时间证明，玻色的这些做法都是正确的。</span><sup><span>[2]</span></sup></p><p><img src="picture\1.2.14.jpg" width=250 ></p><center>图1.2.14 玻色</center><p><span>		</span><span>1924年11月，德布罗意（Duc de Broglie）写出了一篇题为《量子理论的研究》的博士论文。文中运用了两个最亮眼的公式：</span><mjx-container class="MathJax" jax="SVG" style="position: relative;"><svg xmlns="http://www.w3.org/2000/svg" width="7.146ex" height="1.756ex" role="img" focusable="false" viewBox="0 -694 3158.6 776" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" style="vertical-align: -0.186ex;"><defs><path id="MJX-45-TEX-I-1D438" d="M492 213Q472 213 472 226Q472 230 477 250T482 285Q482 316 461 323T364 330H312Q311 328 277 192T243 52Q243 48 254 48T334 46Q428 46 458 48T518 61Q567 77 599 117T670 248Q680 270 683 272Q690 274 698 274Q718 274 718 261Q613 7 608 2Q605 0 322 0H133Q31 0 31 11Q31 13 34 25Q38 41 42 43T65 46Q92 46 125 49Q139 52 144 61Q146 66 215 342T285 622Q285 629 281 629Q273 632 228 634H197Q191 640 191 642T193 659Q197 676 203 680H757Q764 676 764 669Q764 664 751 557T737 447Q735 440 717 440H705Q698 445 698 453L701 476Q704 500 704 528Q704 558 697 578T678 609T643 625T596 632T532 634H485Q397 633 392 631Q388 629 386 622Q385 619 355 499T324 377Q347 376 372 376H398Q464 376 489 391T534 472Q538 488 540 490T557 493Q562 493 565 493T570 492T572 491T574 487T577 483L544 351Q511 218 508 216Q505 213 492 213Z"></path><path id="MJX-45-TEX-N-3D" d="M56 347Q56 360 70 367H707Q722 359 722 347Q722 336 708 328L390 327H72Q56 332 56 347ZM56 153Q56 168 72 173H708Q722 163 722 153Q722 140 707 133H70Q56 140 56 153Z"></path><path id="MJX-45-TEX-I-210E" d="M137 683Q138 683 209 688T282 694Q294 694 294 685Q294 674 258 534Q220 386 220 383Q220 381 227 388Q288 442 357 442Q411 442 444 415T478 336Q478 285 440 178T402 50Q403 36 407 31T422 26Q450 26 474 56T513 138Q516 149 519 151T535 153Q555 153 555 145Q555 144 551 130Q535 71 500 33Q466 -10 419 -10H414Q367 -10 346 17T325 74Q325 90 361 192T398 345Q398 404 354 404H349Q266 404 205 306L198 293L164 158Q132 28 127 16Q114 -11 83 -11Q69 -11 59 -2T48 16Q48 30 121 320L195 616Q195 629 188 632T149 637H128Q122 643 122 645T124 664Q129 683 137 683Z"></path><path id="MJX-45-TEX-I-1D463" d="M173 380Q173 405 154 405Q130 405 104 376T61 287Q60 286 59 284T58 281T56 279T53 278T49 278T41 278H27Q21 284 21 287Q21 294 29 316T53 368T97 419T160 441Q202 441 225 417T249 361Q249 344 246 335Q246 329 231 291T200 202T182 113Q182 86 187 69Q200 26 250 26Q287 26 319 60T369 139T398 222T409 277Q409 300 401 317T383 343T365 361T357 383Q357 405 376 424T417 443Q436 443 451 425T467 367Q467 340 455 284T418 159T347 40T241 -11Q177 -11 139 22Q102 54 102 117Q102 148 110 181T151 298Q173 362 173 380Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mi"><use data-c="1D438" xlink:href="#MJX-45-TEX-I-1D438"></use></g><g data-mml-node="mo" transform="translate(1041.8,0)"><use data-c="3D" xlink:href="#MJX-45-TEX-N-3D"></use></g><g data-mml-node="mi" transform="translate(2097.6,0)"><use data-c="210E" xlink:href="#MJX-45-TEX-I-210E"></use></g><g data-mml-node="mi" transform="translate(2673.6,0)"><use data-c="1D463" xlink:href="#MJX-45-TEX-I-1D463"></use></g></g></g></svg><mjx-assistive-mml unselectable="on" display="inline"><math xmlns="http://www.w3.org/1998/Math/MathML"><mi>E</mi><mo>=</mo><mi>h</mi><mi>v</mi></math></mjx-assistive-mml></mjx-container><script type="math/tex">E=hv</script><span>和</span><mjx-container class="MathJax" jax="SVG" style="position: relative;"><svg xmlns="http://www.w3.org/2000/svg" width="8.699ex" height="2.072ex" role="img" focusable="false" viewBox="0 -833.9 3845.1 915.9" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" style="vertical-align: -0.186ex;"><defs><path id="MJX-46-TEX-I-1D438" d="M492 213Q472 213 472 226Q472 230 477 250T482 285Q482 316 461 323T364 330H312Q311 328 277 192T243 52Q243 48 254 48T334 46Q428 46 458 48T518 61Q567 77 599 117T670 248Q680 270 683 272Q690 274 698 274Q718 274 718 261Q613 7 608 2Q605 0 322 0H133Q31 0 31 11Q31 13 34 25Q38 41 42 43T65 46Q92 46 125 49Q139 52 144 61Q146 66 215 342T285 622Q285 629 281 629Q273 632 228 634H197Q191 640 191 642T193 659Q197 676 203 680H757Q764 676 764 669Q764 664 751 557T737 447Q735 440 717 440H705Q698 445 698 453L701 476Q704 500 704 528Q704 558 697 578T678 609T643 625T596 632T532 634H485Q397 633 392 631Q388 629 386 622Q385 619 355 499T324 377Q347 376 372 376H398Q464 376 489 391T534 472Q538 488 540 490T557 493Q562 493 565 493T570 492T572 491T574 487T577 483L544 351Q511 218 508 216Q505 213 492 213Z"></path><path id="MJX-46-TEX-N-3D" d="M56 347Q56 360 70 367H707Q722 359 722 347Q722 336 708 328L390 327H72Q56 332 56 347ZM56 153Q56 168 72 173H708Q722 163 722 153Q722 140 707 133H70Q56 140 56 153Z"></path><path id="MJX-46-TEX-I-1D45A" d="M21 287Q22 293 24 303T36 341T56 388T88 425T132 442T175 435T205 417T221 395T229 376L231 369Q231 367 232 367L243 378Q303 442 384 442Q401 442 415 440T441 433T460 423T475 411T485 398T493 385T497 373T500 364T502 357L510 367Q573 442 659 442Q713 442 746 415T780 336Q780 285 742 178T704 50Q705 36 709 31T724 26Q752 26 776 56T815 138Q818 149 821 151T837 153Q857 153 857 145Q857 144 853 130Q845 101 831 73T785 17T716 -10Q669 -10 648 17T627 73Q627 92 663 193T700 345Q700 404 656 404H651Q565 404 506 303L499 291L466 157Q433 26 428 16Q415 -11 385 -11Q372 -11 364 -4T353 8T350 18Q350 29 384 161L420 307Q423 322 423 345Q423 404 379 404H374Q288 404 229 303L222 291L189 157Q156 26 151 16Q138 -11 108 -11Q95 -11 87 -5T76 7T74 17Q74 30 112 181Q151 335 151 342Q154 357 154 369Q154 405 129 405Q107 405 92 377T69 316T57 280Q55 278 41 278H27Q21 284 21 287Z"></path><path id="MJX-46-TEX-I-1D450" d="M34 159Q34 268 120 355T306 442Q362 442 394 418T427 355Q427 326 408 306T360 285Q341 285 330 295T319 325T330 359T352 380T366 386H367Q367 388 361 392T340 400T306 404Q276 404 249 390Q228 381 206 359Q162 315 142 235T121 119Q121 73 147 50Q169 26 205 26H209Q321 26 394 111Q403 121 406 121Q410 121 419 112T429 98T420 83T391 55T346 25T282 0T202 -11Q127 -11 81 37T34 159Z"></path><path id="MJX-46-TEX-N-32" d="M109 429Q82 429 66 447T50 491Q50 562 103 614T235 666Q326 666 387 610T449 465Q449 422 429 383T381 315T301 241Q265 210 201 149L142 93L218 92Q375 92 385 97Q392 99 409 186V189H449V186Q448 183 436 95T421 3V0H50V19V31Q50 38 56 46T86 81Q115 113 136 137Q145 147 170 174T204 211T233 244T261 278T284 308T305 340T320 369T333 401T340 431T343 464Q343 527 309 573T212 619Q179 619 154 602T119 569T109 550Q109 549 114 549Q132 549 151 535T170 489Q170 464 154 447T109 429Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mi"><use data-c="1D438" xlink:href="#MJX-46-TEX-I-1D438"></use></g><g data-mml-node="mo" transform="translate(1041.8,0)"><use data-c="3D" xlink:href="#MJX-46-TEX-N-3D"></use></g><g data-mml-node="mi" transform="translate(2097.6,0)"><use data-c="1D45A" xlink:href="#MJX-46-TEX-I-1D45A"></use></g><g data-mml-node="msup" transform="translate(2975.6,0)"><g data-mml-node="mi"><use data-c="1D450" xlink:href="#MJX-46-TEX-I-1D450"></use></g><g data-mml-node="TeXAtom" transform="translate(466,363) scale(0.707)" data-mjx-texclass="ORD"><g data-mml-node="mn"><use data-c="32" xlink:href="#MJX-46-TEX-N-32"></use></g></g></g></g></g></svg><mjx-assistive-mml unselectable="on" display="inline"><math xmlns="http://www.w3.org/1998/Math/MathML"><mi>E</mi><mo>=</mo><mi>m</mi><msup><mi>c</mi><mrow data-mjx-texclass="ORD"><mn>2</mn></mrow></msup></math></mjx-assistive-mml></mjx-container><script type="math/tex">E=m c^{2}</script><span> 。这都是爱因斯坦最著名的关系式，前者对光子能量而言，后者对实物粒子能量而言。德布罗意（Duc de Broglie)把两个公式综合再作出假设，他认为光量子的静止质量不为零，而像电子等一类实物粒子则具有频率的周期过程，所以在论文中他得出一个石破天惊的结论——任何实物微粒都伴随着一种波动，这种波称为相位波，后人也称之为物质波或德布罗意波。</span><sup><span>[3,4]</span></sup></p><p><img src="picture\1.2.15.jpg" width=250 ></p><center>图1.2.15 德布罗意</center><p><img src="picture\1.2.16.png" width=300 ></p><center>图1.2.16 德布罗意波</center><p><span>		</span><span>1926年薛定谔（Schrödinger）发表了一篇论文，给出了氢原子的方程式，并宣告了波动力学的诞生，同时引入了与每个动力学变量相关的算符。</span></p><p><img src="picture\1.2.17.jpg" width=250 ></p><center>图1.2.17 薛定谔</center><p><span>		</span><span>继德布罗意（Duc de Broglie）之后，从另一个方面对微观物理理论作出根本性突破的是直接受到玻尔（David Bohr）影响的23岁的海森堡（Heisenberg）。1924年他前往哥本哈根研究量子论，1925年发表了一篇有历史意义的论文《对于一些运动学和力学关系的量子论的重新解释》。</span><sup><span>[3]</span></sup></p><p><img src="picture\1.2.18.jpg" width=250 ></p><center>图1.2.18 海森堡</center><p><span>		</span><span>海森堡（Heisenberg）认为他当时是受了爱因斯坦建立狭义相对论时否定牛顿绝对时间概念的启发。他抛弃了玻尔的电子轨道概念及其有关的古典运动学的量，取而代之以可观察到的辐射频率和强度的这些光学量，同时把玻尔的对应原理加以扩充，使它不是用来猜测量子论某一特殊问题的解，而是用来猜测新力学理论的数学方案。这套新的数学方案，在当时一般物理学家看来是非常陌生的，海森堡（Heisenberg）的老师玻恩（Bonn）发现，海森堡（Heisenberg）创造的这套数学就是矩阵论，是数学家在70多年前就已创造出了的，它是普通数的一种推广。它的最奇特的特征是：“两个矩阵的相乘是不可对易的，即 </span><mjx-container class="MathJax" jax="SVG" style="position: relative;"><svg xmlns="http://www.w3.org/2000/svg" width="7.375ex" height="2.106ex" role="img" focusable="false" viewBox="0 -716 3259.6 931" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" style="vertical-align: -0.486ex;"><defs><path id="MJX-47-TEX-I-1D45D" d="M23 287Q24 290 25 295T30 317T40 348T55 381T75 411T101 433T134 442Q209 442 230 378L240 387Q302 442 358 442Q423 442 460 395T497 281Q497 173 421 82T249 -10Q227 -10 210 -4Q199 1 187 11T168 28L161 36Q160 35 139 -51T118 -138Q118 -144 126 -145T163 -148H188Q194 -155 194 -157T191 -175Q188 -187 185 -190T172 -194Q170 -194 161 -194T127 -193T65 -192Q-5 -192 -24 -194H-32Q-39 -187 -39 -183Q-37 -156 -26 -148H-6Q28 -147 33 -136Q36 -130 94 103T155 350Q156 355 156 364Q156 405 131 405Q109 405 94 377T71 316T59 280Q57 278 43 278H29Q23 284 23 287ZM178 102Q200 26 252 26Q282 26 310 49T356 107Q374 141 392 215T411 325V331Q411 405 350 405Q339 405 328 402T306 393T286 380T269 365T254 350T243 336T235 326L232 322Q232 321 229 308T218 264T204 212Q178 106 178 102Z"></path><path id="MJX-47-TEX-I-1D45E" d="M33 157Q33 258 109 349T280 441Q340 441 372 389Q373 390 377 395T388 406T404 418Q438 442 450 442Q454 442 457 439T460 434Q460 425 391 149Q320 -135 320 -139Q320 -147 365 -148H390Q396 -156 396 -157T393 -175Q389 -188 383 -194H370Q339 -192 262 -192Q234 -192 211 -192T174 -192T157 -193Q143 -193 143 -185Q143 -182 145 -170Q149 -154 152 -151T172 -148Q220 -148 230 -141Q238 -136 258 -53T279 32Q279 33 272 29Q224 -10 172 -10Q117 -10 75 30T33 157ZM352 326Q329 405 277 405Q242 405 210 374T160 293Q131 214 119 129Q119 126 119 118T118 106Q118 61 136 44T179 26Q233 26 290 98L298 109L352 326Z"></path><path id="MJX-47-TEX-N-2260" d="M166 -215T159 -215T147 -212T141 -204T139 -197Q139 -190 144 -183L306 133H70Q56 140 56 153Q56 168 72 173H327L406 327H72Q56 332 56 347Q56 360 70 367H426Q597 702 602 707Q605 716 618 716Q625 716 630 712T636 703T638 696Q638 692 471 367H707Q722 359 722 347Q722 336 708 328L451 327L371 173H708Q722 163 722 153Q722 140 707 133H351Q175 -210 170 -212Q166 -215 159 -215Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mi"><use data-c="1D45D" xlink:href="#MJX-47-TEX-I-1D45D"></use></g><g data-mml-node="mi" transform="translate(503,0)"><use data-c="1D45E" xlink:href="#MJX-47-TEX-I-1D45E"></use></g><g data-mml-node="mo" transform="translate(1240.8,0)"><use data-c="2260" xlink:href="#MJX-47-TEX-N-2260"></use></g><g data-mml-node="mi" transform="translate(2296.6,0)"><use data-c="1D45E" xlink:href="#MJX-47-TEX-I-1D45E"></use></g><g data-mml-node="mi" transform="translate(2756.6,0)"><use data-c="1D45D" xlink:href="#MJX-47-TEX-I-1D45D"></use></g></g></g></svg><mjx-assistive-mml unselectable="on" display="inline"><math xmlns="http://www.w3.org/1998/Math/MathML"><mi>p</mi><mi>q</mi><mo>≠</mo><mi>q</mi><mi>p</mi></math></mjx-assistive-mml></mjx-container><script type="math/tex">pq \neq qp</script><span>”。为了进一步搞清楚海森堡论文所揭示的数学问题，玻恩找约尔丹合作。当年9月他们写了一篇长论文，用数学的矩阵方法，把海森堡的思想发展成为量子力学的系统理论。这就是矩阵力学，也通称为量子力学。</span><sup><span>[3]</span></sup></p><p><span>		</span><span>1925年7月，海森堡应邀到剑桥讲学，在卡文迪许（Cavendish）实验室作了一系列报告，最后介绍了他的量子力学新思想；但这些新思想当时并未引起狄拉克注意。8～9月间，狄拉克从他的导师福勒处读到海森堡第一篇量子力学论文的校样，开始时他不感兴趣，觉得太烦琐了，把它搁在一边；十来天后再去仔细读一下，”突然认识到，它对我们所关切的困难，提供了全部解决的线索”，可是狄拉克不满足于海森堡的表达方式，试图使它同19世纪发展起来的古典力学的推广形式相适应。</span><sup><span>[3]</span></sup></p><p><img src="picture\1.2.19.png" width=250 ></p><center>图1.2.19 狄拉克</center><p><span>		</span><span>1925年11月7日他完成论文《量子力学的基本方程》，使用了一种比矩阵更为方便和普适的数学工具——法国数学物理学家泊松于1809年为研究行星运动而创造的“泊松括号”。它是古典力学中最有力的分析工具之一，能用极其简单的形式把古典力学的基本方程表示出来，狄拉克借助这种工具，应用对应原理，轻而易举地把古典方程改造成为量子力学方程。两个月后，他发布了第二篇论文，用他的方法来处理氢原子；在这篇论文中，他把量子力学变数称为“ </span><mjx-container class="MathJax" jax="SVG" style="position: relative;"><svg xmlns="http://www.w3.org/2000/svg" width="1.041ex" height="1.439ex" role="img" focusable="false" viewBox="0 -442 460 636" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" style="vertical-align: -0.439ex;"><defs><path id="MJX-53-TEX-I-1D45E" d="M33 157Q33 258 109 349T280 441Q340 441 372 389Q373 390 377 395T388 406T404 418Q438 442 450 442Q454 442 457 439T460 434Q460 425 391 149Q320 -135 320 -139Q320 -147 365 -148H390Q396 -156 396 -157T393 -175Q389 -188 383 -194H370Q339 -192 262 -192Q234 -192 211 -192T174 -192T157 -193Q143 -193 143 -185Q143 -182 145 -170Q149 -154 152 -151T172 -148Q220 -148 230 -141Q238 -136 258 -53T279 32Q279 33 272 29Q224 -10 172 -10Q117 -10 75 30T33 157ZM352 326Q329 405 277 405Q242 405 210 374T160 293Q131 214 119 129Q119 126 119 118T118 106Q118 61 136 44T179 26Q233 26 290 98L298 109L352 326Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mi"><use data-c="1D45E" xlink:href="#MJX-53-TEX-I-1D45E"></use></g></g></g></svg><mjx-assistive-mml unselectable="on" display="inline"><math xmlns="http://www.w3.org/1998/Math/MathML"><mi>q</mi></math></mjx-assistive-mml></mjx-container><script type="math/tex">q</script><span> 数”，而把古典物理学的变数称为“ </span><mjx-container class="MathJax" jax="SVG" style="position: relative;"><svg xmlns="http://www.w3.org/2000/svg" width="0.98ex" height="1.025ex" role="img" focusable="false" viewBox="0 -442 433 453" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" style="vertical-align: -0.025ex;"><defs><path id="MJX-52-TEX-I-1D450" d="M34 159Q34 268 120 355T306 442Q362 442 394 418T427 355Q427 326 408 306T360 285Q341 285 330 295T319 325T330 359T352 380T366 386H367Q367 388 361 392T340 400T306 404Q276 404 249 390Q228 381 206 359Q162 315 142 235T121 119Q121 73 147 50Q169 26 205 26H209Q321 26 394 111Q403 121 406 121Q410 121 419 112T429 98T420 83T391 55T346 25T282 0T202 -11Q127 -11 81 37T34 159Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mi"><use data-c="1D450" xlink:href="#MJX-52-TEX-I-1D450"></use></g></g></g></svg><mjx-assistive-mml unselectable="on" display="inline"><math xmlns="http://www.w3.org/1998/Math/MathML"><mi>c</mi></math></mjx-assistive-mml></mjx-container><script type="math/tex">c</script><span> 数”，</span><mjx-container class="MathJax" jax="SVG" style="position: relative;"><svg xmlns="http://www.w3.org/2000/svg" width="0.98ex" height="1.025ex" role="img" focusable="false" viewBox="0 -442 433 453" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" style="vertical-align: -0.025ex;"><defs><path id="MJX-52-TEX-I-1D450" d="M34 159Q34 268 120 355T306 442Q362 442 394 418T427 355Q427 326 408 306T360 285Q341 285 330 295T319 325T330 359T352 380T366 386H367Q367 388 361 392T340 400T306 404Q276 404 249 390Q228 381 206 359Q162 315 142 235T121 119Q121 73 147 50Q169 26 205 26H209Q321 26 394 111Q403 121 406 121Q410 121 419 112T429 98T420 83T391 55T346 25T282 0T202 -11Q127 -11 81 37T34 159Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mi"><use data-c="1D450" xlink:href="#MJX-52-TEX-I-1D450"></use></g></g></g></svg><mjx-assistive-mml unselectable="on" display="inline"><math xmlns="http://www.w3.org/1998/Math/MathML"><mi>c</mi></math></mjx-assistive-mml></mjx-container><script type="math/tex">c</script><span> 数是可对易的；</span><mjx-container class="MathJax" jax="SVG" style="position: relative;"><svg xmlns="http://www.w3.org/2000/svg" width="1.041ex" height="1.439ex" role="img" focusable="false" viewBox="0 -442 460 636" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" style="vertical-align: -0.439ex;"><defs><path id="MJX-53-TEX-I-1D45E" d="M33 157Q33 258 109 349T280 441Q340 441 372 389Q373 390 377 395T388 406T404 418Q438 442 450 442Q454 442 457 439T460 434Q460 425 391 149Q320 -135 320 -139Q320 -147 365 -148H390Q396 -156 396 -157T393 -175Q389 -188 383 -194H370Q339 -192 262 -192Q234 -192 211 -192T174 -192T157 -193Q143 -193 143 -185Q143 -182 145 -170Q149 -154 152 -151T172 -148Q220 -148 230 -141Q238 -136 258 -53T279 32Q279 33 272 29Q224 -10 172 -10Q117 -10 75 30T33 157ZM352 326Q329 405 277 405Q242 405 210 374T160 293Q131 214 119 129Q119 126 119 118T118 106Q118 61 136 44T179 26Q233 26 290 98L298 109L352 326Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mi"><use data-c="1D45E" xlink:href="#MJX-53-TEX-I-1D45E"></use></g></g></g></svg><mjx-assistive-mml unselectable="on" display="inline"><math xmlns="http://www.w3.org/1998/Math/MathML"><mi>q</mi></math></mjx-assistive-mml></mjx-container><script type="math/tex">q</script><span> 数则不可对易，也不能比较大小。但为了得到可以同实验相比较的结果，必须设法用 </span><mjx-container class="MathJax" jax="SVG" style="position: relative;"><svg xmlns="http://www.w3.org/2000/svg" width="0.98ex" height="1.025ex" role="img" focusable="false" viewBox="0 -442 433 453" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" style="vertical-align: -0.025ex;"><defs><path id="MJX-52-TEX-I-1D450" d="M34 159Q34 268 120 355T306 442Q362 442 394 418T427 355Q427 326 408 306T360 285Q341 285 330 295T319 325T330 359T352 380T366 386H367Q367 388 361 392T340 400T306 404Q276 404 249 390Q228 381 206 359Q162 315 142 235T121 119Q121 73 147 50Q169 26 205 26H209Q321 26 394 111Q403 121 406 121Q410 121 419 112T429 98T420 83T391 55T346 25T282 0T202 -11Q127 -11 81 37T34 159Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mi"><use data-c="1D450" xlink:href="#MJX-52-TEX-I-1D450"></use></g></g></g></svg><mjx-assistive-mml unselectable="on" display="inline"><math xmlns="http://www.w3.org/1998/Math/MathML"><mi>c</mi></math></mjx-assistive-mml></mjx-container><script type="math/tex">c</script><span> 数来表示 </span><mjx-container class="MathJax" jax="SVG" style="position: relative;"><svg xmlns="http://www.w3.org/2000/svg" width="1.041ex" height="1.439ex" role="img" focusable="false" viewBox="0 -442 460 636" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" style="vertical-align: -0.439ex;"><defs><path id="MJX-53-TEX-I-1D45E" d="M33 157Q33 258 109 349T280 441Q340 441 372 389Q373 390 377 395T388 406T404 418Q438 442 450 442Q454 442 457 439T460 434Q460 425 391 149Q320 -135 320 -139Q320 -147 365 -148H390Q396 -156 396 -157T393 -175Q389 -188 383 -194H370Q339 -192 262 -192Q234 -192 211 -192T174 -192T157 -193Q143 -193 143 -185Q143 -182 145 -170Q149 -154 152 -151T172 -148Q220 -148 230 -141Q238 -136 258 -53T279 32Q279 33 272 29Q224 -10 172 -10Q117 -10 75 30T33 157ZM352 326Q329 405 277 405Q242 405 210 374T160 293Q131 214 119 129Q119 126 119 118T118 106Q118 61 136 44T179 26Q233 26 290 98L298 109L352 326Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mi"><use data-c="1D45E" xlink:href="#MJX-53-TEX-I-1D45E"></use></g></g></g></svg><mjx-assistive-mml unselectable="on" display="inline"><math xmlns="http://www.w3.org/1998/Math/MathML"><mi>q</mi></math></mjx-assistive-mml></mjx-container><script type="math/tex">q</script><span> 数。不久，他又发表题为《量子代数学》的论文，使量子力学成为一个概念上自主的和逻辑上一致的（即自洽的）理论体系。</span><sup><span>[3]</span></sup></p><p><span>		</span><span>就在海森堡的量子力学新思想通过玻恩和狄拉克的工作得到重大进展的时候，德布罗意的物质波理论也通过薛定谔的工作而取得辉煌成就。爱因斯坦1925年2月发表的关于量子统计理论的论文引起了薛定谔对德布罗意思想的极大兴趣，当年12月他写了一篇题为《关于爱因斯坦的气体理论》的论文中讲到：“按照德布罗意—爱因斯坦运动粒子的波动理论，粒子不过是波动背景上的一种‘波峰’而已。”当时他试图把德布罗意波推广到束缚粒子上，得到一个巧妙的解。他随即把这方法用于氢原子中的电子，并且充分考虑到电子运动的相对论性力学，但结果同实验不一致，他很失望，断定他的方法不好，于是束之高阁。事实上，薛定谔最初的相对论性波动方程是正确的，不过它所描述的是没有自旋的粒子，而电子的自旋刚于1925年11月发现，对它的意义还不很了解。</span><sup><span>[3]</span></sup></p><p><img src="picture\1.2.20.jpg" width=250 ></p><center>图1.2.20 粒子自旋</center><p><span>		</span><span>薛定谔受到挫折后不久，放弃了相对论的考虑，重新用他原来的方法来处理氢原子的电子问题，结果同实验非常接近，受到这一结果的鼓舞，1926年他一连发表了6篇论文，从1月到6月的4篇都用一个题目：《作为本征值问题的量子化》。这些论文大大发展了德布罗意的物质波思想，加深了对微观客体的波粒二象性的理解，为数学上解决原子物理学、核物理学、固体物理学和分子物理学问题提供了一种方便而适用的基础，波动力学就这样诞生了。</span><sup><span>[3]</span></sup></p><p><img src="picture\1.2.21.png" width=500 ></p><center>图1.2.21 单个光量子的示意图</center><p><span>		</span><span>现在，在同一微观领域中，出现了两种同样有效但形式上完全不同的物理理论。一方面是海森堡的矩阵力学，它在数学运算中所碰到的是不可对易的量和以前罕见的计算规则，并且蔑视任何图象解释，它是一种代数方法，从所观察到光谱线的分立性着手，强调不连续性，尽管它弃绝空间和时间中的古典描述，但是从根本上说来，它的基本概念还是粒子；另一方面是薛定谔的波动力学，它所依据的则是人们所熟悉的微分方程这种数学工具，它类似于古典的流体力学，并且提供了一种容易形象化的表示，它是一种分析方法，从推广古典的运动定律着手，强调连续性，而且它的基本概念是波动。</span><sup><span>[3]</span></sup></p><p><span>		</span><span>1926年3月，薛定谔发现，波动力学和矩阵力学在数学上是完全等价的，同时，泡利等人也独立地发现了这种等价性。由于这两种理论所研究的对象是一样的，所得到的结果又是完全一致的，只不过着眼点和处理方法各不相同，因此，这两种理论就通称为量子力学，薛定谔波动方程通常作为量子力学的基本方程，这个方程在微观物理学中的地位就像牛顿运动定律在古典物理学中的地位一样。</span><sup><span>[3]</span></sup></p><h3 id='122-量子计算的发展'><span>1.2.2 量子计算的发展</span></h3><p><span>		</span><span>类似经典计算之于宏观物理的关系，量子计算同样也与微观物理有着千丝万缕的联系。</span></p><p><span>		</span><span>在微观物理中，量子力学衍生了量子信息科学。量子信息科学是以量子力学为基础，把量子系统“状态&quot;所带的物理信息， 进行信息编码、计算和传输的全新技术。 在量子信息科学中，量子比特（qubit）是其信息载体，对应经典信息里的0和1，量子比特两个可能的状态一般表示为 </span><mjx-container class="MathJax" jax="SVG" style="position: relative;"><svg xmlns="http://www.w3.org/2000/svg" width="2.64ex" height="2.262ex" role="img" focusable="false" viewBox="0 -750 1167 1000" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" style="vertical-align: -0.566ex;"><defs><path id="MJX-64-TEX-N-7C" d="M139 -249H137Q125 -249 119 -235V251L120 737Q130 750 139 750Q152 750 159 735V-235Q151 -249 141 -249H139Z"></path><path id="MJX-64-TEX-N-30" d="M96 585Q152 666 249 666Q297 666 345 640T423 548Q460 465 460 320Q460 165 417 83Q397 41 362 16T301 -15T250 -22Q224 -22 198 -16T137 16T82 83Q39 165 39 320Q39 494 96 585ZM321 597Q291 629 250 629Q208 629 178 597Q153 571 145 525T137 333Q137 175 145 125T181 46Q209 16 250 16Q290 16 318 46Q347 76 354 130T362 333Q362 478 354 524T321 597Z"></path><path id="MJX-64-TEX-N-27E9" d="M55 732Q56 739 61 744T75 750Q85 750 92 740Q95 733 186 494T278 250T187 6T92 -240Q85 -250 75 -250Q67 -250 62 -245T55 -232Q55 -227 145 11Q236 248 236 250T145 489Q55 727 55 732Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mo" transform="translate(0 -0.5)"><use data-c="7C" xlink:href="#MJX-64-TEX-N-7C"></use></g><g data-mml-node="mn" transform="translate(278,0)"><use data-c="30" xlink:href="#MJX-64-TEX-N-30"></use></g><g data-mml-node="mo" transform="translate(778,0)"><use data-c="27E9" xlink:href="#MJX-64-TEX-N-27E9"></use></g></g></g></svg><mjx-assistive-mml unselectable="on" display="inline"><math xmlns="http://www.w3.org/1998/Math/MathML"><mo stretchy="false">|</mo><mn>0</mn><mo fence="false" stretchy="false">⟩</mo></math></mjx-assistive-mml></mjx-container><script type="math/tex">|0\rangle</script><span> 和 </span><mjx-container class="MathJax" jax="SVG" style="position: relative;"><svg xmlns="http://www.w3.org/2000/svg" width="2.64ex" height="2.262ex" role="img" focusable="false" viewBox="0 -750 1167 1000" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" style="vertical-align: -0.566ex;"><defs><path id="MJX-65-TEX-N-7C" d="M139 -249H137Q125 -249 119 -235V251L120 737Q130 750 139 750Q152 750 159 735V-235Q151 -249 141 -249H139Z"></path><path id="MJX-65-TEX-N-31" d="M213 578L200 573Q186 568 160 563T102 556H83V602H102Q149 604 189 617T245 641T273 663Q275 666 285 666Q294 666 302 660V361L303 61Q310 54 315 52T339 48T401 46H427V0H416Q395 3 257 3Q121 3 100 0H88V46H114Q136 46 152 46T177 47T193 50T201 52T207 57T213 61V578Z"></path><path id="MJX-65-TEX-N-27E9" d="M55 732Q56 739 61 744T75 750Q85 750 92 740Q95 733 186 494T278 250T187 6T92 -240Q85 -250 75 -250Q67 -250 62 -245T55 -232Q55 -227 145 11Q236 248 236 250T145 489Q55 727 55 732Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mo" transform="translate(0 -0.5)"><use data-c="7C" xlink:href="#MJX-65-TEX-N-7C"></use></g><g data-mml-node="mn" transform="translate(278,0)"><use data-c="31" xlink:href="#MJX-65-TEX-N-31"></use></g><g data-mml-node="mo" transform="translate(778,0)"><use data-c="27E9" xlink:href="#MJX-65-TEX-N-27E9"></use></g></g></g></svg><mjx-assistive-mml unselectable="on" display="inline"><math xmlns="http://www.w3.org/1998/Math/MathML"><mo stretchy="false">|</mo><mn>1</mn><mo fence="false" stretchy="false">⟩</mo></math></mjx-assistive-mml></mjx-container><script type="math/tex">|1\rangle</script><span> 。在二位复向量空间中， </span><mjx-container class="MathJax" jax="SVG" style="position: relative;"><svg xmlns="http://www.w3.org/2000/svg" width="2.64ex" height="2.262ex" role="img" focusable="false" viewBox="0 -750 1167 1000" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" style="vertical-align: -0.566ex;"><defs><path id="MJX-64-TEX-N-7C" d="M139 -249H137Q125 -249 119 -235V251L120 737Q130 750 139 750Q152 750 159 735V-235Q151 -249 141 -249H139Z"></path><path id="MJX-64-TEX-N-30" d="M96 585Q152 666 249 666Q297 666 345 640T423 548Q460 465 460 320Q460 165 417 83Q397 41 362 16T301 -15T250 -22Q224 -22 198 -16T137 16T82 83Q39 165 39 320Q39 494 96 585ZM321 597Q291 629 250 629Q208 629 178 597Q153 571 145 525T137 333Q137 175 145 125T181 46Q209 16 250 16Q290 16 318 46Q347 76 354 130T362 333Q362 478 354 524T321 597Z"></path><path id="MJX-64-TEX-N-27E9" d="M55 732Q56 739 61 744T75 750Q85 750 92 740Q95 733 186 494T278 250T187 6T92 -240Q85 -250 75 -250Q67 -250 62 -245T55 -232Q55 -227 145 11Q236 248 236 250T145 489Q55 727 55 732Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mo" transform="translate(0 -0.5)"><use data-c="7C" xlink:href="#MJX-64-TEX-N-7C"></use></g><g data-mml-node="mn" transform="translate(278,0)"><use data-c="30" xlink:href="#MJX-64-TEX-N-30"></use></g><g data-mml-node="mo" transform="translate(778,0)"><use data-c="27E9" xlink:href="#MJX-64-TEX-N-27E9"></use></g></g></g></svg><mjx-assistive-mml unselectable="on" display="inline"><math xmlns="http://www.w3.org/1998/Math/MathML"><mo stretchy="false">|</mo><mn>0</mn><mo fence="false" stretchy="false">⟩</mo></math></mjx-assistive-mml></mjx-container><script type="math/tex">|0\rangle</script><span>和 </span><mjx-container class="MathJax" jax="SVG" style="position: relative;"><svg xmlns="http://www.w3.org/2000/svg" width="2.64ex" height="2.262ex" role="img" focusable="false" viewBox="0 -750 1167 1000" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" style="vertical-align: -0.566ex;"><defs><path id="MJX-65-TEX-N-7C" d="M139 -249H137Q125 -249 119 -235V251L120 737Q130 750 139 750Q152 750 159 735V-235Q151 -249 141 -249H139Z"></path><path id="MJX-65-TEX-N-31" d="M213 578L200 573Q186 568 160 563T102 556H83V602H102Q149 604 189 617T245 641T273 663Q275 666 285 666Q294 666 302 660V361L303 61Q310 54 315 52T339 48T401 46H427V0H416Q395 3 257 3Q121 3 100 0H88V46H114Q136 46 152 46T177 47T193 50T201 52T207 57T213 61V578Z"></path><path id="MJX-65-TEX-N-27E9" d="M55 732Q56 739 61 744T75 750Q85 750 92 740Q95 733 186 494T278 250T187 6T92 -240Q85 -250 75 -250Q67 -250 62 -245T55 -232Q55 -227 145 11Q236 248 236 250T145 489Q55 727 55 732Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mo" transform="translate(0 -0.5)"><use data-c="7C" xlink:href="#MJX-65-TEX-N-7C"></use></g><g data-mml-node="mn" transform="translate(278,0)"><use data-c="31" xlink:href="#MJX-65-TEX-N-31"></use></g><g data-mml-node="mo" transform="translate(778,0)"><use data-c="27E9" xlink:href="#MJX-65-TEX-N-27E9"></use></g></g></g></svg><mjx-assistive-mml unselectable="on" display="inline"><math xmlns="http://www.w3.org/1998/Math/MathML"><mo stretchy="false">|</mo><mn>1</mn><mo fence="false" stretchy="false">⟩</mo></math></mjx-assistive-mml></mjx-container><script type="math/tex">|1\rangle</script><span>作为单位向量构成了这个向量空间的一组标准正交基，量子比特的状态是用一个叠加态表示的，如</span><mjx-container class="MathJax" jax="SVG" style="position: relative;"><svg xmlns="http://www.w3.org/2000/svg" width="16.219ex" height="2.262ex" role="img" focusable="false" viewBox="0 -750 7169 1000" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" style="vertical-align: -0.566ex;"><defs><path id="MJX-58-TEX-N-7C" d="M139 -249H137Q125 -249 119 -235V251L120 737Q130 750 139 750Q152 750 159 735V-235Q151 -249 141 -249H139Z"></path><path id="MJX-58-TEX-I-1D711" d="M92 210Q92 176 106 149T142 108T185 85T220 72L235 70L237 71L250 112Q268 170 283 211T322 299T370 375T429 423T502 442Q547 442 582 410T618 302Q618 224 575 152T457 35T299 -10Q273 -10 273 -12L266 -48Q260 -83 252 -125T241 -179Q236 -203 215 -212Q204 -218 190 -218Q159 -215 159 -185Q159 -175 214 -2L209 0Q204 2 195 5T173 14T147 28T120 46T94 71T71 103T56 142T50 190Q50 238 76 311T149 431H162Q183 431 183 423Q183 417 175 409Q134 361 114 300T92 210ZM574 278Q574 320 550 344T486 369Q437 369 394 329T323 218Q309 184 295 109L286 64Q304 62 306 62Q423 62 498 131T574 278Z"></path><path id="MJX-58-TEX-N-27E9" d="M55 732Q56 739 61 744T75 750Q85 750 92 740Q95 733 186 494T278 250T187 6T92 -240Q85 -250 75 -250Q67 -250 62 -245T55 -232Q55 -227 145 11Q236 248 236 250T145 489Q55 727 55 732Z"></path><path id="MJX-58-TEX-N-3D" d="M56 347Q56 360 70 367H707Q722 359 722 347Q722 336 708 328L390 327H72Q56 332 56 347ZM56 153Q56 168 72 173H708Q722 163 722 153Q722 140 707 133H70Q56 140 56 153Z"></path><path id="MJX-58-TEX-I-1D44E" d="M33 157Q33 258 109 349T280 441Q331 441 370 392Q386 422 416 422Q429 422 439 414T449 394Q449 381 412 234T374 68Q374 43 381 35T402 26Q411 27 422 35Q443 55 463 131Q469 151 473 152Q475 153 483 153H487Q506 153 506 144Q506 138 501 117T481 63T449 13Q436 0 417 -8Q409 -10 393 -10Q359 -10 336 5T306 36L300 51Q299 52 296 50Q294 48 292 46Q233 -10 172 -10Q117 -10 75 30T33 157ZM351 328Q351 334 346 350T323 385T277 405Q242 405 210 374T160 293Q131 214 119 129Q119 126 119 118T118 106Q118 61 136 44T179 26Q217 26 254 59T298 110Q300 114 325 217T351 328Z"></path><path id="MJX-58-TEX-N-30" d="M96 585Q152 666 249 666Q297 666 345 640T423 548Q460 465 460 320Q460 165 417 83Q397 41 362 16T301 -15T250 -22Q224 -22 198 -16T137 16T82 83Q39 165 39 320Q39 494 96 585ZM321 597Q291 629 250 629Q208 629 178 597Q153 571 145 525T137 333Q137 175 145 125T181 46Q209 16 250 16Q290 16 318 46Q347 76 354 130T362 333Q362 478 354 524T321 597Z"></path><path id="MJX-58-TEX-N-2B" d="M56 237T56 250T70 270H369V420L370 570Q380 583 389 583Q402 583 409 568V270H707Q722 262 722 250T707 230H409V-68Q401 -82 391 -82H389H387Q375 -82 369 -68V230H70Q56 237 56 250Z"></path><path id="MJX-58-TEX-I-1D44F" d="M73 647Q73 657 77 670T89 683Q90 683 161 688T234 694Q246 694 246 685T212 542Q204 508 195 472T180 418L176 399Q176 396 182 402Q231 442 283 442Q345 442 383 396T422 280Q422 169 343 79T173 -11Q123 -11 82 27T40 150V159Q40 180 48 217T97 414Q147 611 147 623T109 637Q104 637 101 637H96Q86 637 83 637T76 640T73 647ZM336 325V331Q336 405 275 405Q258 405 240 397T207 376T181 352T163 330L157 322L136 236Q114 150 114 114Q114 66 138 42Q154 26 178 26Q211 26 245 58Q270 81 285 114T318 219Q336 291 336 325Z"></path><path id="MJX-58-TEX-N-31" d="M213 578L200 573Q186 568 160 563T102 556H83V602H102Q149 604 189 617T245 641T273 663Q275 666 285 666Q294 666 302 660V361L303 61Q310 54 315 52T339 48T401 46H427V0H416Q395 3 257 3Q121 3 100 0H88V46H114Q136 46 152 46T177 47T193 50T201 52T207 57T213 61V578Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mo" transform="translate(0 -0.5)"><use data-c="7C" xlink:href="#MJX-58-TEX-N-7C"></use></g><g data-mml-node="mi" transform="translate(278,0)"><use data-c="1D711" xlink:href="#MJX-58-TEX-I-1D711"></use></g><g data-mml-node="mo" transform="translate(932,0)"><use data-c="27E9" xlink:href="#MJX-58-TEX-N-27E9"></use></g><g data-mml-node="mo" transform="translate(1598.8,0)"><use data-c="3D" xlink:href="#MJX-58-TEX-N-3D"></use></g><g data-mml-node="mi" transform="translate(2654.6,0)"><use data-c="1D44E" xlink:href="#MJX-58-TEX-I-1D44E"></use></g><g data-mml-node="mo" transform="translate(3183.6,0) translate(0 -0.5)"><use data-c="7C" xlink:href="#MJX-58-TEX-N-7C"></use></g><g data-mml-node="mn" transform="translate(3461.6,0)"><use data-c="30" xlink:href="#MJX-58-TEX-N-30"></use></g><g data-mml-node="mo" transform="translate(3961.6,0)"><use data-c="27E9" xlink:href="#MJX-58-TEX-N-27E9"></use></g><g data-mml-node="mo" transform="translate(4572.8,0)"><use data-c="2B" xlink:href="#MJX-58-TEX-N-2B"></use></g><g data-mml-node="mi" transform="translate(5573,0)"><use data-c="1D44F" xlink:href="#MJX-58-TEX-I-1D44F"></use></g><g data-mml-node="mo" transform="translate(6002,0) translate(0 -0.5)"><use data-c="7C" xlink:href="#MJX-58-TEX-N-7C"></use></g><g data-mml-node="mn" transform="translate(6280,0)"><use data-c="31" xlink:href="#MJX-58-TEX-N-31"></use></g><g data-mml-node="mo" transform="translate(6780,0)"><use data-c="27E9" xlink:href="#MJX-58-TEX-N-27E9"></use></g></g></g></svg><mjx-assistive-mml unselectable="on" display="inline"><math xmlns="http://www.w3.org/1998/Math/MathML"><mo stretchy="false">|</mo><mi>φ</mi><mo fence="false" stretchy="false">⟩</mo><mo>=</mo><mi>a</mi><mo stretchy="false">|</mo><mn>0</mn><mo fence="false" stretchy="false">⟩</mo><mo>+</mo><mi>b</mi><mo stretchy="false">|</mo><mn>1</mn><mo fence="false" stretchy="false">⟩</mo></math></mjx-assistive-mml></mjx-container><script type="math/tex">| \varphi\rangle = a |0 \rangle + b|1 \rangle</script><span> ，其中</span><mjx-container class="MathJax" jax="SVG" style="position: relative;"><svg xmlns="http://www.w3.org/2000/svg" width="11.057ex" height="2.072ex" role="img" focusable="false" viewBox="0 -833.9 4887.1 915.9" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" style="vertical-align: -0.186ex;"><defs><path id="MJX-59-TEX-I-1D44E" d="M33 157Q33 258 109 349T280 441Q331 441 370 392Q386 422 416 422Q429 422 439 414T449 394Q449 381 412 234T374 68Q374 43 381 35T402 26Q411 27 422 35Q443 55 463 131Q469 151 473 152Q475 153 483 153H487Q506 153 506 144Q506 138 501 117T481 63T449 13Q436 0 417 -8Q409 -10 393 -10Q359 -10 336 5T306 36L300 51Q299 52 296 50Q294 48 292 46Q233 -10 172 -10Q117 -10 75 30T33 157ZM351 328Q351 334 346 350T323 385T277 405Q242 405 210 374T160 293Q131 214 119 129Q119 126 119 118T118 106Q118 61 136 44T179 26Q217 26 254 59T298 110Q300 114 325 217T351 328Z"></path><path id="MJX-59-TEX-N-32" d="M109 429Q82 429 66 447T50 491Q50 562 103 614T235 666Q326 666 387 610T449 465Q449 422 429 383T381 315T301 241Q265 210 201 149L142 93L218 92Q375 92 385 97Q392 99 409 186V189H449V186Q448 183 436 95T421 3V0H50V19V31Q50 38 56 46T86 81Q115 113 136 137Q145 147 170 174T204 211T233 244T261 278T284 308T305 340T320 369T333 401T340 431T343 464Q343 527 309 573T212 619Q179 619 154 602T119 569T109 550Q109 549 114 549Q132 549 151 535T170 489Q170 464 154 447T109 429Z"></path><path id="MJX-59-TEX-N-2B" d="M56 237T56 250T70 270H369V420L370 570Q380 583 389 583Q402 583 409 568V270H707Q722 262 722 250T707 230H409V-68Q401 -82 391 -82H389H387Q375 -82 369 -68V230H70Q56 237 56 250Z"></path><path id="MJX-59-TEX-I-1D44F" d="M73 647Q73 657 77 670T89 683Q90 683 161 688T234 694Q246 694 246 685T212 542Q204 508 195 472T180 418L176 399Q176 396 182 402Q231 442 283 442Q345 442 383 396T422 280Q422 169 343 79T173 -11Q123 -11 82 27T40 150V159Q40 180 48 217T97 414Q147 611 147 623T109 637Q104 637 101 637H96Q86 637 83 637T76 640T73 647ZM336 325V331Q336 405 275 405Q258 405 240 397T207 376T181 352T163 330L157 322L136 236Q114 150 114 114Q114 66 138 42Q154 26 178 26Q211 26 245 58Q270 81 285 114T318 219Q336 291 336 325Z"></path><path id="MJX-59-TEX-N-3D" d="M56 347Q56 360 70 367H707Q722 359 722 347Q722 336 708 328L390 327H72Q56 332 56 347ZM56 153Q56 168 72 173H708Q722 163 722 153Q722 140 707 133H70Q56 140 56 153Z"></path><path id="MJX-59-TEX-N-31" d="M213 578L200 573Q186 568 160 563T102 556H83V602H102Q149 604 189 617T245 641T273 663Q275 666 285 666Q294 666 302 660V361L303 61Q310 54 315 52T339 48T401 46H427V0H416Q395 3 257 3Q121 3 100 0H88V46H114Q136 46 152 46T177 47T193 50T201 52T207 57T213 61V578Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="msup"><g data-mml-node="mi"><use data-c="1D44E" xlink:href="#MJX-59-TEX-I-1D44E"></use></g><g data-mml-node="TeXAtom" transform="translate(562,363) scale(0.707)" data-mjx-texclass="ORD"><g data-mml-node="mn"><use data-c="32" xlink:href="#MJX-59-TEX-N-32"></use></g></g></g><g data-mml-node="mo" transform="translate(1187.8,0)"><use data-c="2B" xlink:href="#MJX-59-TEX-N-2B"></use></g><g data-mml-node="msup" transform="translate(2188,0)"><g data-mml-node="mi"><use data-c="1D44F" xlink:href="#MJX-59-TEX-I-1D44F"></use></g><g data-mml-node="TeXAtom" transform="translate(462,363) scale(0.707)" data-mjx-texclass="ORD"><g data-mml-node="mn"><use data-c="32" xlink:href="#MJX-59-TEX-N-32"></use></g></g></g><g data-mml-node="mo" transform="translate(3331.3,0)"><use data-c="3D" xlink:href="#MJX-59-TEX-N-3D"></use></g><g data-mml-node="mn" transform="translate(4387.1,0)"><use data-c="31" xlink:href="#MJX-59-TEX-N-31"></use></g></g></g></svg><mjx-assistive-mml unselectable="on" display="inline"><math xmlns="http://www.w3.org/1998/Math/MathML"><msup><mi>a</mi><mrow data-mjx-texclass="ORD"><mn>2</mn></mrow></msup><mo>+</mo><msup><mi>b</mi><mrow data-mjx-texclass="ORD"><mn>2</mn></mrow></msup><mo>=</mo><mn>1</mn></math></mjx-assistive-mml></mjx-container><script type="math/tex">a^{2}+b^{2}=1</script><span> ，而且测量结果为</span><mjx-container class="MathJax" jax="SVG" style="position: relative;"><svg xmlns="http://www.w3.org/2000/svg" width="2.64ex" height="2.262ex" role="img" focusable="false" viewBox="0 -750 1167 1000" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" style="vertical-align: -0.566ex;"><defs><path id="MJX-60-TEX-N-7C" d="M139 -249H137Q125 -249 119 -235V251L120 737Q130 750 139 750Q152 750 159 735V-235Q151 -249 141 -249H139Z"></path><path id="MJX-60-TEX-N-30" d="M96 585Q152 666 249 666Q297 666 345 640T423 548Q460 465 460 320Q460 165 417 83Q397 41 362 16T301 -15T250 -22Q224 -22 198 -16T137 16T82 83Q39 165 39 320Q39 494 96 585ZM321 597Q291 629 250 629Q208 629 178 597Q153 571 145 525T137 333Q137 175 145 125T181 46Q209 16 250 16Q290 16 318 46Q347 76 354 130T362 333Q362 478 354 524T321 597Z"></path><path id="MJX-60-TEX-N-27E9" d="M55 732Q56 739 61 744T75 750Q85 750 92 740Q95 733 186 494T278 250T187 6T92 -240Q85 -250 75 -250Q67 -250 62 -245T55 -232Q55 -227 145 11Q236 248 236 250T145 489Q55 727 55 732Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mo" transform="translate(0 -0.5)"><use data-c="7C" xlink:href="#MJX-60-TEX-N-7C"></use></g><g data-mml-node="mn" transform="translate(278,0)"><use data-c="30" xlink:href="#MJX-60-TEX-N-30"></use></g><g data-mml-node="mo" transform="translate(778,0)"><use data-c="27E9" xlink:href="#MJX-60-TEX-N-27E9"></use></g></g></g></svg><mjx-assistive-mml unselectable="on" display="inline"><math xmlns="http://www.w3.org/1998/Math/MathML"><mo stretchy="false">|</mo><mn>0</mn><mo fence="false" stretchy="false">⟩</mo></math></mjx-assistive-mml></mjx-container><script type="math/tex">|0 \rangle</script><span>态的概率是 </span><mjx-container class="MathJax" jax="SVG" style="position: relative;"><svg xmlns="http://www.w3.org/2000/svg" width="2.185ex" height="1.909ex" role="img" focusable="false" viewBox="0 -833.9 965.6 843.9" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" style="vertical-align: -0.023ex;"><defs><path id="MJX-61-TEX-I-1D44E" d="M33 157Q33 258 109 349T280 441Q331 441 370 392Q386 422 416 422Q429 422 439 414T449 394Q449 381 412 234T374 68Q374 43 381 35T402 26Q411 27 422 35Q443 55 463 131Q469 151 473 152Q475 153 483 153H487Q506 153 506 144Q506 138 501 117T481 63T449 13Q436 0 417 -8Q409 -10 393 -10Q359 -10 336 5T306 36L300 51Q299 52 296 50Q294 48 292 46Q233 -10 172 -10Q117 -10 75 30T33 157ZM351 328Q351 334 346 350T323 385T277 405Q242 405 210 374T160 293Q131 214 119 129Q119 126 119 118T118 106Q118 61 136 44T179 26Q217 26 254 59T298 110Q300 114 325 217T351 328Z"></path><path id="MJX-61-TEX-N-32" d="M109 429Q82 429 66 447T50 491Q50 562 103 614T235 666Q326 666 387 610T449 465Q449 422 429 383T381 315T301 241Q265 210 201 149L142 93L218 92Q375 92 385 97Q392 99 409 186V189H449V186Q448 183 436 95T421 3V0H50V19V31Q50 38 56 46T86 81Q115 113 136 137Q145 147 170 174T204 211T233 244T261 278T284 308T305 340T320 369T333 401T340 431T343 464Q343 527 309 573T212 619Q179 619 154 602T119 569T109 550Q109 549 114 549Q132 549 151 535T170 489Q170 464 154 447T109 429Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="msup"><g data-mml-node="mi"><use data-c="1D44E" xlink:href="#MJX-61-TEX-I-1D44E"></use></g><g data-mml-node="TeXAtom" transform="translate(562,363) scale(0.707)" data-mjx-texclass="ORD"><g data-mml-node="mn"><use data-c="32" xlink:href="#MJX-61-TEX-N-32"></use></g></g></g></g></g></svg><mjx-assistive-mml unselectable="on" display="inline"><math xmlns="http://www.w3.org/1998/Math/MathML"><msup><mi>a</mi><mrow data-mjx-texclass="ORD"><mn>2</mn></mrow></msup></math></mjx-assistive-mml></mjx-container><script type="math/tex">a^{2}</script><span> ，得到 </span><mjx-container class="MathJax" jax="SVG" style="position: relative;"><svg xmlns="http://www.w3.org/2000/svg" width="2.64ex" height="2.262ex" role="img" focusable="false" viewBox="0 -750 1167 1000" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" style="vertical-align: -0.566ex;"><defs><path id="MJX-65-TEX-N-7C" d="M139 -249H137Q125 -249 119 -235V251L120 737Q130 750 139 750Q152 750 159 735V-235Q151 -249 141 -249H139Z"></path><path id="MJX-65-TEX-N-31" d="M213 578L200 573Q186 568 160 563T102 556H83V602H102Q149 604 189 617T245 641T273 663Q275 666 285 666Q294 666 302 660V361L303 61Q310 54 315 52T339 48T401 46H427V0H416Q395 3 257 3Q121 3 100 0H88V46H114Q136 46 152 46T177 47T193 50T201 52T207 57T213 61V578Z"></path><path id="MJX-65-TEX-N-27E9" d="M55 732Q56 739 61 744T75 750Q85 750 92 740Q95 733 186 494T278 250T187 6T92 -240Q85 -250 75 -250Q67 -250 62 -245T55 -232Q55 -227 145 11Q236 248 236 250T145 489Q55 727 55 732Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mo" transform="translate(0 -0.5)"><use data-c="7C" xlink:href="#MJX-65-TEX-N-7C"></use></g><g data-mml-node="mn" transform="translate(278,0)"><use data-c="31" xlink:href="#MJX-65-TEX-N-31"></use></g><g data-mml-node="mo" transform="translate(778,0)"><use data-c="27E9" xlink:href="#MJX-65-TEX-N-27E9"></use></g></g></g></svg><mjx-assistive-mml unselectable="on" display="inline"><math xmlns="http://www.w3.org/1998/Math/MathML"><mo stretchy="false">|</mo><mn>1</mn><mo fence="false" stretchy="false">⟩</mo></math></mjx-assistive-mml></mjx-container><script type="math/tex">|1\rangle</script><span> 态的概率是 </span><mjx-container class="MathJax" jax="SVG" style="position: relative;"><svg xmlns="http://www.w3.org/2000/svg" width="1.958ex" height="1.912ex" role="img" focusable="false" viewBox="0 -833.9 865.6 844.9" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" style="vertical-align: -0.025ex;"><defs><path id="MJX-63-TEX-I-1D44F" d="M73 647Q73 657 77 670T89 683Q90 683 161 688T234 694Q246 694 246 685T212 542Q204 508 195 472T180 418L176 399Q176 396 182 402Q231 442 283 442Q345 442 383 396T422 280Q422 169 343 79T173 -11Q123 -11 82 27T40 150V159Q40 180 48 217T97 414Q147 611 147 623T109 637Q104 637 101 637H96Q86 637 83 637T76 640T73 647ZM336 325V331Q336 405 275 405Q258 405 240 397T207 376T181 352T163 330L157 322L136 236Q114 150 114 114Q114 66 138 42Q154 26 178 26Q211 26 245 58Q270 81 285 114T318 219Q336 291 336 325Z"></path><path id="MJX-63-TEX-N-32" d="M109 429Q82 429 66 447T50 491Q50 562 103 614T235 666Q326 666 387 610T449 465Q449 422 429 383T381 315T301 241Q265 210 201 149L142 93L218 92Q375 92 385 97Q392 99 409 186V189H449V186Q448 183 436 95T421 3V0H50V19V31Q50 38 56 46T86 81Q115 113 136 137Q145 147 170 174T204 211T233 244T261 278T284 308T305 340T320 369T333 401T340 431T343 464Q343 527 309 573T212 619Q179 619 154 602T119 569T109 550Q109 549 114 549Q132 549 151 535T170 489Q170 464 154 447T109 429Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="msup"><g data-mml-node="mi"><use data-c="1D44F" xlink:href="#MJX-63-TEX-I-1D44F"></use></g><g data-mml-node="TeXAtom" transform="translate(462,363) scale(0.707)" data-mjx-texclass="ORD"><g data-mml-node="mn"><use data-c="32" xlink:href="#MJX-63-TEX-N-32"></use></g></g></g></g></g></svg><mjx-assistive-mml unselectable="on" display="inline"><math xmlns="http://www.w3.org/1998/Math/MathML"><msup><mi>b</mi><mrow data-mjx-texclass="ORD"><mn>2</mn></mrow></msup></math></mjx-assistive-mml></mjx-container><script type="math/tex">b^{2}</script><span> 。这说明一个量子比特能够处于既不是 </span><mjx-container class="MathJax" jax="SVG" style="position: relative;"><svg xmlns="http://www.w3.org/2000/svg" width="2.64ex" height="2.262ex" role="img" focusable="false" viewBox="0 -750 1167 1000" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" style="vertical-align: -0.566ex;"><defs><path id="MJX-64-TEX-N-7C" d="M139 -249H137Q125 -249 119 -235V251L120 737Q130 750 139 750Q152 750 159 735V-235Q151 -249 141 -249H139Z"></path><path id="MJX-64-TEX-N-30" d="M96 585Q152 666 249 666Q297 666 345 640T423 548Q460 465 460 320Q460 165 417 83Q397 41 362 16T301 -15T250 -22Q224 -22 198 -16T137 16T82 83Q39 165 39 320Q39 494 96 585ZM321 597Q291 629 250 629Q208 629 178 597Q153 571 145 525T137 333Q137 175 145 125T181 46Q209 16 250 16Q290 16 318 46Q347 76 354 130T362 333Q362 478 354 524T321 597Z"></path><path id="MJX-64-TEX-N-27E9" d="M55 732Q56 739 61 744T75 750Q85 750 92 740Q95 733 186 494T278 250T187 6T92 -240Q85 -250 75 -250Q67 -250 62 -245T55 -232Q55 -227 145 11Q236 248 236 250T145 489Q55 727 55 732Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mo" transform="translate(0 -0.5)"><use data-c="7C" xlink:href="#MJX-64-TEX-N-7C"></use></g><g data-mml-node="mn" transform="translate(278,0)"><use data-c="30" xlink:href="#MJX-64-TEX-N-30"></use></g><g data-mml-node="mo" transform="translate(778,0)"><use data-c="27E9" xlink:href="#MJX-64-TEX-N-27E9"></use></g></g></g></svg><mjx-assistive-mml unselectable="on" display="inline"><math xmlns="http://www.w3.org/1998/Math/MathML"><mo stretchy="false">|</mo><mn>0</mn><mo fence="false" stretchy="false">⟩</mo></math></mjx-assistive-mml></mjx-container><script type="math/tex">|0\rangle</script><span> 又不是 </span><mjx-container class="MathJax" jax="SVG" style="position: relative;"><svg xmlns="http://www.w3.org/2000/svg" width="2.64ex" height="2.262ex" role="img" focusable="false" viewBox="0 -750 1167 1000" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" style="vertical-align: -0.566ex;"><defs><path id="MJX-65-TEX-N-7C" d="M139 -249H137Q125 -249 119 -235V251L120 737Q130 750 139 750Q152 750 159 735V-235Q151 -249 141 -249H139Z"></path><path id="MJX-65-TEX-N-31" d="M213 578L200 573Q186 568 160 563T102 556H83V602H102Q149 604 189 617T245 641T273 663Q275 666 285 666Q294 666 302 660V361L303 61Q310 54 315 52T339 48T401 46H427V0H416Q395 3 257 3Q121 3 100 0H88V46H114Q136 46 152 46T177 47T193 50T201 52T207 57T213 61V578Z"></path><path id="MJX-65-TEX-N-27E9" d="M55 732Q56 739 61 744T75 750Q85 750 92 740Q95 733 186 494T278 250T187 6T92 -240Q85 -250 75 -250Q67 -250 62 -245T55 -232Q55 -227 145 11Q236 248 236 250T145 489Q55 727 55 732Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mo" transform="translate(0 -0.5)"><use data-c="7C" xlink:href="#MJX-65-TEX-N-7C"></use></g><g data-mml-node="mn" transform="translate(278,0)"><use data-c="31" xlink:href="#MJX-65-TEX-N-31"></use></g><g data-mml-node="mo" transform="translate(778,0)"><use data-c="27E9" xlink:href="#MJX-65-TEX-N-27E9"></use></g></g></g></svg><mjx-assistive-mml unselectable="on" display="inline"><math xmlns="http://www.w3.org/1998/Math/MathML"><mo stretchy="false">|</mo><mn>1</mn><mo fence="false" stretchy="false">⟩</mo></math></mjx-assistive-mml></mjx-container><script type="math/tex">|1\rangle</script><span> 的状态上，而是处于和的一个线性组合的所谓中间状态之上。 经典信息可表示为 </span><mjx-container class="MathJax" jax="SVG" style="position: relative;"><svg xmlns="http://www.w3.org/2000/svg" width="14.341ex" height="1.557ex" role="img" focusable="false" viewBox="0 -666 6338.7 688" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" style="vertical-align: -0.05ex;"><defs><path id="MJX-66-TEX-N-30" d="M96 585Q152 666 249 666Q297 666 345 640T423 548Q460 465 460 320Q460 165 417 83Q397 41 362 16T301 -15T250 -22Q224 -22 198 -16T137 16T82 83Q39 165 39 320Q39 494 96 585ZM321 597Q291 629 250 629Q208 629 178 597Q153 571 145 525T137 333Q137 175 145 125T181 46Q209 16 250 16Q290 16 318 46Q347 76 354 130T362 333Q362 478 354 524T321 597Z"></path><path id="MJX-66-TEX-N-31" d="M213 578L200 573Q186 568 160 563T102 556H83V602H102Q149 604 189 617T245 641T273 663Q275 666 285 666Q294 666 302 660V361L303 61Q310 54 315 52T339 48T401 46H427V0H416Q395 3 257 3Q121 3 100 0H88V46H114Q136 46 152 46T177 47T193 50T201 52T207 57T213 61V578Z"></path><path id="MJX-66-TEX-N-2026" d="M78 60Q78 84 95 102T138 120Q162 120 180 104T199 61Q199 36 182 18T139 0T96 17T78 60ZM525 60Q525 84 542 102T585 120Q609 120 627 104T646 61Q646 36 629 18T586 0T543 17T525 60ZM972 60Q972 84 989 102T1032 120Q1056 120 1074 104T1093 61Q1093 36 1076 18T1033 0T990 17T972 60Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mn"><use data-c="30" xlink:href="#MJX-66-TEX-N-30"></use><use data-c="31" xlink:href="#MJX-66-TEX-N-31" transform="translate(500,0)"></use><use data-c="31" xlink:href="#MJX-66-TEX-N-31" transform="translate(1000,0)"></use><use data-c="30" xlink:href="#MJX-66-TEX-N-30" transform="translate(1500,0)"></use><use data-c="30" xlink:href="#MJX-66-TEX-N-30" transform="translate(2000,0)"></use><use data-c="31" xlink:href="#MJX-66-TEX-N-31" transform="translate(2500,0)"></use><use data-c="30" xlink:href="#MJX-66-TEX-N-30" transform="translate(3000,0)"></use><use data-c="31" xlink:href="#MJX-66-TEX-N-31" transform="translate(3500,0)"></use><use data-c="31" xlink:href="#MJX-66-TEX-N-31" transform="translate(4000,0)"></use><use data-c="30" xlink:href="#MJX-66-TEX-N-30" transform="translate(4500,0)"></use></g><g data-mml-node="mo" transform="translate(5166.7,0)"><use data-c="2026" xlink:href="#MJX-66-TEX-N-2026"></use></g></g></g></svg><mjx-assistive-mml unselectable="on" display="inline"><math xmlns="http://www.w3.org/1998/Math/MathML"><mn>0110010110</mn><mo>…</mo></math></mjx-assistive-mml></mjx-container><script type="math/tex">0110010110 \ldots</script><span>, 而量子信息可表示为 </span><mjx-container class="MathJax" jax="SVG" style="position: relative;"><svg xmlns="http://www.w3.org/2000/svg" width="22.91ex" height="2.262ex" role="img" focusable="false" viewBox="0 -750 10126.4 1000" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" style="vertical-align: -0.566ex;"><defs><path id="MJX-67-TEX-N-7C" d="M139 -249H137Q125 -249 119 -235V251L120 737Q130 750 139 750Q152 750 159 735V-235Q151 -249 141 -249H139Z"></path><path id="MJX-67-TEX-I-1D711" d="M92 210Q92 176 106 149T142 108T185 85T220 72L235 70L237 71L250 112Q268 170 283 211T322 299T370 375T429 423T502 442Q547 442 582 410T618 302Q618 224 575 152T457 35T299 -10Q273 -10 273 -12L266 -48Q260 -83 252 -125T241 -179Q236 -203 215 -212Q204 -218 190 -218Q159 -215 159 -185Q159 -175 214 -2L209 0Q204 2 195 5T173 14T147 28T120 46T94 71T71 103T56 142T50 190Q50 238 76 311T149 431H162Q183 431 183 423Q183 417 175 409Q134 361 114 300T92 210ZM574 278Q574 320 550 344T486 369Q437 369 394 329T323 218Q309 184 295 109L286 64Q304 62 306 62Q423 62 498 131T574 278Z"></path><path id="MJX-67-TEX-N-27E9" d="M55 732Q56 739 61 744T75 750Q85 750 92 740Q95 733 186 494T278 250T187 6T92 -240Q85 -250 75 -250Q67 -250 62 -245T55 -232Q55 -227 145 11Q236 248 236 250T145 489Q55 727 55 732Z"></path><path id="MJX-67-TEX-N-31" d="M213 578L200 573Q186 568 160 563T102 556H83V602H102Q149 604 189 617T245 641T273 663Q275 666 285 666Q294 666 302 660V361L303 61Q310 54 315 52T339 48T401 46H427V0H416Q395 3 257 3Q121 3 100 0H88V46H114Q136 46 152 46T177 47T193 50T201 52T207 57T213 61V578Z"></path><path id="MJX-67-TEX-N-32" d="M109 429Q82 429 66 447T50 491Q50 562 103 614T235 666Q326 666 387 610T449 465Q449 422 429 383T381 315T301 241Q265 210 201 149L142 93L218 92Q375 92 385 97Q392 99 409 186V189H449V186Q448 183 436 95T421 3V0H50V19V31Q50 38 56 46T86 81Q115 113 136 137Q145 147 170 174T204 211T233 244T261 278T284 308T305 340T320 369T333 401T340 431T343 464Q343 527 309 573T212 619Q179 619 154 602T119 569T109 550Q109 549 114 549Q132 549 151 535T170 489Q170 464 154 447T109 429Z"></path><path id="MJX-67-TEX-N-33" d="M127 463Q100 463 85 480T69 524Q69 579 117 622T233 665Q268 665 277 664Q351 652 390 611T430 522Q430 470 396 421T302 350L299 348Q299 347 308 345T337 336T375 315Q457 262 457 175Q457 96 395 37T238 -22Q158 -22 100 21T42 130Q42 158 60 175T105 193Q133 193 151 175T169 130Q169 119 166 110T159 94T148 82T136 74T126 70T118 67L114 66Q165 21 238 21Q293 21 321 74Q338 107 338 175V195Q338 290 274 322Q259 328 213 329L171 330L168 332Q166 335 166 348Q166 366 174 366Q202 366 232 371Q266 376 294 413T322 525V533Q322 590 287 612Q265 626 240 626Q208 626 181 615T143 592T132 580H135Q138 579 143 578T153 573T165 566T175 555T183 540T186 520Q186 498 172 481T127 463Z"></path><path id="MJX-67-TEX-N-34" d="M462 0Q444 3 333 3Q217 3 199 0H190V46H221Q241 46 248 46T265 48T279 53T286 61Q287 63 287 115V165H28V211L179 442Q332 674 334 675Q336 677 355 677H373L379 671V211H471V165H379V114Q379 73 379 66T385 54Q393 47 442 46H471V0H462ZM293 211V545L74 212L183 211H293Z"></path><path id="MJX-67-TEX-N-35" d="M164 157Q164 133 148 117T109 101H102Q148 22 224 22Q294 22 326 82Q345 115 345 210Q345 313 318 349Q292 382 260 382H254Q176 382 136 314Q132 307 129 306T114 304Q97 304 95 310Q93 314 93 485V614Q93 664 98 664Q100 666 102 666Q103 666 123 658T178 642T253 634Q324 634 389 662Q397 666 402 666Q410 666 410 648V635Q328 538 205 538Q174 538 149 544L139 546V374Q158 388 169 396T205 412T256 420Q337 420 393 355T449 201Q449 109 385 44T229 -22Q148 -22 99 32T50 154Q50 178 61 192T84 210T107 214Q132 214 148 197T164 157Z"></path><path id="MJX-67-TEX-N-2026" d="M78 60Q78 84 95 102T138 120Q162 120 180 104T199 61Q199 36 182 18T139 0T96 17T78 60ZM525 60Q525 84 542 102T585 120Q609 120 627 104T646 61Q646 36 629 18T586 0T543 17T525 60ZM972 60Q972 84 989 102T1032 120Q1056 120 1074 104T1093 61Q1093 36 1076 18T1033 0T990 17T972 60Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mo" transform="translate(0 -0.5)"><use data-c="7C" xlink:href="#MJX-67-TEX-N-7C"></use></g><g data-mml-node="mi" transform="translate(278,0)"><use data-c="1D711" xlink:href="#MJX-67-TEX-I-1D711"></use></g><g data-mml-node="msub" transform="translate(932,0)"><g data-mml-node="mo"><use data-c="27E9" xlink:href="#MJX-67-TEX-N-27E9"></use></g><g data-mml-node="TeXAtom" transform="translate(422,-150) scale(0.707)" data-mjx-texclass="ORD"><g data-mml-node="mn"><use data-c="31" xlink:href="#MJX-67-TEX-N-31"></use></g></g></g><g data-mml-node="mo" transform="translate(1757.6,0) translate(0 -0.5)"><use data-c="7C" xlink:href="#MJX-67-TEX-N-7C"></use></g><g data-mml-node="mi" transform="translate(2035.6,0)"><use data-c="1D711" xlink:href="#MJX-67-TEX-I-1D711"></use></g><g data-mml-node="msub" transform="translate(2689.6,0)"><g data-mml-node="mo"><use data-c="27E9" xlink:href="#MJX-67-TEX-N-27E9"></use></g><g data-mml-node="TeXAtom" transform="translate(422,-150) scale(0.707)" data-mjx-texclass="ORD"><g data-mml-node="mn"><use data-c="32" xlink:href="#MJX-67-TEX-N-32"></use></g></g></g><g data-mml-node="mo" transform="translate(3515.1,0) translate(0 -0.5)"><use data-c="7C" xlink:href="#MJX-67-TEX-N-7C"></use></g><g data-mml-node="mi" transform="translate(3793.1,0)"><use data-c="1D711" xlink:href="#MJX-67-TEX-I-1D711"></use></g><g data-mml-node="msub" transform="translate(4447.1,0)"><g data-mml-node="mo"><use data-c="27E9" xlink:href="#MJX-67-TEX-N-27E9"></use></g><g data-mml-node="TeXAtom" transform="translate(422,-150) scale(0.707)" data-mjx-texclass="ORD"><g data-mml-node="mn"><use data-c="33" xlink:href="#MJX-67-TEX-N-33"></use></g></g></g><g data-mml-node="mo" transform="translate(5272.7,0) translate(0 -0.5)"><use data-c="7C" xlink:href="#MJX-67-TEX-N-7C"></use></g><g data-mml-node="mi" transform="translate(5550.7,0)"><use data-c="1D711" xlink:href="#MJX-67-TEX-I-1D711"></use></g><g data-mml-node="msub" transform="translate(6204.7,0)"><g data-mml-node="mo"><use data-c="27E9" xlink:href="#MJX-67-TEX-N-27E9"></use></g><g data-mml-node="TeXAtom" transform="translate(422,-150) scale(0.707)" data-mjx-texclass="ORD"><g data-mml-node="mn"><use data-c="34" xlink:href="#MJX-67-TEX-N-34"></use></g></g></g><g data-mml-node="mo" transform="translate(7030.2,0) translate(0 -0.5)"><use data-c="7C" xlink:href="#MJX-67-TEX-N-7C"></use></g><g data-mml-node="mi" transform="translate(7308.2,0)"><use data-c="1D711" xlink:href="#MJX-67-TEX-I-1D711"></use></g><g data-mml-node="msub" transform="translate(7962.2,0)"><g data-mml-node="mo"><use data-c="27E9" xlink:href="#MJX-67-TEX-N-27E9"></use></g><g data-mml-node="TeXAtom" transform="translate(422,-150) scale(0.707)" data-mjx-texclass="ORD"><g data-mml-node="mn"><use data-c="35" xlink:href="#MJX-67-TEX-N-35"></use></g></g></g><g data-mml-node="mo" transform="translate(8954.4,0)"><use data-c="2026" xlink:href="#MJX-67-TEX-N-2026"></use></g></g></g></svg><mjx-assistive-mml unselectable="on" display="inline"><math xmlns="http://www.w3.org/1998/Math/MathML"><mo stretchy="false">|</mo><mi>φ</mi><msub><mo fence="false" stretchy="false">⟩</mo><mrow data-mjx-texclass="ORD"><mn>1</mn></mrow></msub><mo stretchy="false">|</mo><mi>φ</mi><msub><mo fence="false" stretchy="false">⟩</mo><mrow data-mjx-texclass="ORD"><mn>2</mn></mrow></msub><mo stretchy="false">|</mo><mi>φ</mi><msub><mo fence="false" stretchy="false">⟩</mo><mrow data-mjx-texclass="ORD"><mn>3</mn></mrow></msub><mo stretchy="false">|</mo><mi>φ</mi><msub><mo fence="false" stretchy="false">⟩</mo><mrow data-mjx-texclass="ORD"><mn>4</mn></mrow></msub><mo stretchy="false">|</mo><mi>φ</mi><msub><mo fence="false" stretchy="false">⟩</mo><mrow data-mjx-texclass="ORD"><mn>5</mn></mrow></msub><mo>…</mo></math></mjx-assistive-mml></mjx-container><script type="math/tex">|\varphi\rangle_{1}|\varphi\rangle_{2}|\varphi\rangle_{3}|\varphi\rangle_{4}|\varphi\rangle_{5} \ldots</script></p><p><img src="picture\1.2.22.png" width=250 ></p><center>图1.2.22 量子纠缠示意图</center><p><span>		</span><span>一个经典的二进制存储器只能存一个数：要么存 0，要么存 1；但一个二进制量子存储器却可以同时存储0和1这两个数。两个经典二进制存储器只能存储以下四个数中的一个数: 00，01，10 或 11，倘若使用两个二进制量子存储器，则以上四个数可以同时被存储下来。按此规律，推广到N个二进制存储器的情况，理论上，n个量子存储器与n个经典存储器分别能够存</span><mjx-container class="MathJax" jax="SVG" style="position: relative;"><svg xmlns="http://www.w3.org/2000/svg" width="2.279ex" height="1.528ex" role="img" focusable="false" viewBox="0 -675.5 1007.3 675.5" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" style="vertical-align: 0px;"><defs><path id="MJX-68-TEX-N-32" d="M109 429Q82 429 66 447T50 491Q50 562 103 614T235 666Q326 666 387 610T449 465Q449 422 429 383T381 315T301 241Q265 210 201 149L142 93L218 92Q375 92 385 97Q392 99 409 186V189H449V186Q448 183 436 95T421 3V0H50V19V31Q50 38 56 46T86 81Q115 113 136 137Q145 147 170 174T204 211T233 244T261 278T284 308T305 340T320 369T333 401T340 431T343 464Q343 527 309 573T212 619Q179 619 154 602T119 569T109 550Q109 549 114 549Q132 549 151 535T170 489Q170 464 154 447T109 429Z"></path><path id="MJX-68-TEX-I-1D45B" d="M21 287Q22 293 24 303T36 341T56 388T89 425T135 442Q171 442 195 424T225 390T231 369Q231 367 232 367L243 378Q304 442 382 442Q436 442 469 415T503 336T465 179T427 52Q427 26 444 26Q450 26 453 27Q482 32 505 65T540 145Q542 153 560 153Q580 153 580 145Q580 144 576 130Q568 101 554 73T508 17T439 -10Q392 -10 371 17T350 73Q350 92 386 193T423 345Q423 404 379 404H374Q288 404 229 303L222 291L189 157Q156 26 151 16Q138 -11 108 -11Q95 -11 87 -5T76 7T74 17Q74 30 112 180T152 343Q153 348 153 366Q153 405 129 405Q91 405 66 305Q60 285 60 284Q58 278 41 278H27Q21 284 21 287Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="msup"><g data-mml-node="mn"><use data-c="32" xlink:href="#MJX-68-TEX-N-32"></use></g><g data-mml-node="mi" transform="translate(533,363) scale(0.707)"><use data-c="1D45B" xlink:href="#MJX-68-TEX-I-1D45B"></use></g></g></g></g></svg><mjx-assistive-mml unselectable="on" display="inline"><math xmlns="http://www.w3.org/1998/Math/MathML"><msup><mn>2</mn><mi>n</mi></msup></math></mjx-assistive-mml></mjx-container><script type="math/tex">2^n</script><span>个数和1个数。</span></p><p><span>		</span><span>由此可见，量子存储器的存储能力是呈指数增长的，它与经典存储器相比，具有更强大的存储数据的能力，尤其是当 n 很大时(如 n=250 )，量子存储器能够存储的数据量比宇宙中所有原子的数目还要多</span><sup><span>[5]</span></sup><span>。量子信息技术内容广泛，由于它是量子力学与信息科学形成的一个交叉学科，所以它有很多分支，最主要的两支为量子通信和量子计算。量子通信主要研究的是量子介质的信息传递功能进行通信的一种技术，而量子计算则主要研究量子计算机和适合于量子计算机的量子算法。由于这个量子计算分支具有巨大的潜在应用价值和重大的科学意义，获得了世界各国的广泛关注和研究。</span></p><p><img src="picture\1.2.23.png" width=500 ></p><center>图1.2.23 量子信息科学</center><p><span>		</span><span>对于量子计算的真正发展，业界普遍认为源自20世纪最具丰富多彩的科学家，诺贝尔奖获得者Richard Feynman在1982年一次公开演讲中提出的两个问题：</span></p><p><img src="picture\1.2.24.jpg" width=250 ></p><center>图1.2.24 理查德·费曼</center><p><strong><span>（1）经典计算机是否能够有效地模拟量子系统？</span></strong></p><p><span>		</span><span>虽然在量子理论中，仍用微分方程来描述量子系统的演化，但变量的数目却远远多于经典物理系统。所以Richard Feynman针对这个问题的结论是：不可能，因为目前没有任何可行的方法，可以求解出这么多变量的微分方程。</span></p><p><strong><span>（2）如果放弃经典的图灵机模型，是否可以做得更好？</span></strong></p><p><span>		</span><span>Richard Feynman提出如果拓展一下计算机的工作方式，不使用逻辑门来建造计算机，而是一些其他的东西，比如分子和原子；如果使用这些量子材料，它们具有非常奇异的性质，尤其是波粒二象性，是否能建造出模拟量子系统的计算机？于是他提出了这个问题并做了一些验证性实验，然后他推测，这个想法也许可以实现。由此，基于量子力学的新型计算机的研究被提上了科学发展的历程。</span></p><p><img src="picture\1.2.25.png" width=500 ></p><center>图1.2.25 量子计算机发展历程</center><p><span>		</span><span>此后，计算机科学家们一直在努力攻克这一艰巨挑战。伴随时代发展的趋势，在20世纪90年代，量子计算机的算法发展得到了巨大的进步：</span></p><p><span>		</span><span>1992年Deutsch和Jozsa提出了D-J量子算法，开启了如今量子计算飞速发展的大幕。</span></p><p><span>		</span><span>1994年Peter Shor提出了Shor算法，这一算法在大数分解方面比目前已知的最有效的经典质因数分解算法快得多，因此对RSA加密极具威胁性，该算法带来巨大影响力的同时也进一步坚定了科学家们发展量子计算机的决心。</span></p><p><span>		</span><span>1996年Lov Grover提出了Grover量子搜索算法，该算法被公认为继Shor算法后的第二大算法。</span></p><p><span>		</span><span>1998年Bernhard Omer提出量子计算编程语言，拉开了量子计算机可编程的帷幕。</span></p><p><span>		</span><span>2009年MIT三位科学家联合开发了一种求解线性系统的HHL量子算法。众所周知，线性系统是很多科学家和工程领域的核心，由于HHL算法在特定条件下实现了相较于经典算法有指数加速效果，这是未来能够在机器学习，人工智能科技得以突破的关键性技术。</span></p><p><span>		</span><span>自2010年以后，在量子计算软硬件方面各大研究公司均有不同程度的突破。</span></p><p><span>		</span><span>2013年加拿大D-Wave系统公司发布了512Q的量子计算设备。</span></p><p><span>		</span><span>2016年，IBM发布了6量子比特的可编程量子计算机。</span></p><p><span>		</span><span>2017年本源量子发布了32位量子计算虚拟系统，同时还建立了以32位量子计算虚拟系统为基础的本源量子计算云平台。</span></p><p><span>		</span><span>2018年初Intel和Google分别测试了49位和72位量子芯片。</span></p><p><span>		</span><span>2018年12月6日，本源量子发布了第一款测控一体机Origin Quantum AIO，不仅提高了综合量子测控能力，更节约了量子测控环节各种大型设备的空间，为量子计算行业的高精尖仪器带来了更多的可能。</span></p><p><span>		</span><span>2019年1月，IBM发布了世界上第一台独立的量子计算机IBM Q System One。</span></p><p>&nbsp;</p><h2 id='13-量子计算软件介绍'><span>1.3 量子计算软件介绍</span></h2><h3 id='131-量子语言'><span>1.3.1 量子语言</span></h3><p><span>		</span><span>由于当前量子计算机的通用体系架构未得到统一，在硬件层面上的技术路线也未最终确定，所以目前还无法确定哪种量子机器指令集相对更科学、更合理。现阶段在量子计算编程领域的研究者们大多从“量子线路图”、“量子计算汇编语言”、“量子计算高级编程语言”的方式入手，不断寻找未来可能最受量子计算机发展欢迎的编程语言。</span></p><p><span>		</span><span>自20世纪80年代以来，专业从事物理和计算复杂性研究的学者提出了诸多量子算法，他们多数不具备计算机编程思维，使用图形化的方式表示量子程序、量子算法，在某种程度上来说，曾是最简洁的量子编程语言。直到现在，在量子比特数量较少的前提条件下，量子线路图是大多数从事量子计算的研究者一开始采用的最广泛的形式，目前大多数的量子计算平台（如本源量子计算云平台、IBM Q平台）均支持这一编程方式。</span></p><p><img src="picture\1.3.1.png" ></p><center>图1.3.1 本源量子计算云平台图形量子线路</center><p><span>		</span><span>随着量子计算技术研究的不断深入，人类能够使用的量子比特数量也逐步增长，在这种情况下，量子线路图的编程方式显然无法适应研究需要了，量子汇编语言应用而生。类似于经典计算语言，量子汇编语言在最基本的层面上是能够被量子计算机直接识别和执行的一种机器指令集，它是量子计算机设计者通过量子计算机的物理结构赋予量子计算机的操作功能。从最早提出的QASM到本源推出的初代量子计算汇编语言QRunes、Rigetti提出的Quil，这些汇编语言基本都属于量子计算汇编语言这个范畴。</span></p><p><span>		</span><span>在经典计算世界，高级编程语言分为命令式和函数式两大类，而在量子计算编程领域，同样适用。命令式量子编程语言有可以将经典代码和量子代码组合在同一程序中的 QCL、微软开发的Q#、适用于量子退火器的QMASM；函数式量子编程语言包括Peter Selinger定义的两种密切相关的量子编程语言QFC 和 QPL、微软研究院StationQ工作的LIQUi|&gt;、Quipper。 </span></p><p><span>		</span><span>由于每个量子机器必须由经典设备控制，现有的量子编程语言包含经典控制结构，例如循环和条件执行，并允许对经典和量子数据进行操作；量子编程语言有助于使用高级构造表达量子算法。</span></p><h3 id='132-量子软件开发包'><span>1.3.2 量子软件开发包</span></h3><p><span>		</span><span>使用量子语言进行量子编程，是一件顺理成章的事，但是在开发工程师的眼中，用量子语言进行量子编程只是最基础的一种方法，如何最大效率的使用量子语言构建最为便捷或功能足够强大的量子程序是一直追求的目标。</span></p><p><span>		</span><span>随着量子语言的不断成熟，量子计算行业中各类量子软件开发包层出不穷，它们提供着各种量子编程工具，诸如各类数据库、代码示例、程序开发的流程和指南，允许开发人员在特定量子平台上创造量子软件应用程序等。</span></p><p><span>		</span><span>在量子计算行业，量子软件开发包是指一个提供了创建和操作量子程序的量子计算工具集，以及提供了模拟量子程序的方法包，并且允许开发者使用基于云的量子设备来运行、检验自己所开发的量子计算程序。根据不同的后端处理系统，量子软件开发工具分为两大类：一类是可以访问量子处理器的SDK，一类是基于量子计算模拟器的SDK。前者以苏黎世联邦理工学院开发的ProjectQ、IBM的Qiskit、Rigetti的Forest为代表，这类SDK允许开发者在原型量子器件和量子模拟器上运行量子电路；后者的使用范围相对较大，是目前量子计算行业采取的相对普遍的量子软件开发包后端处理形式，采用量子模拟器制作的量子软件开发包的好处是——它们不需要跟量子芯片产生直接的物理关联，用户在自己的电脑上通过SDK模拟量子计算芯片的物理功能，执行量子计算过程，获得量子计算模拟成果，并可利用量子虚拟机、模拟器的程序优点，模拟量子算法，同时可在通用量子计算机问世之后快速对接使用。微软的Q#开发套件、Google的Criq以及本源的QPanda均属于量子软件开发工具。</span></p><h3 id='133-量子云平台'><span>1.3.3 量子云平台</span></h3><p><span>		</span><span>自1982年Richard Feynman提出建造量子计算机的设想以来，近半个世纪的时间里人类一直在坚持不懈地实现这一目标。2000年以后，虽然世界各国在量子计算机的硬件研发方面不断取得进步，但是由于量子态非常“挑剔”——它们需要在非常低的温度下储存，否则可能会受到干扰和破坏。</span></p><p><span>		</span><span>就目前的技术和工艺，还远远达不到像经典计算机那样在常温下批量制造、运行，这就间接限制了量子计算机的现实应用。在这样的背景下，越来越多的量子计算公司、研究机构发布了各自的量子计算云平台，已知的包括IBM的Quantum Experience、Rigetti的 Forest、本源量子计算云平台等，主要的目的是在量子计算领域占得先机。  </span></p><p><img src="picture\1.3.2.png" ></p><center>图1.3.2 本源量子云平台</center><p><span>		</span><span>量子云平台，全称应该是量子云计算平台；一定程度上可以理解为用户与各家公司、研究机构的量子计算机之间的介质平台；用户通过量子云平台经由调度服务器和互联网向部署在远程的量子计算机提交任务，量子计算机在处理这些任务后再通过调度服务器和互联网将结果返回给用户。这一过程如图1.3.3所示：</span></p><div align="center"><img src="picture\1.3.3.png"><br></div>  <center>图1.3.3 量子计算流程图</center><p><span>		</span><span>个人用户在本地的经典计算机上通过web界面或量子软件编写量子线路、量子代码，然后将编写的内容提交给远程调度服务器，调度服务器安排用户任务按照次序传递给后端量子计算机，量子计算机完成任务后，将计算结果一一返回给调度服务器，调度服务器再将计算结果变成可视化的统计分析发送给用户，至此完成整个量子计算过程。</span></p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p></div></div>
+</body>
+</html>
